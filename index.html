@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Film.Cuts — Produkční studio specializované na krátké filmy, promo a vizuální storytelling.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+        <!-- skip link removed per request -->
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="#">Film.Cuts</a>
+            <nav class="main-nav" aria-label="Hlavní navigace">
+                <a href="#projekty">Projekty</a>
+                <a href="#clenove">Členové</a>
+                <a href="technika.html">Technika</a>
+                <a href="#about">O mně</a>
+                <a href="#contact">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <!-- HERO -->
+                        <section id="hero" class="hero">
+                                <!-- subtle photo background under the title -->
+                                <div class="hero-bg" aria-hidden="true"></div>
+                                <div class="hero-overlay"></div>
+                                <div class="hero-content container">
+                                    <div class="hero-panel">
+                                        <h1 class="hero-title">Film.Cuts</h1>
+                                        <p class="hero-tagline">Produkční studio specializované na krátké filmy, promo a vizuální storytelling.</p>
+                                        <a class="hero-tab" href="#projekty" aria-label="Přejít na projekty">Projekty</a>
+                                    </div>
+                                </div>
+            <button class="scroll-indicator" aria-label="Scroll to next section" data-scroll-to="#projekty">
+                <span></span>
+            </button>
+        </section>
+
+            <!-- showreel removed: hero uses YouTube background; selected works are displayed in Portfolio below -->
+
+        <!-- PROJEKTY -->
+        <section id="projekty" class="portfolio">
+            <div class="container">
+            <h2 class="section-title">Projekty</h2>
+            <p class="section-sub">Přehled vybraných prací z oblasti filmu a vizuální tvorby.</p>
+            <div style="height: 24px;"></div>
+                <div class="grid portfolio-grid">
+                    <!-- Project 1 -->
+                    <a href="project1.html" class="project card" style="text-decoration: none; color: inherit;">
+                                        <figure class="thumb">
+                                                <!-- main project image (updated to use uploaded file portfolio1.png) -->
+                                                <img src="assets/portfolio1.png" alt="Echoes — náhled" loading="lazy">
+                                        </figure>
+                                        <div class="project-meta">
+                                            <h3>Documentary Short Film - Adam Liška</h3>
+                                            <time datetime="2025">2025</time>
+                                            <p>Dokument sleduje šestnáctiletého MTB ridera Adama během tréninků a závodů.</p>
+                                        </div>
+                    </a>
+
+                    <!-- Project 2 -->
+                    <a href="project2.html" class="project card" style="text-decoration: none; color: inherit;">
+                                        <figure class="thumb">
+                                            <img src="assets/portfolio2.png" alt="Projekt 2 — náhled" loading="lazy">
+                                        </figure>
+                                        <div class="project-meta">
+                                            <h3>DVA DNY| Short Film</h3>
+                                            <time datetime="2026">2026</time>
+                                            <p>Psychologický thriller z prostředí digitálního světa, kde jedno nenápadné rozhodnutí spustí řetězec nevratných následků.</p>
+                                        </div>
+                    </a>
+
+                    <!-- Project 3 -->
+                    <a href="project3.html" class="project card" style="text-decoration: none; color: inherit;">
+                                        <figure class="thumb">
+                                            <img src="assets/portfolio3.png" alt="Projekt 3 — náhled" loading="lazy">
+                                        </figure>
+                                        <div class="project-meta">
+                                            <h3>BikePark Kopřivná Edit!</h3>
+                                            <time datetime="2025">2025</time>
+                                            <p>Experimentální montáž zkoumající světlo, rytmus a kontinuitu obrazu.</p>
+                                        </div>
+                    </a>
+
+                    <!-- Project 4 -->
+                    <a href="project4.html" class="project card" style="text-decoration: none; color: inherit;">
+                                        <figure class="thumb">
+                                            <img src="assets/portfolio4.png" alt="Projekt 4 — náhled" loading="lazy">
+                                        </figure>
+                                        <div class="project-meta">
+                                            <h3>Adam Liška Bike Edit [4K]</h3>
+                                            <time datetime="2025">2025</time>
+                                            <p>Krátký film pro značku, který pracuje s kontrastem ticha a napětí.</p>
+                                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PLÁNOVANÉ PROJEKTY -->
+        <section id="planovane" class="portfolio" style="background: rgba(255,255,255,0.01);">
+            <div class="container">
+                <h2 class="section-title">Plánované projekty</h2>
+                <p class="section-sub">Projekty v přípravě a v plánu. Sledujte nás pro nejnovější obsah.</p>
+                <div style="height: 24px;"></div>
+                <div class="grid portfolio-grid">
+                    <!-- Planned Project 1 -->
+                    <div class="project card planned-project">
+                        <div class="project-meta">
+                            <h3>Nový Film</h3>
+                            <p style="color: var(--muted); font-size: 0.9rem; margin-top: 4px;">Horror / thriler</p>
+                            <p style="color: var(--muted); font-size: 0.9rem; margin-top: 8px;">Teprve v přípravě.</p>
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 10%;"></div>
+                                </div>
+                                <div class="progress-info">
+                                    <p class="progress-status">Příprava scénáře</p>
+                                    <div class="progress-percentage">10%</div>
+                                </div>
+                            </div>
+                            <p style="color: var(--muted); font-size: 0.75rem; margin-top: 6px;">Červenec 2026</p>
+                        </div>
+                    </div>
+
+                    <!-- Planned Project 2 -->
+                    <div class="project card planned-project">
+                        <div class="project-meta">
+                            <h3>Dokument o novém filmu</h3>
+                            <p style="color: var(--muted); font-size: 0.9rem; margin-top: 4px;">Documentary</p>
+                            <p style="color: var(--muted); font-size: 0.9rem; margin-top: 8px;">Zatím vymýšlíme.</p>
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 5%;"></div>
+                                </div>
+                                <div class="progress-info">
+                                    <p class="progress-status">Psaní scénáře</p>
+                                    <div class="progress-percentage">5%</div>
+                                </div>
+                            </div>
+                            <p style="color: var(--muted); font-size: 0.75rem; margin-top: 6px;">Srpen 2026</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ČLENOVÉ -->
+        <section id="clenove" class="team">
+            <div class="container">
+                <h2 class="section-title">Tým</h2>
+                <p class="section-sub">Kreativci a technici, kteří stojí za každým projektem.</p>
+                <div class="grid team-grid">
+                    <!-- Member 1 — změňte jméno, roli a popis; nahraďte fotku: assets/member1.png -->
+                    <article class="team-member">
+                        <div class="member-photo">
+                            <img src="assets/member1.png" alt="Člen týmu 1" loading="lazy">
+                        </div>
+                        <div class="member-info">
+                            <h3>Kamil Štencel</h3>
+                            <p class="member-role">Režisér / Kameraman / Editor</p>
+                            <p class="member-bio">Tvůrce a vedoucí projektu. Střih, scénář a vizuální pojetí.</p>
+                        </div>
+                    </article>
+
+                    <!-- Member 2 — změňte jméno, roli a popis; nahraďte fotku: assets/member2.png -->
+                    <article class="team-member">
+                        <div class="member-photo">
+                            <img src="assets/member2.png" alt="Člen týmu 2" loading="lazy">
+                        </div>
+                        <div class="member-info">
+                            <h3>Teodor Švéda</h3>
+                            <p class="member-role">Asistent / Herec</p>
+                            <p class="member-bio">Asistentství na set. Osvětlení, technika, přirozené herectví.</p>
+                        </div>
+                    </article>
+
+                    <!-- Member 3 — změňte jméno, roli a popis; nahraďte fotku: assets/member3.png -->
+                    <article class="team-member">
+                        <div class="member-photo">
+                            <img src="assets/member3.png" alt="Člen týmu 3" loading="lazy">
+                        </div>
+                        <div class="member-info">
+                            <h3>Daniel Binar</h3>
+                            <p class="member-role">Asistent / Zvuk / Produkční</p>
+                            <p class="member-bio">Produkční asistent. Řídí zvuk na setu, zajišťuje audio záznam a produkční chod projektu.</p>
+                        </div>
+                    </article>
+
+                    <!-- Member 4 — změňte jméno, roli a popis; nahraďte fotku: assets/member4.png -->
+                    <article class="team-member">
+                        <div class="member-photo">
+                            <img src="assets/member4.png" alt="Člen týmu 4" loading="lazy">
+                        </div>
+                        <div class="member-info">
+                            <h3>Petr Findrik</h3>
+                            <p class="member-role">Kameraman 2</p>
+                            <p class="member-bio">Druhá kamera, BTS záběry.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="about">
+            <div class="container about-grid">
+                <div class="about-text">
+                                <h2 class="section-title">O mně</h2>
+                                <div style="height: 24px;"></div>
+                                <p>Jsem videomaker, kameraman a začínající režisér, který se zaměřuje na vizuální příběhy s jasnou atmosférou a rytmem. Baví mě práce s kamerou, světlem a střihem tak, aby každý záběr měl smysl a podporoval emoci, kterou chci předat.  
+                                    Učím se s každým projektem a postupně si buduju vlastní styl založený na jednoduchosti, čisté kompozici a přirozeném vyznění.</p>
+                                    <div style="height: 24px;"></div>
+                                <p>Spolupracuji na menších filmových i komerčních projektech a vždy se snažím, aby výsledek působil profesionálně a autenticky.</p>
+                            </div>
+                            <div class="about-media">
+                                <img src="assets/about.png" alt="Author portrait / still" loading="lazy">
+                            </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="contact">
+            <div class="container contact-inner">
+                <div>
+                                <h2 class="section-title">Kontakt</h2>
+                                <div style="height: 24px;"></div>
+                                <div class="contact-list">
+                                    <a class="contact-item" href="https://instagram.com/film.cuts._" target="_blank" rel="noopener" aria-label="Instagram">
+                                        <div class="icon-link" aria-hidden="true">
+                                            <!-- Instagram icon -->
+                                            <svg viewBox="0 0 24 24" focusable="false">
+                                                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM18.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="contact-meta">
+                                            <div class="contact-name">Instagram</div>
+                                            <div class="contact-desc">film.cuts._ — behind the scenes & clips</div>
+                                        </div>
+                                    </a>
+
+                                    <a class="contact-item" href="https://www.youtube.com/@Film_Cuts.Kamil.Štencel" target="_blank" rel="noopener" aria-label="YouTube">
+                                        <div class="icon-link" aria-hidden="true">
+                                            <!-- YouTube icon -->
+                                            <svg viewBox="0 0 24 24" focusable="false">
+                                                <path d="M23 7s-.2-1.6-.8-2.3c-.8-1-1.7-1-2.1-1.1C16.7 3 12 3 12 3s-4.7 0-7.1.6c-.4.1-1.3.1-2.1 1.1C2.2 5.4 2 7 2 7S1.7 9.1 1.7 11.3v1.4C1.7 14.9 2 17 2 17s.2 1.6.8 2.3c.8 1 1.9 1 2.4 1.1 1.7.2 7.1.6 7.1.6s4.7 0 7.1-.6c.4-.1 1.3-.1 2.1-1.1.6-.7.8-2.3.8-2.3s.3-2.1.3-4.3v-1.4C23.3 9.1 23 7 23 7zM9.8 15.5V8.5l6.2 3.5-6.2 3.5z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="contact-meta">
+                                            <div class="contact-name">YouTube</div>
+                                            <div class="contact-desc">Showreel & full projects</div>
+                                        </div>
+                                    </a>
+
+                                    <a class="contact-item" href="mailto:info@film.cuts" aria-label="Email">
+                                        <div class="icon-link" aria-hidden="true">
+                                            <!-- Mail icon -->
+                                            <svg viewBox="0 0 24 24" focusable="false">
+                                                <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="contact-meta">
+                                            <div class="contact-name">Email</div>
+                                            <div class="contact-desc">info@film.cuts — pro nabídky a dotazy</div>
+                                        </div>
+                                    </a>
+                                </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p class="muted small">© Film.Cuts — All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

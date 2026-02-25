@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg: #0f0f0f;
+    --surface: #111111;
+    --text: #ffffff;
+    --muted: #9b9b9b;
+    --accent: #e6e6e6;
+    --gap: 88px;
+    --container: 1100px;
+    --radius: 10px;
+}
+
+body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+}
+
+*{scroll-behavior:smooth}
+/* Reset & variables */
+:root{
+  --bg: #0f0f0f;
+  --text: #ffffff;
+  --muted: #9b9b9b;
+  --accent: #e6e6e6;
+  --gap: 88px;
+  --container: 1100px;
+  --radius: 10px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,Helvetica;line-height:1.45;-webkit-font-smoothing:antialiased}
+
+/* Layout helpers */
+.container{max-width:var(--container);margin:0 auto;padding:0 20px}
+main{min-height:60vh}
+section{padding:var(--gap) 5%}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:80;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,0.45))}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+/* hide header on scroll down: slide up smoothly */
+.site-header{
+    transition:transform .28s cubic-bezier(.2,.9,.2,1),opacity .18s ease;
+    will-change:transform,opacity;
+}
+.site-header.header-hidden{
+    transform:translateY(-110%);
+    opacity:0;
+    pointer-events:none;
+}
+.brand{font-weight:800;letter-spacing:2px;color:var(--text);text-decoration:none}
+.main-nav a{color:var(--muted);margin-left:20px;text-decoration:none;font-weight:500}
+.main-nav a:hover{color:var(--text)}
+
+/* HERO */
+.hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('assets/hero.png');background-size:cover;background-position:center center;filter:brightness(.6) saturate(.85) blur(3px);z-index:0}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.7));z-index:1}
+.hero-content{position:relative;z-index:5;padding:0 20px;display:flex;align-items:center;justify-content:center}
+.hero-panel{background:transparent;padding:22px 28px;border-radius:10px;display:inline-block}
+.hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(60px,15vw,200px);letter-spacing:1px;font-weight:900;margin-bottom:8px;text-transform:uppercase;color:var(--text);text-shadow:0 6px 30px rgba(0,0,0,0.6)}
+.hero-tagline{color:var(--muted);font-size:16px;margin-bottom:8px}
+
+/* lower opacity of tab so it sits well on the translucent panel */
+.hero-tab{background:rgba(255,255,255,0.04);padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.06);display:inline-block;color:var(--text);text-decoration:none}
+
+/* Top graphic placed above the hero panel; drop assets/hero-top.png to replace */
+.hero-top-graphic{position:absolute;top:18px;left:50%;transform:translateX(-50%);z-index:6;pointer-events:auto;display:flex;align-items:center;justify-content:center}
+.hero-top-graphic img{width:clamp(120px,18vw,480px);height:auto;object-fit:contain;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,0.45)}
+@media(max-width:700px){.hero-top-graphic{top:12px}.hero-top-graphic img{width:140px}}
+
+/* ensure hero text is above overlay */
+.hero-content .reveal{opacity:1;transform:none}
+
+/* small pill/tab under hero that links to projects */
+.hero-tab{display:inline-block;margin-top:18px;padding:10px 18px;border-radius:999px;background:rgba(255,255,255,0.04);color:var(--text);text-decoration:none;border:1px solid rgba(255,255,255,0.06);font-weight:600;transition:transform .18s ease,background .18s ease}
+.hero-tab:hover{transform:translateY(-3px);background:rgba(255,255,255,0.07)}
+
+/* Scroll indicator */
+.scroll-indicator{position:absolute;left:50%;transform:translateX(-50%);bottom:28px;background:transparent;border:0;z-index:10;display:none}
+.scroll-indicator span{display:block;width:28px;height:44px;border-radius:14px;border:1px solid rgba(255,255,255,0.18);position:relative}
+.scroll-indicator span::after{content:"";position:absolute;left:50%;top:8px;transform:translateX(-50%);width:6px;height:6px;background:rgba(255,255,255,0.8);border-radius:50%;animation:scrolldot 1.6s infinite}
+@keyframes scrolldot{0%{transform:translate(-50%,0);opacity:1}60%{transform:translate(-50%,20px);opacity:.2}100%{transform:translate(-50%,0);opacity:1}}
+
+/* Showreel */
+.showreel .section-title{margin-bottom:6px}
+.video-wrap{position:relative;padding-top:56.25%;overflow:hidden;border-radius:8px;background:#0b0b0b}
+.video-wrap iframe{position:absolute;left:0;top:0;width:100%;height:100%;border:0}
+
+/* Portfolio */
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+.project{min-height:auto}
+.thumb{position:relative;display:block;overflow:hidden;border-radius:8px;background:transparent;width:100%}
+.thumb img{width:100%;height:auto;display:block;transition:filter .28s ease}
+.thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.55));opacity:0;transition:opacity .4s ease}
+/* default overlay-style metadata (when used inside thumb) */
+.thumb .project-meta{position:absolute;left:20px;bottom:18px;color:var(--text);opacity:0;transform:translateY(12px);transition:all .45s cubic-bezier(.2,.9,.2,1);max-width:75%}
+.project .project-meta{ /* when project-meta is a sibling under .project, make it static and visible */
+    position:static;
+    left:auto;
+    bottom:auto;
+    opacity:1;
+    transform:none;
+    margin-top:12px;
+    color:var(--text);
+    max-width:100%;
+}
+.project .project-meta h3{font-size:1.05rem;margin:0}
+.project .project-meta p{color:var(--muted);font-size:0.95rem;margin-top:8px}
+.project:hover img{filter:brightness(.9)}
+.project:hover .thumb::after{opacity:1}
+
+/* Card styling for projects (clear boxes with image + meta) */
+.project.card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+    border: 1px solid rgba(255,255,255,0.03);
+    padding:14px;
+    border-radius:10px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    transition:transform .18s ease,box-shadow .18s ease;
+}
+.project.card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.45)}
+.project.card .thumb{border-radius:8px}
+.project.card .project-meta{margin:0;padding:6px 2px}
+.project.card .project-meta h3{margin-bottom:6px}
+.project.card .project-meta time{display:block;color:var(--muted);font-size:0.85rem;margin-bottom:6px}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center}
+.about-media img{width:100%;height:auto;border-radius:8px;display:block}
+.about-text p{color:var(--muted);max-width:70ch}
+
+/* Philosophy */
+.philosophy-list{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+.ph-item{font-weight:600;font-size:1.05rem}
+
+/* Contact */
+.contact-link{color:var(--text);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.04);padding-bottom:2px}
+.contact-link:hover{color:var(--accent);border-color:transparent}
+
+/* Social icon links in contact */
+.socials{display:flex;gap:12px;align-items:center;margin-top:10px}
+.icon-link{display:inline-flex;width:56px;height:56px;align-items:center;justify-content:center;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+.icon-link svg{width:24px;height:24px;display:block;fill:currentColor}
+
+/* contact-list: larger clickable rows with label + description */
+.contact-list{display:flex;flex-direction:column;gap:12px;margin-top:10px}
+.contact-item{display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:10px;background:transparent;border:1px solid transparent;text-decoration:none;color:inherit;transition:all .18s ease}
+.contact-item:hover{background:rgba(255,255,255,0.02);border-color:rgba(255,255,255,0.03);transform:translateY(-4px);color:var(--text)}
+.contact-meta{display:flex;flex-direction:column}
+.contact-name{font-weight:700;font-size:1rem}
+.contact-desc{color:var(--muted);font-size:0.95rem}
+
+@media(min-width:900px){
+    .contact-list{flex-direction:row}
+    .contact-item{padding:10px 14px}
+}
+
+/* Team / Členové */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:32px}
+.team-member{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.02));border:1px solid rgba(255,255,255,0.03);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:14px;transition:transform .18s ease,box-shadow .18s ease}
+.team-member:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(0,0,0,0.5)}
+.member-photo{width:100%;aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:#0b0b0b;display:flex;align-items:center;justify-content:center}
+.member-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
+.member-info h3{font-size:1.15rem;margin-bottom:4px;font-weight:700}
+.member-role{color:var(--accent);font-size:0.95rem;font-weight:600;margin-bottom:8px}
+.member-bio{color:var(--muted);font-size:0.9rem;line-height:1.4}
+
+/* Footer */
+.site-footer{padding:32px 0}
+.muted{color:var(--muted)}
+
+/* Reveal utility */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.9,.2,1)}
+.reveal.in-view{opacity:1;transform:none}
+
+/* keep hero text always visible (avoid flicker from reveal utility) */
+.hero-title.reveal, .hero-tagline.reveal{opacity:1;transform:none}
+
+/* Responsive tweaks */
+@media (max-width:1024px){.about-grid{grid-template-columns:1fr 360px}}
+@media (max-width:1024px){
+    .portfolio-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+}
+@media (max-width:800px){
+    .about-grid{grid-template-columns:1fr}
+    .main-nav{display:none}
+    .portfolio-grid{grid-template-columns:1fr}
+    .project{min-height:300px}
+}
+
+/* small helper */
+.small{font-size:0.9rem}
+
+/* Progress Bar Styles - Easy to edit */
+.progress-container {
+    margin-top: 12px;
+}
+
+.progress-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.progress-status {
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.progress-percentage {
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+

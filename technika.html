@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Technika — Film.Cuts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tech-hero { position: relative; height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.8)); }
+        .tech-hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(36px, 10vw, 80px); font-weight: 900; color: var(--text); text-shadow: 0 6px 30px rgba(0,0,0,0.6); }
+        .tech-content { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        .tech-section { margin-bottom: 80px; }
+        .tech-section h2 { font-size: 2rem; margin-bottom: 24px; font-weight: 800; }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 24px; }
+        .tech-item { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02)); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; padding: 24px; }
+        .tech-item h3 { font-size: 1.3rem; margin-bottom: 8px; font-weight: 700; }
+        .tech-item p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+        .tech-specs { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+        .spec { color: var(--muted); font-size: 0.9rem; padding-left: 16px; border-left: 2px solid rgba(255,255,255,0.1); }
+        .spec strong { color: var(--text); }
+        .back-link { display: inline-block; margin-top: 40px; padding: 10px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text); text-decoration: none; transition: all .18s ease; }
+        .back-link:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html">Film.Cuts</a>
+            <nav class="main-nav" aria-label="Hlavní navigace">
+                <a href="index.html#projekty">Projekty</a>
+                <a href="index.html#clenove">Členové</a>
+                <a href="technika.html">Technika</a>
+                <a href="index.html#about">O mně</a>
+                <a href="index.html#contact">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <!-- TECH HERO -->
+        <section class="tech-hero">
+            <h1>Technika & Vybavení</h1>
+        </section>
+
+        <!-- TECH CONTENT -->
+        <section class="tech-content">
+
+            <!-- CAMERAS -->
+            <div class="tech-section">
+                <h2>Kamery</h2>
+                <p style="color: var(--muted); margin-bottom: 20px;">Profesionální kamerové vybavení pro filmování v různých formátech a rozlišeních.</p>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <h3>Hlavní kamera</h3>
+                        <p>Lumix GH6</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>Rozlišení:</strong> 4K / 5.7K</div>
+                            <div class="spec"><strong>FPS:</strong> 24, 30, 60, 120</div>
+                            <div class="spec"><strong>Senzor:</strong> Micro 3/4</div>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Backup kamera</h3>
+                        <p>Canon PowerShot G15</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>Rozlišení:</strong> Full HD(1920x1080)</div>
+                            <div class="spec"><strong>FPS:</strong> 24</div>
+                            <div class="spec"><strong>Typ:</strong> CMOS</div>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Akční kamera</h3>
+                        <p> GoPro Hero4</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>Model:</strong> Hero4</div>
+                            <div class="spec"><strong>Rozlišení:</strong> 2.7K / 4K</div>
+                            <div class="spec"><strong>Stabilizace:</strong> Ano</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LENSES -->
+            <div class="tech-section">
+                <h2>Objektivy</h2>
+                <p style="color: var(--muted); margin-bottom: 20px;">Kvalitní objektivy pro různé kompozice a styly natáčení.</p>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <h3>Prime objektivy</h3>
+                        <p>Ostré a kvalitní záběry s pevným ohniskům</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>24mm, 35mm, 50mm, 85mm</strong></div>
+                            <div class="spec"><strong>Clona:</strong> f/1.8 - f/2.8</div>
+                            <div class="spec"><strong>Typ:</strong> Cinema / Foto</div>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Zoomové objektivy</h3>
+                        <p>Flexibilní ohniskové vzdálenosti pro dynamické natáčení</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>16-35mm, 24-70mm, 70-200mm</strong></div>
+                            <div class="spec"><strong>Clona:</strong> f/2.8 - f/4</div>
+                            <div class="spec"><strong>Type:</strong> Zoom Range</div>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Speciální objektivy</h3>
+                        <p>Anamorfní, makro a ultra-wide pro kreativní efekty</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>Anamorfní:</strong> 2x Squeeze</div>
+                            <div class="spec"><strong>Ultra-wide:</strong> 14-16mm</div>
+                            <div class="spec"><strong>Makro:</strong> 100mm f/2.8</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AUDIO -->
+            <div class="tech-section">
+                <h2>Audio vybavení</h2>
+                <p style="color: var(--muted); margin-bottom: 20px;">Profesionální zvuk je stejně důležitý jako obraz — používáme kvalitní mikrofony a mixéry.</p>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <h3>Mikrofony</h3>
+                        <p>Rádiové a připojené mikrofony pro čistý zvuk</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>Bezdrátový:</strong> Sennheiser / Shure</div>
+                            <div class="spec"><strong>Kondenzátor:</strong> Rode / Audio-Technica</div>
+                            <div class="spec"><strong>Frekvence:</strong> UHF / 2.4GHz</div>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Mixér & Rekordér</h3>
+                        <p>Profesionální zvukový záznam v nejvyšší kvalitě</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>Mixér:</strong> Behringer X18</div>
+                            <div class="spec"><strong>Rekordér:</strong> Zoom F8n / Sound Devices</div>
+                            <div class="spec"><strong>Formát:</strong> WAV 24-bit / 48kHz</div>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Monitorování</h3>
+                        <p>Real-time sledování zvuku během natáčení</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>Sluchátka:</strong> Sennheiser / Sony Pro</div>
+                            <div class="spec"><strong>Metering:</strong> Spectral Analysis</div>
+                            <div class="spec"><strong>Latence:</strong> Ultra-low</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STABILIZATION -->
+            <div class="tech-section">
+                <h2>Stabilizace & Podpora</h2>
+                <p style="color: var(--muted); margin-bottom: 20px;">Profesionální vybavení pro hladké a stabilní záběry.</p>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <h3>Gimbal & Steadicam</h3>
+                        <p>Pohyblivé záběry bez chvění</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>3osý gimbal:</strong> DJI Ronin / MoVI</div>
+                            <div class="spec"><strong>Steadicam:</strong> Pro náročné scény</div>
+                            <div class="spec"><strong>Payload:</strong> 5kg - 15kg</div>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Stativy & Jeřáby</h3>
+                        <p>Stabilní podpora pro statické a vertikální pohyby</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>Hlava:</strong> Fluid Head</div>
+                            <div class="spec"><strong>Jeřáb:</strong> Jib Arm 7ft</div>
+                            <div class="spec"><strong>Materiál:</strong> Hliník / Carbon</div>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Slider & Track</h3>
+                        <p>Hladké horizontální pohyby kamery</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>Délka:</strong> 2m - 6m</div>
+                            <div class="spec"><strong>Pohon:</strong> Motorized / Manual</div>
+                            <div class="spec"><strong>Rychlost:</strong> Variabilní</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LIGHTING -->
+            <div class="tech-section">
+                <h2>Osvětlení</h2>
+                <p style="color: var(--muted); margin-bottom: 20px;">Profesionální světla pro dokonalou atmosféru a náladu.</p>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <h3>LED panely</h3>
+                        <p>Energeticky efektivní a kontrolovatelné osvětlení</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>Teplota:</strong> 3200K - 5600K CCT</div>
+                            <div class="spec"><strong>Výkon:</strong> 200W - 1000W</div>
+                            <div class="spec"><strong>Dimovatelné:</strong> 1-100%</div>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <h3>HMI & Tungsten</h3>
+                        <p>Intenzivní zdroje světla pro velké scény</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>HMI:</strong> 575W - 12kW</div>
+                            <div class="spec"><strong>Tungsten:</strong> 1000W - 5000W</div>
+                            <div class="spec"><strong>Efekt:</strong> Vysoká intenzita</div>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Reflektory & Difuzory</h3>
+                        <p>Kontrola a úprava světla</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>Reflektory:</strong> 5in1 Parabolic</div>
+                            <div class="spec"><strong>Difuzory:</strong> Silk / Muslin</div>
+                            <div class="spec"><strong>Velikosti:</strong> 2ft - 12ft</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POST-PRODUCTION -->
+            <div class="tech-section">
+                <h2>Post-produkce</h2>
+                <p style="color: var(--muted); margin-bottom: 20px;">Hardware a software pro střih, barevnou korekci a finální export.</p>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <h3>Střihový software</h3>
+                        <p>Profesionální strihače pro rychlý a efektivní střih</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>Primární:</strong> DaVinci Resolve / Premiere Pro</div>
+                            <div class="spec"><strong>Backup:</strong> Final Cut Pro</div>
+                            <div class="spec"><strong>Verze:</strong> Studio / Enterprise</div>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Barevná korekce</h3>
+                        <p>Přesná a profesionální úprava barev</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>Software:</strong> DaVinci Fusion</div>
+                            <div class="spec"><strong>Kalibrované monitory:</strong> BVM / EZO</div>
+                            <div class="spec"><strong>LUT prostory:</strong> Rec.709 / DCI-P3</div>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Pracovní stanice</h3>
+                        <p>Výkonný hardware pro 4K+ práci</p>
+                        <div class="tech-specs">
+                            <div class="spec"><strong>Procesor:</strong> Intel / AMD Ryzen</div>
+                            <div class="spec"><strong>RAM:</strong> 64GB - 128GB</div>
+                            <div class="spec"><strong>GPU:</strong> RTX 4090 / A6000</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="index.html" class="back-link">← Zpět na Domů</a>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p class="muted small">© Film.Cuts — All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

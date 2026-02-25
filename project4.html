@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Adam Liška Bike Edit [4K] — Film.Cuts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .project-hero { position: relative; height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.8)); }
+        .project-hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(36px, 10vw, 80px); font-weight: 900; color: var(--text); text-shadow: 0 6px 30px rgba(0,0,0,0.6); }
+        .project-content { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        .project-video { position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; border-radius: 12px; background: #0b0b0b; margin-bottom: 60px; cursor: pointer; }
+        .project-video img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+        .project-video::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all .3s ease; z-index: 2; }
+        .project-video::before { content: '▶'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 32px; color: #0f0f0f; z-index: 3; transition: all .3s ease; }
+        .project-video:hover::after { background: rgba(255,255,255,1); transform: translate(-50%, -50%) scale(1.1); }
+        .project-video:hover::before { transform: translate(-50%, -50%) scale(1.1); }
+        .project-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 40px; }
+        .gallery-item { border-radius: 10px; overflow: hidden; background: #0b0b0b; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .project-info { margin-bottom: 40px; }
+        .project-info h2 { font-size: 1.8rem; margin-bottom: 12px; }
+        .project-info p { color: var(--muted); font-size: 1.05rem; line-height: 1.6; max-width: 70ch; }
+        .back-link { display: inline-block; margin-top: 40px; padding: 10px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text); text-decoration: none; transition: all .18s ease; }
+        .back-link:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html">Film.Cuts</a>
+            <nav class="main-nav" aria-label="Hlavní navigace">
+                <a href="index.html#projekty">Projekty</a>
+                <a href="index.html#clenove">Členové</a>
+                <a href="index.html#about">O mně</a>
+                <a href="index.html#contact">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <!-- PROJECT HERO -->
+        <section class="project-hero">
+            <h1>Adam Liška Bike Edit [4K]</h1>
+        </section>
+
+        <!-- PROJECT CONTENT -->
+        <section class="project-content">
+            <div class="project-info">
+                <h2>O projektu</h2>
+                <p>Krátký film pro značku, který pracuje s kontrastem ticha a napětí. Vysoká kvalita 4K záberu s detailním zvukovým designem vytváří intenzivní a emotivní zážitek.</p>
+            </div>
+
+            <!-- VIDEO -->
+            <div class="project-video" onclick="window.open('https://www.youtube.com/watch?v=b9qx3dfDfnM', '_blank')" style="padding-top: 56.25%;">
+                <img src="assets/portfolio4.png" alt="Video náhled" loading="lazy">
+            </div>
+
+            <!-- GALLERY -->
+            <h2 style="margin-top: 60px; margin-bottom: 20px;">Fotografie</h2>
+            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Nahraďte soubory v assets/: project4-photo1.png, project4-photo2.png, project4-photo3.png, project4-photo4.png</p>
+            <div class="project-gallery">
+                <div class="gallery-item">
+                    <img src="assets/project4-photo1.png" alt="Fotka 1" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/project4-photo2.png" alt="Fotka 2" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/project4-photo3.png" alt="Fotka 3" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/project4-photo4.png" alt="Fotka 4" loading="lazy">
+                </div>
+            </div>
+
+            <a href="index.html#projekty" class="back-link">← Zpět na Projekty</a>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p class="muted small">© Film.Cuts — All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
