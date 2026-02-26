@@ -16,9 +16,9 @@
             <a class="brand" href="#">Film.Cuts</a>
             <nav class="main-nav" aria-label="Hlavní navigace">
                 <a href="#projekty">Projekty</a>
-                <a href="#clenove">Členové</a>
+                <a href="#clenove">O mně</a>
+                <a href="#team">Členové</a>
                 <a href="technika.html">Technika</a>
-                <a href="#about">O mně</a>
                 <a href="#contact">Kontakt</a>
             </nav>
         </div>
@@ -158,10 +158,10 @@
         <!-- ČLENOVÉ -->
         <section id="clenove" class="team">
             <div class="container">
-                <h2 class="section-title">Tým</h2>
-                <p class="section-sub">Kreativci a technici, kteří stojí za každým projektem.</p>
+                <h2 class="section-title">O mně</h2>
+                <p class="section-sub">Tvůrce a vedoucí projektu</p>
                 <div class="grid team-grid">
-                    <!-- Member 1 — změňte jméno, roli a popis; nahraďte fotku: assets/member1.png -->
+                    <!-- Member 1 — Kamil jako hlavní člen -->
                     <article class="team-member">
                         <div class="member-photo">
                             <img src="assets/member1.png" alt="Člen týmu 1" loading="lazy">
@@ -172,6 +172,41 @@
                             <p class="member-bio">Tvůrce a vedoucí projektu. Střih, scénář a vizuální pojetí.</p>
                         </div>
                     </article>
+
+                    <!-- About section merged into team -->
+                    <article class="team-member about-card" id="about">
+                        <div class="about-content">
+                            <h2 style="font-size: 1.4rem; margin-bottom: 12px; font-weight: 700;">O tvorbě</h2>
+                            <p>Jsem videomaker, kameraman a začínající režisér, který se zaměřuje na vizuální příběhy s jasnou atmosférou a rytmem. Baví mě práce s kamerou, světlem a střihem tak, aby každý záběr měl smysl a podporoval emoci, kterou chci předat. Učím se s každým projektem a postupně si buduju vlastní styl založený na jednoduchosti, čisté kompozici a přirozeném vyznění.</p>
+                            <div style="height: 12px;"></div>
+                            <p>Spolupracuji na menších filmových i komerčních projektech a vždy se snažím, aby výsledek působil profesionálně a autenticky.</p>
+                            <div style="height: 20px;"></div>
+                            <!-- Small gallery - změň obrázky v src -->
+                            <div class="about-gallery">
+                                <div class="gallery-item">
+                                    <img src="assets/about1.png" alt="Galerie 1" loading="lazy">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="assets/about2.png" alt="Galerie 2" loading="lazy">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="assets/about3.png" alt="Galerie 3" loading="lazy">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="assets/about4.png" alt="Galerie 4" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about-image">
+                            <img src="assets/about.png" alt="Author portrait / still" loading="lazy">
+                        </div>
+                    </article>
+
+                    <!-- TEAM SECTION STARTS HERE -->
+                    <div style="grid-column: 1 / -1; margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);" id="team">
+                        <h2 class="section-title">Tým</h2>
+                        <p class="section-sub">Kreativci a technici, kteří stojí za každým projektem.</p>
+                    </div>
 
                     <!-- Member 2 — změňte jméno, roli a popis; nahraďte fotku: assets/member2.png -->
                     <article class="team-member">
@@ -209,23 +244,6 @@
                         </div>
                     </article>
                 </div>
-            </div>
-        </section>
-
-        <!-- ABOUT -->
-        <section id="about" class="about">
-            <div class="container about-grid">
-                <div class="about-text">
-                                <h2 class="section-title">O mně</h2>
-                                <div style="height: 24px;"></div>
-                                <p>Jsem videomaker, kameraman a začínající režisér, který se zaměřuje na vizuální příběhy s jasnou atmosférou a rytmem. Baví mě práce s kamerou, světlem a střihem tak, aby každý záběr měl smysl a podporoval emoci, kterou chci předat.  
-                                    Učím se s každým projektem a postupně si buduju vlastní styl založený na jednoduchosti, čisté kompozici a přirozeném vyznění.</p>
-                                    <div style="height: 24px;"></div>
-                                <p>Spolupracuji na menších filmových i komerčních projektech a vždy se snažím, aby výsledek působil profesionálně a autenticky.</p>
-                            </div>
-                            <div class="about-media">
-                                <img src="assets/about.png" alt="Author portrait / still" loading="lazy">
-                            </div>
             </div>
         </section>
 
@@ -271,7 +289,7 @@
                                         </div>
                                         <div class="contact-meta">
                                             <div class="contact-name">Email</div>
-                                            <div class="contact-desc">info@film.cuts — pro nabídky a dotazy</div>
+                                            <div class="contact-desc">info@filmcuts.cz — pro nabídky a dotazy</div>
                                         </div>
                                     </a>
                                 </div>

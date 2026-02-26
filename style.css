@@ -169,14 +169,32 @@ section{padding:var(--gap) 5%}
 }
 
 /* Team / Členové */
-.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:32px}
+.team-grid{display:grid;grid-template-columns:1fr;gap:28px;margin-top:32px}
 .team-member{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.02));border:1px solid rgba(255,255,255,0.03);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:14px;transition:transform .18s ease,box-shadow .18s ease}
 .team-member:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(0,0,0,0.5)}
+.team-member:first-child{grid-column:1;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;padding:32px;background:linear-gradient(135deg,rgba(34,197,94,0.08),rgba(22,163,74,0.04));border:1px solid rgba(34,197,94,0.2)}
+.team-member:first-child .member-photo{aspect-ratio:1/1}
+.team-member:first-child .member-info h3{font-size:1.8rem;margin-bottom:8px}
+.team-member:first-child .member-role{font-size:1.1rem;color:#22c55e}
+.team-member:first-child .member-bio{font-size:0.95rem;color:var(--accent)}
+.team-member:not(:first-child){grid-column:1;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:flex-start;padding:16px;background:rgba(255,255,255,0.01)}
+.team-member:not(:first-child) .member-photo{width:100px;aspect-ratio:1/1}
+.team-member:not(:first-child) .member-info h3{font-size:1rem}
+.team-member:not(:first-child) .member-role{font-size:0.85rem;opacity:0.8}
+.team-member:not(:first-child) .member-bio{font-size:0.85rem;opacity:0.7}
 .member-photo{width:100%;aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:#0b0b0b;display:flex;align-items:center;justify-content:center}
 .member-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
 .member-info h3{font-size:1.15rem;margin-bottom:4px;font-weight:700}
 .member-role{color:var(--accent);font-size:0.95rem;font-weight:600;margin-bottom:8px}
 .member-bio{color:var(--muted);font-size:0.9rem;line-height:1.4}
+
+/* About card in team section */
+.about-card{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;padding:32px;background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.15);margin-top:20px}
+.about-card .about-content{display:flex;flex-direction:column;gap:12px}
+.about-card .section-title{font-size:1.8rem;margin-bottom:8px;color:var(--text)}
+.about-card p{color:var(--accent);font-size:0.95rem;line-height:1.6}
+.about-card .about-image{width:100%;aspect-ratio:1/1;border-radius:10px;overflow:hidden}
+.about-card .about-image img{width:100%;height:100%;object-fit:cover;object-position:center}
 
 /* Footer */
 .site-footer{padding:32px 0}
