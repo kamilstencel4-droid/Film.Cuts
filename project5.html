@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>DVA DNY | Short Film — Film.Cuts</title>
+    <title>The Last House (Short Film 2025) — Film.Cuts</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -12,10 +12,6 @@
         .project-content { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
         .project-video { position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; border-radius: 12px; background: #0b0b0b; margin-bottom: 60px; cursor: pointer; }
         .project-video img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-        .project-video::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all .3s ease; z-index: 2; }
-        .project-video::before { content: '▶'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 32px; color: #0f0f0f; z-index: 3; transition: all .3s ease; }
-        .project-video:hover::after { background: rgba(255,255,255,1); transform: translate(-50%, -50%) scale(1.1); }
-        .project-video:hover::before { transform: translate(-50%, -50%) scale(1.1); }
         .project-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 40px; }
         .gallery-item { border-radius: 10px; overflow: hidden; background: #0b0b0b; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -44,19 +40,19 @@
 
         <!-- PROJECT HERO -->
         <section class="project-hero">
-            <h1>DVA DNY | Short Film</h1>
+            <h1>The Last House (Short Film 2025)</h1>
         </section>
 
         <!-- PROJECT CONTENT -->
         <section class="project-content">
             <div class="project-info">
                 <h2>O projektu</h2>
-                <p>Psychologický thriller z prostředí digitálního světa, kde jedno nenápadné rozhodnutí spustí řetězec nevratných následků. Projekt zkoumá témata důvěry, následků a moderní izolace.</p>
+                <p>Tento projekt slouží jako ukázka nové položky v portfoliu — nahrajte sem fotografie a krátký popis.</p>
             </div>
 
-            <!-- VIDEO -->
-            <div class="project-video" onclick="window.open('https://www.youtube.com/watch?v=IN1a6inM5r8')" style="padding-top: 56.25%;">
-                <img src="assets/portfolio2.png" alt="Video náhled" loading="lazy">
+            <!-- VIDEO (or main image) -->
+            <div class="project-video" onclick="window.open('#', '_blank')" style="padding-top: 56.25%;">
+                <img src="assets/portfolio1.png" alt="Video náhled" loading="lazy">
             </div>
 
             <!-- GALLERY -->
@@ -64,16 +60,13 @@
             <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;"></p>
             <div class="project-gallery">
                 <div class="gallery-item">
-                    <img src="assets/project2-photo1.png" alt="Fotka 1" loading="lazy">
+                    <img src="assets/portfolio1.png" alt="Fotka 1" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/project2-photo2.png" alt="Fotka 2" loading="lazy">
+                    <img src="assets/portfolio2.png" alt="Fotka 2" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/project2-photo3.png" alt="Fotka 3" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/project2-photo4.png" alt="Fotka 4" loading="lazy">
+                    <img src="assets/portfolio3.png" alt="Fotka 3" loading="lazy">
                 </div>
             </div>
 

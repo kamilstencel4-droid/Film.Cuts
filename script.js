@@ -70,5 +70,39 @@
 
       window.addEventListener('scroll', onScroll, {passive:true});
     })();
+
+    // Mobile menu toggle
+    (function(){
+      const btn = document.getElementById('menu-toggle');
+      const nav = document.querySelector('.main-nav');
+      if(!btn || !nav) return;
+      btn.addEventListener('click', (e)=>{
+        const open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      // close nav when a link is clicked
+      nav.addEventListener('click', (e)=>{ if(e.target.tagName==='A') nav.classList.remove('open'); });
+      // close on outside click
+      document.addEventListener('click', (e)=>{
+        if(!nav.classList.contains('open')) return;
+        if(e.target.closest('.main-nav') || e.target.closest('#menu-toggle')) return;
+        nav.classList.remove('open');
+      });
+    })();
+
+    // Keep last two words together for key headings to avoid ugly breaks
+    (function(){
+      const selectors = ['.hero-title', '.site-header .brand', '.section-title', '.project .project-meta h3', '.project-hero h1', '.team-member .member-info h3', '.about-card .section-title'];
+      function keepLastTwo(el){
+        // only modify if element contains plain text (no child elements)
+        if(!el || el.childElementCount>0) return;
+        const txt = (el.textContent||'').trim();
+        if(!txt) return;
+        // replace last normal space with a non-breaking space
+        const replaced = txt.replace(/\s+([^\s]+)$/, '\u00A0$1');
+        if(replaced !== txt) el.textContent = replaced;
+      }
+      selectors.forEach(sel => document.querySelectorAll(sel).forEach(el=>keepLastTwo(el)));
+    })();
   });
 })();

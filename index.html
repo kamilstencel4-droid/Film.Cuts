@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Film.Cuts — Produkční studio specializované na krátké filmy, promo a vizuální storytelling.</title>
+        <title>Film.Cuts </title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,6 +14,7 @@
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="#">Film.Cuts</a>
+            <button id="menu-toggle" class="menu-toggle" aria-label="Otevřít menu">☰</button>
             <nav class="main-nav" aria-label="Hlavní navigace">
                 <a href="#projekty">Projekty</a>
                 <a href="#clenove">O mně</a>
@@ -51,56 +52,8 @@
             <h2 class="section-title">Projekty</h2>
             <p class="section-sub">Přehled vybraných prací z oblasti filmu a vizuální tvorby.</p>
             <div style="height: 24px;"></div>
-                <div class="grid portfolio-grid">
-                    <!-- Project 1 -->
-                    <a href="project1.html" class="project card" style="text-decoration: none; color: inherit;">
-                                        <figure class="thumb">
-                                                <!-- main project image (updated to use uploaded file portfolio1.png) -->
-                                                <img src="assets/portfolio1.png" alt="Echoes — náhled" loading="lazy">
-                                        </figure>
-                                        <div class="project-meta">
-                                            <h3>Documentary Short Film - Adam Liška</h3>
-                                            <time datetime="2025">2025</time>
-                                            <p>Dokument sleduje šestnáctiletého MTB ridera Adama během tréninků a závodů.</p>
-                                        </div>
-                    </a>
-
-                    <!-- Project 2 -->
-                    <a href="project2.html" class="project card" style="text-decoration: none; color: inherit;">
-                                        <figure class="thumb">
-                                            <img src="assets/portfolio2.png" alt="Projekt 2 — náhled" loading="lazy">
-                                        </figure>
-                                        <div class="project-meta">
-                                            <h3>DVA DNY| Short Film</h3>
-                                            <time datetime="2026">2026</time>
-                                            <p>Psychologický thriller z prostředí digitálního světa, kde jedno nenápadné rozhodnutí spustí řetězec nevratných následků.</p>
-                                        </div>
-                    </a>
-
-                    <!-- Project 3 -->
-                    <a href="project3.html" class="project card" style="text-decoration: none; color: inherit;">
-                                        <figure class="thumb">
-                                            <img src="assets/portfolio3.png" alt="Projekt 3 — náhled" loading="lazy">
-                                        </figure>
-                                        <div class="project-meta">
-                                            <h3>BikePark Kopřivná Edit!</h3>
-                                            <time datetime="2025">2025</time>
-                                            <p>Experimentální montáž zkoumající světlo, rytmus a kontinuitu obrazu.</p>
-                                        </div>
-                    </a>
-
-                    <!-- Project 4 -->
-                    <a href="project4.html" class="project card" style="text-decoration: none; color: inherit;">
-                                        <figure class="thumb">
-                                            <img src="assets/portfolio4.png" alt="Projekt 4 — náhled" loading="lazy">
-                                        </figure>
-                                        <div class="project-meta">
-                                            <h3>Adam Liška Bike Edit [4K]</h3>
-                                            <time datetime="2025">2025</time>
-                                            <p>Krátký film pro značku, který pracuje s kontrastem ticha a napětí.</p>
-                                        </div>
-                    </a>
-
+                <div class="grid portfolio-grid" id="projects-grid">
+                    <!-- Projects will be rendered here from localStorage (admin) or default data -->
                 </div>
             </div>
         </section>
@@ -184,7 +137,7 @@
                             <!-- Small gallery - změň obrázky v src -->
                             <div class="about-gallery">
                                 <div class="gallery-item">
-                                    <img src="assets/about1.png" alt="Galerie 1" loading="lazy">
+                                    <img src="" alt="Galerie 1" loading="lazy">
                                 </div>
                                 <div class="gallery-item">
                                     <img src="assets/about2.png" alt="Galerie 2" loading="lazy">
@@ -305,6 +258,7 @@
         </div>
     </footer>
 
+    <script src="assets/projects.js" defer></script>
     <script src="script.js" defer></script>
 </body>
 </html>
