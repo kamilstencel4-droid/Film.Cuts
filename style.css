@@ -276,6 +276,19 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
 .device-mobile .member-info h3{font-size:1.08rem}
 .device-mobile .about-card p{font-size:0.98rem}
 
+/* Enlarge header / nav touch targets when in device-mobile mode */
+.device-mobile .site-header{ --hdr-pad: 18px; }
+.device-mobile .header-inner{padding:var(--hdr-pad) 18px; align-items:center}
+.device-mobile .brand{font-size:1.12rem}
+.device-mobile .menu-toggle{display:inline-block;font-size:26px;padding:10px;border-radius:10px}
+.device-mobile .main-nav{display:flex;gap:10px;align-items:center}
+.device-mobile .main-nav a{padding:10px 12px;border-radius:8px;background:transparent}
+.device-mobile .main-nav a:hover{background:rgba(255,255,255,0.02)}
+.device-mobile .main-nav a:active{transform:translateY(0)}
+
+/* Ensure header stays usable and visible */
+.device-mobile .site-header{background:linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.6));backdrop-filter:blur(4px)}
+
 
 /* small helper */
 .small{font-size:0.9rem}
