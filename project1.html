@@ -7,7 +7,7 @@
             (function(){
                 try{
                     var w = window.innerWidth || document.documentElement.clientWidth || screen.width;
-                    if(w && w <= 480){ var m = document.querySelector('meta[name=viewport]'); if(m) m.setAttribute('content','width=1100'); else{ var mm = document.createElement('meta'); mm.name='viewport'; mm.content='width=1100'; document.head.appendChild(mm); } }
+                    if(w && w <= 480){ var m = document.querySelector('meta[name=viewport]'); if(m) m.setAttribute('content','width=1100'); else{ var mm = document.createElement('meta'); mm.name='viewport'; mm.content='width=1100'; document.head.appendChild(mm); } try{ document.documentElement.classList.add('device-mobile'); }catch(e){} }
                 }catch(e){}
             })();
         </script>

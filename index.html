@@ -14,6 +14,7 @@
                         else{
                             var mm = document.createElement('meta'); mm.name='viewport'; mm.content='width=1100'; document.head.appendChild(mm);
                         }
+                        try{ document.documentElement.classList.add('device-mobile'); }catch(e){}
                     }
                 }catch(e){}
             })();

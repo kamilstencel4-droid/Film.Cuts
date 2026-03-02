@@ -265,6 +265,18 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
     .thumb img{height:150px}
 }
 
+/* If JS detected a small device but we forced desktop viewport, apply slightly larger text via this class */
+.device-mobile body{font-size:15px}
+.device-mobile .hero-title{font-size:clamp(40px,9vw,72px)}
+.device-mobile .hero-tagline{font-size:16px}
+.device-mobile .section-title{font-size:1.5rem}
+.device-mobile .project .project-meta h3{font-size:1.08rem}
+.device-mobile .project .project-meta p, .device-mobile .project .project-meta time{font-size:0.98rem}
+.device-mobile .main-nav a{font-size:0.98rem}
+.device-mobile .member-info h3{font-size:1.08rem}
+.device-mobile .about-card p{font-size:0.98rem}
+
+
 /* small helper */
 .small{font-size:0.9rem}
 
