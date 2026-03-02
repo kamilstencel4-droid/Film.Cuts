@@ -265,6 +265,38 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
     .thumb img{height:150px}
 }
 
+/* Desktop-like compact mode for small phones: keep multi-column layout but scaled down */
+@media (max-width:420px){
+    /* tighten global spacing so layout feels like desktop zoomed out */
+    section{padding:28px 6%}
+    :root{--gap:28px}
+
+    /* show nav inline (like desktop) and hide hamburger */
+    .menu-toggle{display:none}
+    .main-nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .main-nav a{margin-left:8px;font-size:0.92rem}
+
+    /* Portfolio: 2 columns like desktop grid but smaller thumbs */
+    .portfolio-grid{grid-template-columns:repeat(2,minmax(140px,1fr));gap:12px}
+    .project.card{padding:10px;border-radius:8px}
+    .thumb img{height:120px}
+
+    /* Project gallery show 2 columns */
+    .project-gallery{grid-template-columns:repeat(2,minmax(120px,1fr));gap:10px}
+    .gallery-item img{height:110px}
+
+    /* Team cards */
+    .team-member:not(:first-child){grid-template-columns:auto 1fr}
+    .team-member:not(:first-child) .member-photo{width:80px}
+
+    /* reduce header padding and brand size so header fits */
+    .header-inner{padding:12px 0}
+    .brand{font-size:0.95rem}
+
+    /* slightly smaller fonts site-wide for compact look */
+    body{font-size:14px}
+}
+
 /* small helper */
 .small{font-size:0.9rem}
 
