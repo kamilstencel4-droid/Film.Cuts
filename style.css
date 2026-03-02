@@ -289,6 +289,27 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
 /* Ensure header stays usable and visible */
 .device-mobile .site-header{background:linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.6));backdrop-filter:blur(4px)}
 
+/* Lightbox styles for project galleries */
+.lb-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:120;opacity:0;pointer-events:none;transition:opacity .22s ease}
+.lb-overlay.open{opacity:1;pointer-events:auto}
+.lb-inner{position:relative;max-width:95%;max-height:95%;display:flex;align-items:center;justify-content:center}
+.lb-image{max-width:100%;max-height:100%;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,0.7);transition:transform .25s ease}
+.lb-image.zoomed{transform:scale(1.8)}
+/* Ensure lightbox image renders with full color (override any inherited filters/blend modes) */
+.lb-overlay .lb-image, .lb-overlay img{filter:none !important;-webkit-filter:none !important;mix-blend-mode:normal !important;image-rendering:auto !important}
+.lb-close,.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.6);border:0;color:#fff;padding:12px;border-radius:10px;cursor:pointer;z-index:130;font-size:18px;box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+.lb-prev{left:12px}
+.lb-next{right:12px}
+.lb-close{top:18px;right:18px;transform:none;z-index:140}
+.lb-caption{position:absolute;left:50%;transform:translateX(-50%);bottom:18px;color:var(--muted);font-size:0.95rem}
+.lb-counter{position:absolute;left:18px;bottom:18px;color:var(--muted);font-size:0.9rem}
+
+@media(max-width:600px){
+    .lb-image.zoomed{transform:scale(1.2)}
+    .lb-prev,.lb-next{padding:10px}
+    .lb-close{padding:8px}
+}
+
 
 /* small helper */
 .small{font-size:0.9rem}
@@ -332,4 +353,18 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
+/* Gallery hover affordance: subtle scale + magnifier overlay */
+.gallery-item{position:relative;cursor:pointer;overflow:hidden}
+.gallery-item img{transition:transform .35s cubic-bezier(.2,.9,.2,1),filter .28s ease;transform-origin:center center;display:block}
+.gallery-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.45));opacity:0;transition:opacity .28s ease}
+.gallery-item::before{content:"\1F50D";position:absolute;right:12px;top:12px;font-size:18px;color:rgba(255,255,255,0.95);background:rgba(0,0,0,0.38);padding:8px;border-radius:8px;opacity:0;transition:opacity .18s ease,transform .18s ease}
+.gallery-item:hover::after{opacity:1}
+.gallery-item:hover img{transform:scale(1.06)}
+.gallery-item:hover::before{opacity:1;transform:scale(1.03)}
+
+/* Make the overlay show on touch while in device-mobile mode */
+.device-mobile .gallery-item:active::after{opacity:1}
+.device-mobile .gallery-item:active::before{opacity:1}
+
 
