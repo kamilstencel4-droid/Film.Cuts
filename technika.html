@@ -3,6 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+        <script>
+            (function(){
+                try{
+                    var w = window.innerWidth || document.documentElement.clientWidth || screen.width;
+                    if(w && w <= 480){ var m = document.querySelector('meta[name=viewport]'); if(m) m.setAttribute('content','width=1100'); else{ var mm = document.createElement('meta'); mm.name='viewport'; mm.content='width=1100'; document.head.appendChild(mm); } }
+                }catch(e){}
+            })();
+        </script>
     <title>Technika — Film.Cuts</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
