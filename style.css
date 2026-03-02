@@ -265,29 +265,31 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
     .thumb img{height:150px}
 }
 
-/* If JS detected a small device but we forced desktop viewport, apply slightly larger text via this class */
-.device-mobile body{font-size:15px}
-.device-mobile .hero-title{font-size:clamp(40px,9vw,72px)}
-.device-mobile .hero-tagline{font-size:16px}
-.device-mobile .section-title{font-size:1.5rem}
-.device-mobile .project .project-meta h3{font-size:1.08rem}
-.device-mobile .project .project-meta p, .device-mobile .project .project-meta time{font-size:0.98rem}
-.device-mobile .main-nav a{font-size:0.98rem}
-.device-mobile .member-info h3{font-size:1.08rem}
-.device-mobile .about-card p{font-size:0.98rem}
+/* Mobile (small screens) adjustments — use media queries instead of JS hacks */
+@media (max-width:480px){
+    body{font-size:15px}
+    .hero-title{font-size:clamp(40px,9vw,72px)}
+    .hero-tagline{font-size:16px}
+    .section-title{font-size:1.5rem}
+    .project .project-meta h3{font-size:1.08rem}
+    .project .project-meta p, .project .project-meta time{font-size:0.98rem}
+    .main-nav a{font-size:0.98rem}
+    .member-info h3{font-size:1.08rem}
+    .about-card p{font-size:0.98rem}
 
-/* Enlarge header / nav touch targets when in device-mobile mode */
-.device-mobile .site-header{ --hdr-pad: 18px; }
-.device-mobile .header-inner{padding:var(--hdr-pad) 18px; align-items:center}
-.device-mobile .brand{font-size:1.12rem}
-.device-mobile .menu-toggle{display:inline-block;font-size:26px;padding:10px;border-radius:10px}
-.device-mobile .main-nav{display:flex;gap:10px;align-items:center}
-.device-mobile .main-nav a{padding:10px 12px;border-radius:8px;background:transparent}
-.device-mobile .main-nav a:hover{background:rgba(255,255,255,0.02)}
-.device-mobile .main-nav a:active{transform:translateY(0)}
+    /* Enlarge header / nav touch targets on small screens */
+    .site-header{ --hdr-pad: 18px; }
+    .header-inner{padding:var(--hdr-pad) 18px; align-items:center}
+    .brand{font-size:1.12rem}
+    .menu-toggle{display:inline-block;font-size:26px;padding:10px;border-radius:10px}
+    .main-nav{display:flex;gap:10px;align-items:center}
+    .main-nav a{padding:10px 12px;border-radius:8px;background:transparent}
+    .main-nav a:hover{background:rgba(255,255,255,0.02)}
+    .main-nav a:active{transform:translateY(0)}
 
-/* Ensure header stays usable and visible */
-.device-mobile .site-header{background:linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.6));backdrop-filter:blur(4px)}
+    /* Ensure header stays usable and visible */
+    .site-header{background:linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.6));backdrop-filter:blur(4px)}
+}
 
 /* Lightbox styles for project galleries */
 .lb-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:120;opacity:0;pointer-events:none;transition:opacity .22s ease}
@@ -297,6 +299,9 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
 .lb-image.zoomed{transform:scale(1.8)}
 /* Ensure lightbox image renders with full color (override any inherited filters/blend modes) */
 .lb-overlay .lb-image, .lb-overlay img{filter:none !important;-webkit-filter:none !important;mix-blend-mode:normal !important;image-rendering:auto !important}
+
+/* Temporarily hide the 'Technika' navigation link without deleting it from HTML */
+.main-nav a[href="technika.html"], .main-nav a[href*="technika"]{display:none !important}
 .lb-close,.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.6);border:0;color:#fff;padding:12px;border-radius:10px;cursor:pointer;z-index:130;font-size:18px;box-shadow:0 6px 18px rgba(0,0,0,0.6)}
 .lb-prev{left:12px}
 .lb-next{right:12px}
@@ -363,8 +368,10 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
 .gallery-item:hover img{transform:scale(1.06)}
 .gallery-item:hover::before{opacity:1;transform:scale(1.03)}
 
-/* Make the overlay show on touch while in device-mobile mode */
-.device-mobile .gallery-item:active::after{opacity:1}
-.device-mobile .gallery-item:active::before{opacity:1}
+/* Make the overlay show on touch for small screens */
+@media (max-width:480px){
+    .gallery-item:active::after{opacity:1}
+    .gallery-item:active::before{opacity:1}
+}
 
 
