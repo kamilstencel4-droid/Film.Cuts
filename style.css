@@ -309,8 +309,7 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
     .lb-overlay.from-project5 .lb-image.zoomed{transform:scale(1.15)}
 }
 
-/* Temporarily hide the 'Technika' navigation link without deleting it from HTML */
-.main-nav a[href="technika.html"], .main-nav a[href*="technika"]{display:none !important}
+/* The 'Technika' navigation link is shown by default. (Previously hidden during edits.) */
 .lb-close,.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.6);border:0;color:#fff;padding:12px;border-radius:10px;cursor:pointer;z-index:130;font-size:18px;box-shadow:0 6px 18px rgba(0,0,0,0.6)}
 .lb-prev{left:12px}
 .lb-next{right:12px}
@@ -381,6 +380,16 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
 @media (max-width:480px){
     .gallery-item:active::after{opacity:1}
     .gallery-item:active::before{opacity:1}
+}
+
+
+
+/* About gallery thumbnails (site author photos) */
+.about-gallery{display:flex;gap:16px;margin-top:16px;align-items:center}
+.about-gallery .gallery-item{width:160px;flex:0 0 160px;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:#0b0b0b}
+.about-gallery .gallery-item img{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:640px){
+    .about-gallery .gallery-item{width:120px;flex:0 0 120px}
 }
 
 
