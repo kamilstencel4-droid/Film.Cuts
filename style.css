@@ -58,7 +58,7 @@ section{padding:var(--gap) 5%}
     opacity:0;
     pointer-events:none;
 }
-.brand{font-weight:800;letter-spacing:2px;color:var(--text);text-decoration:none}
+.brand{font-family:'Montserrat',sans-serif;font-weight:900;letter-spacing:2px;color:var(--text);text-decoration:none;text-transform:uppercase}
 .main-nav a{color:var(--muted);margin-left:20px;text-decoration:none;font-weight:500}
 .main-nav a:hover{color:var(--text)}
 
@@ -299,6 +299,15 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
 .lb-image.zoomed{transform:scale(1.8)}
 /* Ensure lightbox image renders with full color (override any inherited filters/blend modes) */
 .lb-overlay .lb-image, .lb-overlay img{filter:none !important;-webkit-filter:none !important;mix-blend-mode:normal !important;image-rendering:auto !important}
+
+/* Constrain images opened from Project 5 so they adapt to viewport and aren't too large */
+.lb-overlay.from-project5 .lb-inner{max-width:92%;max-height:92%}
+.lb-overlay.from-project5 .lb-image{max-width:92vw;max-height:80vh;border-radius:6px}
+.lb-overlay.from-project5 .lb-image.zoomed{transform:scale(1.25)}
+@media (max-width:640px){
+    .lb-overlay.from-project5 .lb-image{max-height:70vh}
+    .lb-overlay.from-project5 .lb-image.zoomed{transform:scale(1.15)}
+}
 
 /* Temporarily hide the 'Technika' navigation link without deleting it from HTML */
 .main-nav a[href="technika.html"], .main-nav a[href*="technika"]{display:none !important}

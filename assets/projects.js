@@ -7,7 +7,7 @@
     { id:'d2', title: 'DVA DNY | Short Film', year:'2026', link:'project2.html', description: 'Psychologický thriller z prostředí digitálního světa, kde jedno nenápadné rozhodnutí spustí řetězec nevratných následků.', image: 'assets/portfolio2.png' },
     { id:'d3', title: 'BikePark Kopřivná Edit!', year:'2025', link:'project3.html', description: 'Experimentální montáž zkoumající světlo, rytmus a kontinuitu obrazu.', image: 'assets/portfolio3.png' },
     { id:'d4', title: 'Adam Liška Bike Edit [4K]', year:'2025', link:'project4.html', description: 'Krátký film pro značku, který pracuje s kontrastem ticha a napětí.', image: 'assets/portfolio4.png' },
-  { id:'d5', title: 'The Last House (Short Film)', year:'2025', link:'project5.html', description: 'Krátký mysteriózní film o návratu do opuštěného domu — důraz na vizuál a atmosféru.', image: 'assets/portfolio1.png' }
+  { id:'d5', title: 'The Last House (Short Film)', year:'2025', link:'project5.html', description: 'Krátký mysteriózní film o návratu do opuštěného domu — důraz na vizuál a atmosféru.', image: 'assets/portfolio5.jpeg' }
   ];
 
   function load(){ try{ return JSON.parse(localStorage.getItem(KEY) || 'null') || null; }catch{return null;} }

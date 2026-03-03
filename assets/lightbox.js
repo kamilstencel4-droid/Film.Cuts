@@ -33,17 +33,33 @@
     this.btnClose.addEventListener('click', ()=> self.close());
     this.btnPrev.addEventListener('click', ()=> self.prev());
     this.btnNext.addEventListener('click', ()=> self.next());
-    this.root.addEventListener('click', (e)=>{ if(e.target === this.root) self.close(); });
+    // clicking the overlay background will navigate (left/right) instead of closing
+    this.root.addEventListener('click', (e)=>{
+      if(e.target === this.root){
+        const rect = this.root.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        if(x > rect.width/2) this.next(); else this.prev();
+      }
+    });
+
+    // keyboard navigation: arrows only (Escape no longer closes — close only via X button)
     document.addEventListener('keydown', (e)=>{
       if(!this.root.classList.contains('open')) return;
-      if(e.key === 'Escape') this.close();
-      else if(e.key === 'ArrowLeft') this.prev();
+      if(e.key === 'ArrowLeft') this.prev();
       else if(e.key === 'ArrowRight') this.next();
     });
 
-    // toggle zoom on image click
-    this.imgEl.addEventListener('click', ()=>{
-      this.imgEl.classList.toggle('zoomed');
+    // clicking the image: if zoomed toggle zoom, otherwise left/right half navigates
+    this.imgEl.addEventListener('click', (e)=>{
+      // if image is zoomed, clicking toggles zoom off/on
+      if(this.imgEl.classList.contains('zoomed')){
+        this.imgEl.classList.toggle('zoomed');
+        return;
+      }
+      // navigate based on click position relative to the image
+      const rect = this.imgEl.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      if(x > rect.width/2) this.next(); else this.prev();
     });
 
     // touch swipe
@@ -59,12 +75,23 @@
     if(!Array.isArray(items) || items.length===0) return;
     this.items = items;
     this.currentIndex = Math.max(0, Math.min(index||0, items.length-1));
+    // If the page is project5, add a marker class so we can apply page-specific CSS
+    try{
+      const p = window.location.pathname || '';
+      if(p.indexOf('project5.html') !== -1){
+        this.root.classList.add('from-project5');
+      } else {
+        this.root.classList.remove('from-project5');
+      }
+    }catch(e){/* ignore */}
     this.showCurrent();
     this.root.classList.add('open');
   };
 
   Lightbox.prototype.close = function(){
     this.root.classList.remove('open');
+    // remove any page-specific marker when closed
+    this.root.classList.remove('from-project5');
     this.imgEl.src = '';
     this.imgEl.classList.remove('zoomed');
   };

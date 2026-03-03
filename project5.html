@@ -3,6 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Krátký mysteriózní film o návratu do opuštěného domu — důraz na vizuál a atmosféru.">
+    <meta name="author" content="Kamil Štencel">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Last House (Short Film) — Film.Cuts">
+    <meta property="og:description" content="Krátký mysteriózní film o návratu do opuštěného domu — důraz na vizuál a atmosféru.">
+    <meta property="og:image" content="assets/portfolio5.jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="assets/portfolio5.jpeg">
+    <link rel="image_src" href="assets/portfolio5.jpeg">
     <title>The Last House (Short Film) — Film.Cuts</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -12,6 +21,10 @@
         .project-content { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
         .project-video { position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; border-radius: 12px; background: #0b0b0b; margin-bottom: 60px; cursor: pointer; }
         .project-video img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .project-video::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all .3s ease; z-index: 2; }
+    .project-video::before { content: '▶'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 32px; color: #0f0f0f; z-index: 3; transition: all .3s ease; }
+    .project-video:hover::after { background: rgba(255,255,255,1); transform: translate(-50%, -50%) scale(1.1); }
+    .project-video:hover::before { transform: translate(-50%, -50%) scale(1.1); }
         .project-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 40px; }
         .gallery-item { border-radius: 10px; overflow: hidden; background: #0b0b0b; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -51,8 +64,8 @@
             </div>
 
             <!-- VIDEO (or main image) -->
-            <div class="project-video" onclick="window.open('#', '_blank')" style="padding-top: 56.25%;">
-                <img src="assets/portfolio1.png" alt="Video náhled" loading="lazy">
+            <div class="project-video" onclick="window.open('https://youtu.be/SytHFjNyw-s', '_blank')" style="padding-top: 56.25%;">
+                <img src="assets/portfolio5.jpeg" alt="Video náhled" loading="lazy">
             </div>
 
             <!-- GALLERY -->
@@ -60,13 +73,28 @@
             <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;"></p>
             <div class="project-gallery">
                 <div class="gallery-item">
-                    <img src="assets/portfolio1.png" alt="Fotka 1" loading="lazy">
+                    <img src="assets/project5-photo1.jpeg" alt="Fotka 1" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/portfolio2.png" alt="Fotka 2" loading="lazy">
+                    <img src="assets/project5-photo2.jpeg" alt="Fotka 2" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/portfolio3.png" alt="Fotka 3" loading="lazy">
+                    <img src="assets/project5-photo3.jpeg" alt="Fotka 3" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/project5-photo4.jpeg" alt="Fotka 4" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/project5-photo5.jpeg" alt="Fotka 5" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/project5-photo6.jpeg" alt="Fotka 6" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/project5-photo7.jpeg" alt="Fotka 7" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/project5-photo8.jpeg" alt="Fotka 8" loading="lazy">
                 </div>
             </div>
 
