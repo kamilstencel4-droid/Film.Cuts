@@ -326,112 +326,72 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
     .project{min-height:300px}
 }
 
-/* Mobile tweaks for the green-framed profile photo inside 'O mně' */
+/* Mobile: normalize Team section for small screens (max-width:768px)
+   Requirements:
+   - each team card is 100% width
+   - photo and text centered
+   - uniform padding so nothing is flush to the edges
+   - layout uses column flow (flex-direction: column)
+   - no fixed widths that prevent fluid resizing
+*/
 @media (max-width:768px){
-    /* Target only the first team member area inside the 'clenove' section */
-    /* Stack photo above text on mobile for the first team member */
-    #clenove .team-member:first-child{
-        display:block !important;
-        grid-template-columns: none !important;
-        gap:12px !important;
-        align-items:stretch !important;
-        padding:16px !important; /* keep inner spacing similar to Projects */
-        box-sizing:border-box !important;
-    }
-
-
-    /* Constrain the photo wrapper so it appears above the text and keeps intended size/rounding */
-    #clenove .team-member:first-child .member-photo{
-        width:120px !important;           /* reduced visual width */
-        height:120px !important;          /* reduced visual height */
-        margin:0 auto 12px auto !important; /* center above the text */
-        overflow:hidden !important;
-        display:block !important;
-        border-radius:12px !important;
-        background:#0b0b0b !important;
-    }
-
-    /* Fill the wrapper with the photo using cover so it visually fills the boxed area */
-    #clenove .team-member:first-child .member-photo img{
-        width:100% !important;
-        height:100% !important;
-        object-fit:cover !important;      /* fill the wrapper edge-to-edge */
-        object-position:center center !important;
-        display:block !important;
-    }
-
-    /* Ensure the about block uses the same horizontal alignment as Projects */
+    /* container padding matches Projects and prevents content touching screen edges */
     #clenove .container{
         padding-left:16px !important;
         padding-right:16px !important;
         box-sizing:border-box !important;
         max-width:100% !important;
+        margin:0 auto !important;
     }
 
-    /* Increase uniform padding inside the green framed card(s) so text isn't flush to edges */
-    /* This targets the highlighted first team-member (green frame) and any about-card used in this section */
-    #clenove .team-member:first-child,
+    /* force the grid into a single column (full-width cards) */
+    #clenove .team-grid{
+        grid-template-columns:1fr !important;
+        gap:18px !important;
+        width:100% !important;
+        box-sizing:border-box !important;
+    }
+
+    /* universal card rule for team members and about-card: full width, column layout, centered content */
+    #clenove .team-member,
     #clenove .about-card{
-        padding:20px !important; /* uniform padding on all sides */
-        box-sizing:border-box !important;
-        margin-left:0 !important;
-        margin-right:0 !important;
-        width:100% !important;
-        max-width:100% !important;
-        border-radius:12px !important;
-    }
-
-    /* Ensure the stacked photo is centered and has space around it */
-    #clenove .team-member:first-child .member-photo{
-        width:180px !important;
-        height:180px !important;
-        margin:0 auto 16px auto !important; /* center and add bottom spacing */
-        display:block !important;
-    }
-
-    /* Make sure the member info lines sit centered under the photo and have breathing room */
-    #clenove .team-member:first-child .member-info{
-        text-align:center !important;
-        padding:0 8px !important; /* small internal padding so text doesn't touch the photo edges */
-    }
-
-    /* Gallery and images spacing */
-    #clenove .about-gallery{gap:12px !important;margin-top:12px !important}
-    #clenove .about-gallery .gallery-item{flex:0 0 96px !important}
-
-    /* Team: mobile card normalization
-       - make each team-member a full-width card with uniform padding
-       - make photos consistent (full-width square thumbnails like Projects)
-       - remove accidental grid columns so no horizontal shifts occur
-    */
-    #clenove .team-grid{gap:18px !important}
-    /* Layout: put photos to the left of the text on mobile */
-    #clenove .team-member{
         display:flex !important;
-        flex-direction:row !important;
-        align-items:center !important;
+        flex-direction:column !important;
+        align-items:center !important;      /* centers photo and text horizontally */
+        justify-content:flex-start !important;
         width:100% !important;
         max-width:100% !important;
-        margin:0 !important;
-        padding:14px 12px !important; /* inner padding */
+        margin:0 auto !important;
+        padding:16px !important;            /* uniform inner padding */
         box-sizing:border-box !important;
+        gap:12px !important;
         background:transparent !important;
         border-radius:10px !important;
-        gap:12px !important;
     }
 
-    /* Make photos behave like thumbnails but smaller: consistent square thumbnails */
+    /* ensure the highlighted first member also follows column layout and centered content */
+    #clenove .team-member:first-child{
+        display:flex !important;
+        flex-direction:column !important;
+        align-items:center !important;
+        padding:16px !important;
+        gap:12px !important;
+        width:100% !important;
+        max-width:100% !important;
+    }
+
+    /* photos: full-width square thumbnails (no fixed px widths), centered inside card */
     #clenove .team-member .member-photo{
-        width:96px !important;
-        height:96px !important;
-        aspect-ratio:1/1 !important;
+        width:100% !important;             /* fluid width matching card */
+        max-width:100% !important;
+        aspect-ratio:1/1 !important;       /* keeps square shape */
         overflow:hidden !important;
         border-radius:8px !important;
-        margin:0 !important; /* align left in the flex row */
+        margin:0 !important;               /* not flush to edges because container has padding */
         display:block !important;
         background:#0b0b0b !important;
-        flex:0 0 96px !important;
     }
+    /* ensure the inner img scales to container (overrides any fixed heights) */
     #clenove .team-member .member-photo img{
         width:100% !important;
         height:100% !important;
@@ -440,31 +400,23 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
         display:block !important;
     }
 
-    /* Member info under the photo, aligned like project meta */
+    /* member info: centered below the photo with breathing room */
     #clenove .team-member .member-info{
+        width:100% !important;
+        text-align:center !important;      /* name/role/bio centered */
         padding:0 !important;
         margin:0 !important;
-        text-align:left !important;
+        box-sizing:border-box !important;
     }
-    #clenove .team-member .member-info h3{margin:6px 0 4px 0 !important}
-    #clenove .team-member .member-info .member-role{margin:0 0 8px 0 !important;opacity:0.9}
-    #clenove .team-member .member-info .member-bio{margin:0 !important;color:var(--muted)}
-
-    /* Center the three lines (name / role / short bio) under the photo for mobile */
-    /* First member: align photo left and text to the right like others */
-    #clenove .team-member:first-child .member-info{
-        text-align:left !important;
-        padding:0 4px !important;
-        margin:0 !important;
-        flex:1 1 auto !important;
-    }
-    #clenove .team-member:first-child .member-info h3,
-    #clenove .team-member:first-child .member-info .member-role,
-    #clenove .team-member:first-child .member-info .member-bio{
-        display:block !important;
+    #clenove .team-member .member-info h3,
+    #clenove .team-member .member-info .member-role,
+    #clenove .team-member .member-info .member-bio{
         width:100% !important;
-        margin:4px 0 !important;
+        margin:6px 0 !important;
     }
+
+    /* remove any previously set small fixed heights on member images coming from other mobile queries */
+    #clenove .member-photo img{height:auto !important;min-height:0 !important}
 }
 
 /* Responsive header & nav behavior */
