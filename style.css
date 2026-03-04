@@ -4,6 +4,40 @@
     box-sizing: border-box;
 }
 
+/* Scale-down mobile view: keep desktop layout but visually zoomed-out on phones
+   - Uses zoom (where supported) and transform fallback with width compensation
+   - Applies only to small screens so desktop stays untouched
+*/
+@media (max-width:768px){
+    /* Prevent horizontal scroll from small float rounding */
+    html{overflow-x:hidden}
+
+    /* Prefer zoom where available (WebKit/Chromium). For other browsers use transform with width compensation. */
+    html{ -webkit-text-size-adjust:100%; }
+
+    /* Scale factor (adjust if you want more/less distance) */
+    :root{ --mobile-scale: 0.92; }
+
+    /* Apply zoom for browsers that support it */
+    html{ zoom: var(--mobile-scale); -moz-transform-origin: top center; }
+
+    /* Transform fallback: scale the body and expand its width so scaled content fits viewport */
+    body{
+        -webkit-transform: scale(var(--mobile-scale));
+        transform: scale(var(--mobile-scale));
+        -webkit-transform-origin: top center;
+        transform-origin: top center;
+        width: calc(100% / var(--mobile-scale));
+        margin: 0 auto; /* keep centered */
+    }
+
+    /* Ensure fixed/absolute positioned elements remain visible and don't clip */
+    .site-header, .site-footer, .menu-toggle, .main-nav{ will-change:transform; }
+
+    /* Make sure images and media remain responsive inside the scaled layout */
+    img, video, iframe{ max-width:100%; height:auto; display:block }
+}
+
 /* Small-screen enforcement: ensure project thumbnails keep consistent aspect ratio (16:9) */
 @media (max-width:520px){
     .portfolio-grid{grid-template-columns:1fr !important;gap:16px}
@@ -331,68 +365,6 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
    - Goal: fluid, stable mobile layout across phones (iPhone + Android).
    - Desktop rules remain untouched.
 */
-@media (max-width:768px){
-    /* global safety */
-    html,body{width:100%;overflow-x:hidden;-webkit-overflow-scrolling:touch}
-
-    /* Containers: full-width with consistent side padding (matches Projects) */
-    .container{max-width:100% !important;width:100% !important;padding-left:16px !important;padding-right:16px !important;box-sizing:border-box !important;margin:0 auto !important}
-
-    /* Sections: consistent vertical spacing and no extra horizontal padding */
-    section{padding-top:32px !important;padding-bottom:32px !important;padding-left:0 !important;padding-right:0 !important;box-sizing:border-box}
-
-    /* Header & nav: keep header in document flow and make mobile nav push content (no overlay) */
-    .site-header{position:relative !important;z-index:220 !important;background:linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.6)) !important;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-    .header-inner{display:flex !important;align-items:center !important;justify-content:space-between !important;gap:12px;padding:12px 0}
-    .menu-toggle{display:inline-flex !important;align-items:center;justify-content:center;font-size:22px;padding:8px;border-radius:10px;background:transparent;border:0;color:var(--text)}
-    .menu-toggle{position:relative !important;z-index:230 !important;pointer-events:auto !important}
-
-    /* Mobile nav: anchored under header, collapsed by default and expands when .open is added by JS */
-    .main-nav{position:absolute !important;top:100% !important;left:0 !important;right:0 !important;width:100% !important;box-sizing:border-box !important;overflow:hidden !important;max-height:0 !important;opacity:0 !important;visibility:hidden !important;pointer-events:none !important;transform:none !important;transition:max-height .36s cubic-bezier(.2,.9,.2,1),opacity .22s ease !important;background:linear-gradient(180deg,rgba(6,6,6,0.98),rgba(6,6,6,0.995)) !important;border-top:1px solid rgba(255,255,255,0.02) !important;padding:0 !important;margin:0 !important;z-index:200 !important}
-    .main-nav.open{max-height:900px !important;opacity:1 !important;visibility:visible !important;pointer-events:auto !important}
-    .main-nav a, .main-nav .nav-dropdown-menu a{display:block !important;width:100% !important;padding:12px 14px !important;margin:6px 0 !important;border-radius:8px !important;text-align:left !important}
-    .nav-dropdown-toggle{display:none !important}
-
-    /* Projects & portfolio: stack single column */
-    .portfolio-grid{grid-template-columns:1fr !important;gap:18px !important}
-    .project.card, .project{width:100% !important;max-width:100% !important;margin-left:0 !important;margin-right:0 !important;padding-left:0 !important;padding-right:0 !important}
-    #projekty .thumb{aspect-ratio:auto !important;min-height:0 !important;height:auto !important}
-
-    /* About card: stack columns into single column */
-    .about-card{grid-template-columns:1fr !important;gap:14px !important;padding:16px !important}
-    .about-card .about-image{width:100% !important;aspect-ratio:auto !important;height:auto !important}
-
-    /* Ensure all images scale fluidly inside containers */
-    img{max-width:100% !important;height:auto !important;display:block}
-
-    /* Team: single column, full-width cards, centered photo & text, no fixed widths */
-    .team-grid{grid-template-columns:1fr !important;gap:18px !important;width:100% !important;box-sizing:border-box !important;margin:0}
-    .team-member, .about-card{display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:flex-start !important;width:100% !important;max-width:100% !important;margin:0 auto !important;padding:16px !important;box-sizing:border-box !important;gap:12px !important;border-radius:10px !important}
-    /* Override any leftover grid-based rules for first/other members */
-    .team-member:first-child, .team-member:not(:first-child){display:flex !important;flex-direction:column !important;align-items:center !important;padding:16px !important;gap:12px !important;width:100% !important}
-    /* Member photos: fluid square thumbnails (no px widths) */
-    .team-member .member-photo, .about-card .about-image, .member-photo{width:100% !important;max-width:100% !important;aspect-ratio:1/1 !important;overflow:hidden !important;border-radius:8px !important;margin:0 !important;display:block !important;background:#0b0b0b !important}
-    .team-member .member-photo img, .member-photo img, .about-image img{width:100% !important;height:100% !important;object-fit:cover !important;object-position:center !important;display:block !important}
-    /* ensure no tiny fixed heights remain */
-    .member-photo img{height:auto !important;min-height:0 !important}
-    /* Member info centered under photo */
-    .team-member .member-info{width:100% !important;text-align:center !important;padding:0 !important;margin:0 !important;box-sizing:border-box}
-    .team-member .member-info h3, .team-member .member-info .member-role, .team-member .member-info .member-bio{width:100% !important;margin:6px 0 !important}
-
-    /* Lightbox / overlays: ensure they fit mobile viewports */
-    .lb-overlay .lb-image{max-width:95% !important;max-height:80vh !important}
-
-    /* Small visual adjustments */
-    .hero{height:70vh !important}
-    .hero-title{font-size:clamp(28px,9vw,56px) !important}
-    .hero-tagline{font-size:15px !important}
-
-    /* Accessibility / touch targets */
-    .menu-toggle{padding:10px !important;border-radius:8px !important}
-
-    /* Final safety: remove stray transforms or absolute positioning inside containers that can cause overflow */
-    .container *{transform:none !important;left:auto !important;right:auto !important}
-}
 @media (max-width:900px){
     .menu-toggle{display:inline-block}
     .header-inner{gap:12px}
@@ -625,161 +597,12 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
     .about-gallery + .muted.small{font-size:0.78rem}
 }
 
-/* ========================
-     Mobile header & nav polish (max-width:768px)
-     - Only affects header and its nav on small screens
-     - Makes the mobile menu expand/collapse smoothly and push content (no overlap)
-     - Keeps existing .main-nav.open logic used by JS
-     ======================== */
-@media (max-width:768px){
-    /* Let header participate in document flow so expanding nav pushes content */
-    .site-header{position:relative;top:auto;left:auto;right:auto;z-index:80;background:linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.6));backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-    .header-inner{padding:12px 14px;align-items:center}
+/* Mobile header/nav styles removed per request */
 
-    /* Ensure toggle is visible and touch-friendly */
-    .menu-toggle{display:inline-flex;align-items:center;justify-content:center;font-size:22px;padding:8px;border-radius:10px;background:transparent;border:0;color:var(--text)}
+/* Additional mobile header/nav rules removed per request */
 
-    /* Mobile nav positioned directly under the header, full-width */
-    /* Ensure header stays on top so the toggle remains clickable (nav sits under it) */
-    .site-header{position:relative;z-index:220}
-    .main-nav{
-        position:absolute !important; /* position relative to .site-header */
-        top:100% !important; left:0 !important; right:0 !important; width:100% !important;
-        display:block;box-sizing:border-box;overflow:hidden;
-        /* clear any off-canvas transforms from other media rules so the nav sits under the header */
-        transform:none !important;
-        max-height:0;opacity:0;visibility:hidden;transition:max-height .34s cubic-bezier(.2,.9,.2,1),opacity .22s ease;
-        background:linear-gradient(180deg,rgba(6,6,6,0.98),rgba(6,6,6,0.99));border-top:1px solid rgba(255,255,255,0.02);
-        z-index:200;
-    }
+/* Safety overrides for max-width:768px removed per request */
 
-    /* When JS adds .open, expand the nav smoothly (it sits under header) */
-    .main-nav.open{max-height:600px;opacity:1;visibility:visible}
-
-    /* Ensure dropdown menu items inside nav are visible and stacked */
-    .main-nav a, .main-nav .nav-dropdown-menu a{display:block;padding:12px 14px;margin:6px 8px;border-radius:8px}
-    .main-nav .nav-dropdown-menu{position:static!important;box-shadow:none;padding:6px 0;background:transparent;opacity:1;visibility:visible;transform:none}
-
-    /* Make sure header doesn't overlay following content - add small gap */
-    main{padding-top:0}
-
-    /* Slightly soften animation for menu items */
-    .main-nav a{transition:transform .18s ease,background .18s ease}
-}
-
-/* Stronger, scoped mobile header/nav fixes (max-width:768px)
-     - align header items, prevent overlap
-     - make mobile menu expand/collapse cleanly and push content (no overlay)
-     - only affects header/nav selectors on mobile
-*/
-@media (max-width:768px){
-    /* Ensure header layout is predictable */
-    .header-inner{display:flex !important;align-items:center !important;justify-content:space-between !important;gap:12px}
-    .brand{flex:0 1 auto;margin-right:8px}
-    .menu-toggle{flex:0 0 auto;order:2}
-
-    /* Ensure the menu toggle stays on top and can receive pointer events on mobile */
-    .menu-toggle{
-        position:relative !important;
-        z-index:230 !important; /* above the header and nav */
-        pointer-events:auto !important;
-        -webkit-tap-highlight-color: rgba(255,255,255,0.04);
-    }
-
-    /* Prevent header hide animation from removing the header on mobile */
-    .site-header.header-hidden{transform:none !important;opacity:1 !important;pointer-events:auto !important}
-
-    /* Make the main-nav positioned under the header and collapsed by default */
-    /* Ensure header z-index is higher so the toggle stays clickable */
-    .site-header{z-index:220 !important}
-    .main-nav{
-        position:absolute !important; /* anchor to header */
-        top:100% !important; left:0 !important; right:0 !important; width:100% !important;
-        display:block !important;box-sizing:border-box !important;overflow:hidden !important;
-        /* clear any transform from wider-breakpoint off-canvas rules */
-        transform:none !important;
-        max-height:0 !important;opacity:0 !important;visibility:hidden !important;
-        transition:max-height .34s cubic-bezier(.2,.9,.2,1),opacity .22s ease !important;
-        background:linear-gradient(180deg,rgba(6,6,6,0.98),rgba(6,6,6,0.99)) !important;border-top:1px solid rgba(255,255,255,0.02) !important;
-        padding:0 !important;margin:0 !important;z-index:180 !important;
-    }
-
-    /* Expanded state: allow enough max-height for menu items and animate */
-    .main-nav.open{max-height:600px !important;opacity:1 !important;visibility:visible !important}
-
-    /* Ensure dropdowns render inline inside the main nav on mobile */
-    .main-nav .nav-dropdown-menu, .main-nav > ul, .main-nav ul{
-        display:flex !important;flex-direction:column !important;gap:6px !important;padding:12px !important;box-sizing:border-box !important;background:transparent !important;position:static !important;box-shadow:none !important;
-    }
-
-    /* Menu links full-width and touch-friendly */
-    .main-nav a, .main-nav .nav-dropdown-menu a{display:block !important;width:100% !important;padding:12px 14px !important;margin:6px 0 !important;border-radius:8px !important;text-align:left}
-
-    /* Hide desktop-only dropdown toggle inside the header to avoid duplication */
-    .nav-dropdown-toggle{display:none !important}
-
-    /* Slight visual separation between header and content when menu is open */
-    .site-header + main{transition:padding-top .2s ease}
-}
-
-/* Safety overrides for mobile stacking / overlap issues
-   - Ensure no invisible overlays or fixed panels block content on small screens
-   - Scoped to max-width:768px to avoid touching desktop layout
-*/
-@media (max-width:768px){
-    /* Force predictable document flow for header/nav */
-    html,body{width:100%;overflow-x:hidden}
-
-    /* Header participates in flow so following sections are correctly placed */
-    .site-header{position:relative !important;top:auto !important;left:auto !important;right:auto !important;z-index:220 !important}
-
-    /* Main nav must not block content when closed — disable pointer-events until opened */
-    .main-nav{position:absolute !important;top:100% !important;left:0 !important;right:0 !important;width:100% !important;box-sizing:border-box !important;overflow:hidden !important;max-height:0 !important;opacity:0 !important;visibility:hidden !important;pointer-events:none !important;transform:none !important;transition:max-height .34s cubic-bezier(.2,.9,.2,1),opacity .22s ease !important;background:linear-gradient(180deg,rgba(6,6,6,0.98),rgba(6,6,6,0.995)) !important;border-top:1px solid rgba(255,255,255,0.02) !important}
-
-    /* When open, allow interactions and ensure it pushes content (visually expands under header) */
-    .main-nav.open{max-height:900px !important;opacity:1 !important;visibility:visible !important;pointer-events:auto !important}
-
-    /* Make sure any full-screen overlays (lightbox etc.) don't capture pointer-events when hidden */
-    .lb-overlay{pointer-events:none}
-    .lb-overlay.open{pointer-events:auto}
-
-    /* Ensure no element with extreme z-index masks page content inadvertently */
-    *{max-width:100%}
-}
-
-/* Normalize layout alignment on mobile so all sections align like the Projects section
-   - adjust container widths/padding, reset common margins and accidental transforms
-   - scoped to max-width:768px only
-*/
-@media (max-width:768px){
-    /* Make container match projects alignment: full width with consistent side padding */
-    .container{
-        width:100% !important;
-        max-width:100% !important;
-        margin-left:auto !important;
-        margin-right:auto !important;
-        padding-left:16px !important;
-        padding-right:16px !important;
-        box-sizing:border-box !important;
-    }
-
-    /* Ensure sections use consistent vertical spacing and the same horizontal padding */
-    section{padding-top:40px !important;padding-bottom:40px !important;padding-left:0 !important;padding-right:0 !important}
-
-    /* Reset common grid/wrapper margins that may cause horizontal shift */
-    .grid, .portfolio-grid, .team-grid{margin-left:0 !important;margin-right:0 !important;gap:18px !important}
-
-    /* Ensure project cards don't introduce extra offsets */
-    .project.card, .project{margin-left:0 !important;margin-right:0 !important;padding-left:0 !important;padding-right:0 !important}
-
-    /* About card and team members should fill container width consistently */
-    .about-card, .team-member{width:100% !important;max-width:100% !important;margin:0 !important;padding:16px 0 !important;box-sizing:border-box !important}
-
-    /* Prevent stray transforms or absolute left/right positioning inside containers */
-    .container *{transform:none !important;left:auto !important;right:auto !important}
-
-    /* Ensure main spacing considers fixed header height if present */
-    main{padding-top:0 !important}
-}
+/* Normalize alignment mobile overrides removed per request */
 
 
