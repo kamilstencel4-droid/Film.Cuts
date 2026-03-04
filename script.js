@@ -79,15 +79,80 @@
       btn.addEventListener('click', (e)=>{
         const open = nav.classList.toggle('open');
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        // prevent body scroll when nav is open
+        document.body.classList.toggle('nav-open', open);
+        if(open){
+          // focus first link for keyboard users
+          const first = nav.querySelector('a');
+          if(first) first.focus();
+        } else {
+          // return focus to toggle
+          btn.focus();
+        }
       });
       // close nav when a link is clicked
-      nav.addEventListener('click', (e)=>{ if(e.target.tagName==='A') nav.classList.remove('open'); });
+      nav.addEventListener('click', (e)=>{
+        if(e.target.tagName==='A'){
+          nav.classList.remove('open');
+          btn.setAttribute('aria-expanded','false');
+          document.body.classList.remove('nav-open');
+        }
+      });
       // close on outside click
       document.addEventListener('click', (e)=>{
         if(!nav.classList.contains('open')) return;
         if(e.target.closest('.main-nav') || e.target.closest('#menu-toggle')) return;
         nav.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+        document.body.classList.remove('nav-open');
       });
+      // close on Escape when nav is open
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape' && nav.classList.contains('open')){
+          nav.classList.remove('open');
+          btn.setAttribute('aria-expanded','false');
+          document.body.classList.remove('nav-open');
+          btn.focus();
+        }
+      });
+    })();
+
+    // Header dropdown (desktop + mobile friendly)
+    (function(){
+      const btn = document.getElementById('main-nav-toggle');
+      const menu = document.getElementById('main-nav-menu');
+      const dropdown = btn ? btn.closest('.nav-dropdown') : null;
+      if(!btn || !menu || !dropdown) return;
+
+      function setOpen(state){
+        dropdown.classList.toggle('open', state);
+        btn.setAttribute('aria-expanded', state ? 'true' : 'false');
+      }
+
+      btn.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        const isOpen = dropdown.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // close dropdown when a menu link is clicked; also close mobile nav if open
+      menu.addEventListener('click', (e)=>{
+        if(e.target.closest('a')){
+          setOpen(false);
+          const nav = document.querySelector('.main-nav');
+          if(nav) nav.classList.remove('open');
+        }
+      });
+
+      // close on outside click
+      document.addEventListener('click', (e)=>{
+        if(!dropdown.classList.contains('open')) return;
+        if(e.target.closest('.nav-dropdown') || e.target.closest('#menu-toggle')) return;
+        setOpen(false);
+      });
+
+      // close on Escape
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') setOpen(false); });
     })();
 
     // Keep last two words together for key headings to avoid ugly breaks
