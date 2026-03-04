@@ -71,50 +71,40 @@
       window.addEventListener('scroll', onScroll, {passive:true});
     })();
 
-    // Mobile menu toggle
+    // Mobile menu toggle — robust open/close and accessibility helpers
     (function(){
       const btn = document.getElementById('menu-toggle');
       const nav = document.querySelector('.main-nav');
       if(!btn || !nav) return;
+
+      function openNav(){
+        nav.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+        document.body.classList.add('nav-open');
+      }
+      function closeNav(){
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+        document.body.classList.remove('nav-open');
+      }
+
       btn.addEventListener('click', (e)=>{
-        const open = nav.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        // prevent body scroll when nav is open
-        document.body.classList.toggle('nav-open', open);
-        if(open){
-          // focus first link for keyboard users
-          const first = nav.querySelector('a');
-          if(first) first.focus();
-        } else {
-          // return focus to toggle
-          btn.focus();
-        }
+        e.stopPropagation();
+        if(nav.classList.contains('open')) closeNav(); else openNav();
       });
-      // close nav when a link is clicked
-      nav.addEventListener('click', (e)=>{
-        if(e.target.tagName==='A'){
-          nav.classList.remove('open');
-          btn.setAttribute('aria-expanded','false');
-          document.body.classList.remove('nav-open');
-        }
-      });
+
+      // close nav when a link inside it is clicked
+      nav.addEventListener('click', (e)=>{ if(e.target.closest('a')) closeNav(); });
+
       // close on outside click
       document.addEventListener('click', (e)=>{
         if(!nav.classList.contains('open')) return;
         if(e.target.closest('.main-nav') || e.target.closest('#menu-toggle')) return;
-        nav.classList.remove('open');
-        btn.setAttribute('aria-expanded','false');
-        document.body.classList.remove('nav-open');
+        closeNav();
       });
-      // close on Escape when nav is open
-      document.addEventListener('keydown', (e)=>{
-        if(e.key === 'Escape' && nav.classList.contains('open')){
-          nav.classList.remove('open');
-          btn.setAttribute('aria-expanded','false');
-          document.body.classList.remove('nav-open');
-          btn.focus();
-        }
-      });
+
+      // close on Escape
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && nav.classList.contains('open')) closeNav(); });
     })();
 
     // Header dropdown (desktop + mobile friendly)
