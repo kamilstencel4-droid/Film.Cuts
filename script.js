@@ -76,21 +76,38 @@
       const btn = document.getElementById('menu-toggle');
       const nav = document.querySelector('.main-nav');
       if(!btn || !nav) return;
+      // ensure initial ARIA state
+      btn.setAttribute('aria-expanded', btn.getAttribute('aria-expanded') || 'false');
+      nav.setAttribute('aria-hidden', nav.classList.contains('open') ? 'false' : 'true');
 
       function openNav(){
         nav.classList.add('open');
         btn.setAttribute('aria-expanded','true');
+        nav.setAttribute('aria-hidden','false');
         document.body.classList.add('nav-open');
       }
       function closeNav(){
         nav.classList.remove('open');
         btn.setAttribute('aria-expanded','false');
+        nav.setAttribute('aria-hidden','true');
         document.body.classList.remove('nav-open');
       }
 
+      // Toggle on click (also support Enter/Space for keyboard)
       btn.addEventListener('click', (e)=>{
+        // debug: ensure clicks are received on various devices
+        try{ console.log('menu-toggle click (before): open=', nav.classList.contains('open')); }catch(err){}
+        e.preventDefault();
         e.stopPropagation();
         if(nav.classList.contains('open')) closeNav(); else openNav();
+        try{ console.log('menu-toggle click (after): open=', nav.classList.contains('open')); }catch(err){}
+      });
+      btn.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          e.stopPropagation();
+          if(nav.classList.contains('open')) closeNav(); else openNav();
+        }
       });
 
       // close nav when a link inside it is clicked

@@ -329,23 +329,26 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
 /* Mobile tweaks for the green-framed profile photo inside 'O mně' */
 @media (max-width:768px){
     /* Target only the first team member area inside the 'clenove' section */
+    /* Stack photo above text on mobile for the first team member */
     #clenove .team-member:first-child{
-        display:grid !important;
-        grid-template-columns: auto 1fr !important; /* keep photo left, text right */
+        display:block !important;
+        grid-template-columns: none !important;
         gap:12px !important;
-        align-items:center !important;
+        align-items:stretch !important;
+        padding:16px !important; /* keep inner spacing similar to Projects */
+        box-sizing:border-box !important;
     }
 
-    /* Constrain the photo wrapper so it stays left of the text and appears larger */
+
+    /* Constrain the photo wrapper so it appears above the text and keeps intended size/rounding */
     #clenove .team-member:first-child .member-photo{
-        width:140px !important;           /* larger visual width */
-        min-width:120px !important;
-        height:140px !important;          /* fixed visual height to keep layout stable */
-        overflow:hidden !important;       /* use object-fit on img to fill without black bars */
+        width:120px !important;           /* reduced visual width */
+        height:120px !important;          /* reduced visual height */
+        margin:0 auto 12px auto !important; /* center above the text */
+        overflow:hidden !important;
         display:block !important;
-        border-radius:12px !important;    /* gentle rounding */
-        background:#0b0b0b !important;    /* neutral background while image loads */
-        flex:0 0 auto !important;
+        border-radius:12px !important;
+        background:#0b0b0b !important;
     }
 
     /* Fill the wrapper with the photo using cover so it visually fills the boxed area */
@@ -355,6 +358,112 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
         object-fit:cover !important;      /* fill the wrapper edge-to-edge */
         object-position:center center !important;
         display:block !important;
+    }
+
+    /* Ensure the about block uses the same horizontal alignment as Projects */
+    #clenove .container{
+        padding-left:16px !important;
+        padding-right:16px !important;
+        box-sizing:border-box !important;
+        max-width:100% !important;
+    }
+
+    /* Increase uniform padding inside the green framed card(s) so text isn't flush to edges */
+    /* This targets the highlighted first team-member (green frame) and any about-card used in this section */
+    #clenove .team-member:first-child,
+    #clenove .about-card{
+        padding:20px !important; /* uniform padding on all sides */
+        box-sizing:border-box !important;
+        margin-left:0 !important;
+        margin-right:0 !important;
+        width:100% !important;
+        max-width:100% !important;
+        border-radius:12px !important;
+    }
+
+    /* Ensure the stacked photo is centered and has space around it */
+    #clenove .team-member:first-child .member-photo{
+        width:180px !important;
+        height:180px !important;
+        margin:0 auto 16px auto !important; /* center and add bottom spacing */
+        display:block !important;
+    }
+
+    /* Make sure the member info lines sit centered under the photo and have breathing room */
+    #clenove .team-member:first-child .member-info{
+        text-align:center !important;
+        padding:0 8px !important; /* small internal padding so text doesn't touch the photo edges */
+    }
+
+    /* Gallery and images spacing */
+    #clenove .about-gallery{gap:12px !important;margin-top:12px !important}
+    #clenove .about-gallery .gallery-item{flex:0 0 96px !important}
+
+    /* Team: mobile card normalization
+       - make each team-member a full-width card with uniform padding
+       - make photos consistent (full-width square thumbnails like Projects)
+       - remove accidental grid columns so no horizontal shifts occur
+    */
+    #clenove .team-grid{gap:18px !important}
+    /* Layout: put photos to the left of the text on mobile */
+    #clenove .team-member{
+        display:flex !important;
+        flex-direction:row !important;
+        align-items:center !important;
+        width:100% !important;
+        max-width:100% !important;
+        margin:0 !important;
+        padding:14px 12px !important; /* inner padding */
+        box-sizing:border-box !important;
+        background:transparent !important;
+        border-radius:10px !important;
+        gap:12px !important;
+    }
+
+    /* Make photos behave like thumbnails but smaller: consistent square thumbnails */
+    #clenove .team-member .member-photo{
+        width:96px !important;
+        height:96px !important;
+        aspect-ratio:1/1 !important;
+        overflow:hidden !important;
+        border-radius:8px !important;
+        margin:0 !important; /* align left in the flex row */
+        display:block !important;
+        background:#0b0b0b !important;
+        flex:0 0 96px !important;
+    }
+    #clenove .team-member .member-photo img{
+        width:100% !important;
+        height:100% !important;
+        object-fit:cover !important;
+        object-position:center !important;
+        display:block !important;
+    }
+
+    /* Member info under the photo, aligned like project meta */
+    #clenove .team-member .member-info{
+        padding:0 !important;
+        margin:0 !important;
+        text-align:left !important;
+    }
+    #clenove .team-member .member-info h3{margin:6px 0 4px 0 !important}
+    #clenove .team-member .member-info .member-role{margin:0 0 8px 0 !important;opacity:0.9}
+    #clenove .team-member .member-info .member-bio{margin:0 !important;color:var(--muted)}
+
+    /* Center the three lines (name / role / short bio) under the photo for mobile */
+    /* First member: align photo left and text to the right like others */
+    #clenove .team-member:first-child .member-info{
+        text-align:left !important;
+        padding:0 4px !important;
+        margin:0 !important;
+        flex:1 1 auto !important;
+    }
+    #clenove .team-member:first-child .member-info h3,
+    #clenove .team-member:first-child .member-info .member-role,
+    #clenove .team-member:first-child .member-info .member-bio{
+        display:block !important;
+        width:100% !important;
+        margin:4px 0 !important;
     }
 }
 
@@ -606,14 +715,17 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
     .menu-toggle{display:inline-flex;align-items:center;justify-content:center;font-size:22px;padding:8px;border-radius:10px;background:transparent;border:0;color:var(--text)}
 
     /* Mobile nav positioned directly under the header, full-width */
-    .site-header{position:relative}
+    /* Ensure header stays on top so the toggle remains clickable (nav sits under it) */
+    .site-header{position:relative;z-index:220}
     .main-nav{
         position:absolute !important; /* position relative to .site-header */
         top:100% !important; left:0 !important; right:0 !important; width:100% !important;
         display:block;box-sizing:border-box;overflow:hidden;
+        /* clear any off-canvas transforms from other media rules so the nav sits under the header */
+        transform:none !important;
         max-height:0;opacity:0;visibility:hidden;transition:max-height .34s cubic-bezier(.2,.9,.2,1),opacity .22s ease;
         background:linear-gradient(180deg,rgba(6,6,6,0.98),rgba(6,6,6,0.99));border-top:1px solid rgba(255,255,255,0.02);
-        z-index:180;
+        z-index:200;
     }
 
     /* When JS adds .open, expand the nav smoothly (it sits under header) */
@@ -641,18 +753,30 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
     .brand{flex:0 1 auto;margin-right:8px}
     .menu-toggle{flex:0 0 auto;order:2}
 
+    /* Ensure the menu toggle stays on top and can receive pointer events on mobile */
+    .menu-toggle{
+        position:relative !important;
+        z-index:230 !important; /* above the header and nav */
+        pointer-events:auto !important;
+        -webkit-tap-highlight-color: rgba(255,255,255,0.04);
+    }
+
     /* Prevent header hide animation from removing the header on mobile */
     .site-header.header-hidden{transform:none !important;opacity:1 !important;pointer-events:auto !important}
 
     /* Make the main-nav positioned under the header and collapsed by default */
+    /* Ensure header z-index is higher so the toggle stays clickable */
+    .site-header{z-index:220 !important}
     .main-nav{
         position:absolute !important; /* anchor to header */
         top:100% !important; left:0 !important; right:0 !important; width:100% !important;
         display:block !important;box-sizing:border-box !important;overflow:hidden !important;
+        /* clear any transform from wider-breakpoint off-canvas rules */
+        transform:none !important;
         max-height:0 !important;opacity:0 !important;visibility:hidden !important;
         transition:max-height .34s cubic-bezier(.2,.9,.2,1),opacity .22s ease !important;
         background:linear-gradient(180deg,rgba(6,6,6,0.98),rgba(6,6,6,0.99)) !important;border-top:1px solid rgba(255,255,255,0.02) !important;
-        padding:0 !important;margin:0 !important;z-index:190 !important;
+        padding:0 !important;margin:0 !important;z-index:180 !important;
     }
 
     /* Expanded state: allow enough max-height for menu items and animate */
@@ -671,6 +795,66 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
 
     /* Slight visual separation between header and content when menu is open */
     .site-header + main{transition:padding-top .2s ease}
+}
+
+/* Safety overrides for mobile stacking / overlap issues
+   - Ensure no invisible overlays or fixed panels block content on small screens
+   - Scoped to max-width:768px to avoid touching desktop layout
+*/
+@media (max-width:768px){
+    /* Force predictable document flow for header/nav */
+    html,body{width:100%;overflow-x:hidden}
+
+    /* Header participates in flow so following sections are correctly placed */
+    .site-header{position:relative !important;top:auto !important;left:auto !important;right:auto !important;z-index:220 !important}
+
+    /* Main nav must not block content when closed — disable pointer-events until opened */
+    .main-nav{position:absolute !important;top:100% !important;left:0 !important;right:0 !important;width:100% !important;box-sizing:border-box !important;overflow:hidden !important;max-height:0 !important;opacity:0 !important;visibility:hidden !important;pointer-events:none !important;transform:none !important;transition:max-height .34s cubic-bezier(.2,.9,.2,1),opacity .22s ease !important;background:linear-gradient(180deg,rgba(6,6,6,0.98),rgba(6,6,6,0.995)) !important;border-top:1px solid rgba(255,255,255,0.02) !important}
+
+    /* When open, allow interactions and ensure it pushes content (visually expands under header) */
+    .main-nav.open{max-height:900px !important;opacity:1 !important;visibility:visible !important;pointer-events:auto !important}
+
+    /* Make sure any full-screen overlays (lightbox etc.) don't capture pointer-events when hidden */
+    .lb-overlay{pointer-events:none}
+    .lb-overlay.open{pointer-events:auto}
+
+    /* Ensure no element with extreme z-index masks page content inadvertently */
+    *{max-width:100%}
+}
+
+/* Normalize layout alignment on mobile so all sections align like the Projects section
+   - adjust container widths/padding, reset common margins and accidental transforms
+   - scoped to max-width:768px only
+*/
+@media (max-width:768px){
+    /* Make container match projects alignment: full width with consistent side padding */
+    .container{
+        width:100% !important;
+        max-width:100% !important;
+        margin-left:auto !important;
+        margin-right:auto !important;
+        padding-left:16px !important;
+        padding-right:16px !important;
+        box-sizing:border-box !important;
+    }
+
+    /* Ensure sections use consistent vertical spacing and the same horizontal padding */
+    section{padding-top:40px !important;padding-bottom:40px !important;padding-left:0 !important;padding-right:0 !important}
+
+    /* Reset common grid/wrapper margins that may cause horizontal shift */
+    .grid, .portfolio-grid, .team-grid{margin-left:0 !important;margin-right:0 !important;gap:18px !important}
+
+    /* Ensure project cards don't introduce extra offsets */
+    .project.card, .project{margin-left:0 !important;margin-right:0 !important;padding-left:0 !important;padding-right:0 !important}
+
+    /* About card and team members should fill container width consistently */
+    .about-card, .team-member{width:100% !important;max-width:100% !important;margin:0 !important;padding:16px 0 !important;box-sizing:border-box !important}
+
+    /* Prevent stray transforms or absolute left/right positioning inside containers */
+    .container *{transform:none !important;left:auto !important;right:auto !important}
+
+    /* Ensure main spacing considers fixed header height if present */
+    main{padding-top:0 !important}
 }
 
 
