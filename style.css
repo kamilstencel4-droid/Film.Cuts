@@ -57,7 +57,7 @@ section{padding:var(--gap) 5%}
 
 /* Header */
 .site-header{position:sticky;top:0;z-index:80;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,0.45))}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
 /* hide header on scroll down: slide up smoothly */
 .site-header{
     /* slower, smoother hide/show */
@@ -69,7 +69,7 @@ section{padding:var(--gap) 5%}
     opacity:0;
     pointer-events:none;
 }
-.brand{font-family:'Montserrat',sans-serif;font-weight:900;letter-spacing:2px;color:var(--text);text-decoration:none;text-transform:uppercase;font-size:1.08rem}
+.brand{font-family:'Montserrat',sans-serif;font-weight:900;letter-spacing:2px;color:var(--text);text-decoration:none;text-transform:uppercase;font-size:1rem}
 .main-nav a{color:var(--muted);margin-left:20px;text-decoration:none;font-weight:500}
 .main-nav a:hover{color:var(--text)}
 
@@ -108,7 +108,7 @@ section{padding:var(--gap) 5%}
 }
 
 /* Mobile menu toggle button (hidden on desktop) */
-.menu-toggle{display:none;background:transparent;border:0;color:var(--text);font-size:20px;padding:6px;border-radius:6px;cursor:pointer}
+.menu-toggle{display:none;background:transparent;border:0;color:var(--text);font-size:18px;padding:4px;border-radius:6px;cursor:pointer}
 
 
 /* HERO */
@@ -334,13 +334,13 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
 @media (max-width:900px){
     .menu-toggle{display:inline-block}
     .header-inner{gap:12px}
-    .brand{font-size:1.05rem}
+    .brand{font-size:1rem}
 }
 
 @media (max-width:800px){
     .site-header{background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,0.55))}
-    .header-inner{padding:14px 0}
-    .brand{font-size:1rem}
+    .header-inner{padding:10px 0}
+    .brand{font-size:0.98rem}
     /* make nav open as a full-width dropdown when .open is added by JS */
     .main-nav{position:absolute;right:0;left:0;top:100%;background:linear-gradient(180deg,rgba(0,0,0,0.96),rgba(0,0,0,0.98));padding:12px 18px;border-top:1px solid rgba(255,255,255,0.03);display:none;flex-direction:column;gap:8px}
     .main-nav.open{display:flex}
@@ -375,10 +375,10 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
     .about-card p{font-size:0.98rem}
 
     /* Enlarge header / nav touch targets on small screens */
-    .site-header{ --hdr-pad: 18px; }
-    .header-inner{padding:var(--hdr-pad) 18px; align-items:center}
-    .brand{font-size:1.12rem}
-    .menu-toggle{display:inline-block;font-size:26px;padding:10px;border-radius:10px}
+    .site-header{ --hdr-pad: 10px; }
+    .header-inner{padding:var(--hdr-pad) 12px; align-items:center}
+    .brand{font-size:0.98rem}
+    .menu-toggle{display:inline-block;font-size:22px;padding:6px;border-radius:10px}
     .main-nav{display:flex;gap:10px;align-items:center}
     .main-nav a{padding:10px 12px;border-radius:8px;background:transparent}
     .main-nav a:hover{background:rgba(255,255,255,0.02)}
@@ -398,6 +398,59 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
 .lb-overlay .lb-image, .lb-overlay img{filter:none !important;-webkit-filter:none !important;mix-blend-mode:normal !important;image-rendering:auto !important}
 
 /* Constrain images opened from Project 5 so they adapt to viewport and aren't too large */
+
+/* ---------------------------------------------------------------------------
+   Force desktop look on small screens
+   ----------------------------------------------------------
+   These rules try to keep the exact desktop layout (sizes, image aspect,
+   fonts, grid columns) on narrow viewports by overriding mobile breakpoints.
+   They are scoped to max-width:1100px and use !important sparingly where
+   necessary to beat earlier mobile rules. This preserves the desktop look
+   while making phones/tablets render the same composition.
+   Note: this approach intentionally prevents the responsive stacking rules
+   defined earlier. If you want different behavior for certain sections,
+   we can whitelist them later.
+*/
+@media (max-width:1100px){
+    :root{--container:1100px}
+    /* container stays desktop width */
+    .container{max-width:var(--container) !important;margin:0 auto;padding:0 20px}
+
+    /* Keep hero full-height like desktop */
+    .hero{height:100vh !important}
+    .hero-title{font-size:clamp(60px,15vw,200px) !important}
+    .hero-tagline{font-size:16px !important}
+
+    /* Keep portfolio grid desktop columns / gaps */
+    .portfolio-grid{grid-template-columns:repeat(auto-fit,minmax(320px,1fr)) !important;gap:28px !important}
+    .project{min-height:auto !important}
+    .thumb{aspect-ratio:16/9 !important;min-height:140px !important}
+    .thumb img{width:100% !important;height:100% !important;object-fit:cover !important}
+
+    /* Prevent mobile nav / header changes — show full nav like desktop */
+    .main-nav{display:flex !important;position:static !important;background:transparent !important;padding:0 !important}
+    .menu-toggle{display:none !important}
+
+    /* Prevent other mobile font-size reductions */
+    body{font-size:16px !important}
+    .section-title{font-size:2rem !important}
+
+    /* Keep about / team grid as on desktop */
+    .about-grid{grid-template-columns:1fr 420px !important}
+    .about-card{grid-template-columns:1fr 1fr !important}
+    .team-member:first-child{display:grid !important;grid-template-columns:1fr 1fr !important}
+
+    /* Keep contact list horizontal on larger screens — but safe on narrow as desktop */
+    .contact-list{flex-direction:row !important}
+
+    /* Ensure hero-top-graphic and fixed elements remain visible and positioned reasonably */
+    .hero-top-graphic{top:18px !important;left:50% !important;transform:translateX(-50%) !important}
+
+    /* Make sure no mobile-only transforms / height changes apply */
+    .site-header{background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,0.45)) !important}
+    .main-nav.open{display:flex !important}
+}
+
 .lb-overlay.from-project5 .lb-inner{max-width:92%;max-height:92%}
 .lb-overlay.from-project5 .lb-image{max-width:92vw;max-height:80vh;border-radius:6px}
 .lb-overlay.from-project5 .lb-image.zoomed{transform:scale(1.25)}
@@ -561,6 +614,84 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
 
 @media (max-width:640px){
     .about-gallery + .muted.small{font-size:0.78rem}
+}
+
+
+
+/* Mobile: force desktop layout but scale down visually
+   - Single override block to make small viewports render like desktop (no reflows)
+   - Scoped to max-width:900px so desktop (wider) is untouched
+*/
+@media (max-width:900px){
+    /* prevent horizontal scrolling during scaling */
+    html,body{overflow-x:hidden}
+
+    /* Containers: keep desktop max-width but allow shrinking */
+    .container{max-width:var(--container) !important;width:100% !important;margin:0 auto !important;padding:0 20px !important;box-sizing:border-box !important}
+
+    /* Restore desktop grid templates */
+    .about-grid{display:grid !important;grid-template-columns:1fr 420px !important;gap:48px !important;align-items:center !important}
+    .about-card{display:grid !important;grid-template-columns:1fr 1fr !important;gap:32px !important;padding:32px !important}
+    .portfolio-grid{display:grid !important;grid-template-columns:repeat(auto-fit,minmax(0,1fr)) !important;gap:28px !important}
+
+    /* Team: use desktop patterns */
+    .team-grid{display:grid !important;grid-template-columns:1fr !important;gap:28px !important;margin-top:32px !important}
+    .team-member{display:flex !important;flex-direction:column !important;gap:14px !important;padding:18px !important;border-radius:12px !important}
+    .team-member:first-child{display:grid !important;grid-template-columns:1fr 1fr !important;gap:32px !important;align-items:center !important;padding:32px !important}
+    .team-member:not(:first-child){display:grid !important;grid-template-columns:auto 1fr !important;gap:20px !important;align-items:flex-start !important;padding:16px !important}
+
+    /* Member photo and info: restore desktop sizing/alignment */
+    .member-photo{width:100% !important;aspect-ratio:1/1 !important;border-radius:10px !important}
+    .member-photo img{width:100% !important;height:100% !important;object-fit:cover !important}
+    .team-member .member-info{text-align:left !important;padding:0 !important;margin:0 !important}
+
+    /* Header/nav: inline nav like desktop */
+    .site-header{position:sticky !important;top:0 !important;z-index:80 !important}
+    .main-nav{position:static !important;display:flex !important;flex-direction:row !important;gap:12px !important}
+    .main-nav a{margin-left:20px !important}
+
+    /* Mobile header sizing tweaks: make the top header more compact on phones */
+    .site-header{padding:6px 0 !important}
+    .header-inner{padding:8px 12px !important;gap:8px !important}
+    .brand{font-size:0.95rem !important}
+    .menu-toggle{font-size:18px !important;padding:6px !important}
+    /* Reduce spacing of nav links on very small screens */
+    .main-nav a{margin-left:10px !important;padding:6px 8px !important}
+
+    /* Images/media responsiveness preserved */
+    img,video,iframe{max-width:100% !important;height:auto !important}
+
+    /* Apply visual scale using zoom only — avoid transform on body because it breaks fixed/sticky elements */
+    :root{--mobile-scale:0.92}
+    /* Prefer zoom; ensure no transform is applied to body so header positioning stays correct */
+    html{ -webkit-text-size-adjust:100%; zoom:var(--mobile-scale); -webkit-transform:none; transform:none; }
+    body{ -webkit-transform:none !important; transform:none !important; width:100% !important; margin:0; }
+
+    /* Keep header visible and non-hidden when mobile scaling is active */
+    .site-header.header-hidden{transform:none !important;opacity:1 !important;pointer-events:auto !important}
+
+    /* Ensure fixed/sticky controls remain interactive after scaling */
+    .site-header, .site-footer, .menu-toggle, .main-nav{will-change:transform}
+
+    /* IMPORTANT: disable all transitions/animations on mobile to prevent any animated layout changes */
+    *{
+        -webkit-transition:none !important;
+        transition:none !important;
+        -webkit-animation:none !important;
+        animation:none !important;
+        will-change:auto !important;
+    }
+
+    /* Also ensure key interactive areas don't transform or animate when classes change */
+    .main-nav, .site-header, .hero, .portfolio-grid, .about-grid, .team-grid, .team-member, .about-card, .project, .thumb{
+        -webkit-transform:none !important;
+        transform:none !important;
+        -webkit-transition:none !important;
+        transition:none !important;
+    }
+
+    /* Disable smooth scrolling behavior that can cause visual shifts */
+    html, body { scroll-behavior: auto !important; }
 }
 
 

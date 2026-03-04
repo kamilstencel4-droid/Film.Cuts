@@ -46,6 +46,8 @@
     (function(){
       const header = document.querySelector('.site-header');
       if(!header) return;
+      // Do not enable hide-on-scroll on small viewports — keep header visible and stable on mobile
+      if(window.matchMedia && window.matchMedia('(max-width:900px)').matches) return;
       let lastY = window.scrollY || 0;
       let ticking = false;
 
@@ -175,6 +177,27 @@
         if(replaced !== txt) el.textContent = replaced;
       }
       selectors.forEach(sel => document.querySelectorAll(sel).forEach(el=>keepLastTwo(el)));
+    })();
+
+    // Dynamic mobile scaling: compute and set --mobile-scale once on load so scale stays fixed during interaction
+    (function(){
+      try{
+        const root = document.documentElement;
+        const containerRaw = getComputedStyle(root).getPropertyValue('--container') || '1100px';
+        const container = parseFloat(containerRaw) || 1100;
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        // If viewport is wider than container or beyond mobile breakpoint, use 1 (no scaling)
+        if(vw >= container || vw > 900){
+          root.style.setProperty('--mobile-scale', '1');
+        } else {
+          let scale = vw / container;
+          scale = Math.max(0.5, Math.min(1, scale));
+          root.style.setProperty('--mobile-scale', String(scale));
+        }
+      }catch(err){
+        console.warn('mobile scale init error', err);
+      }
+      // Intentionally do NOT listen to resize/orientation events — scale is fixed at load per user request
     })();
   });
 })();
