@@ -429,7 +429,7 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
 #mobile-modal-overlay .mobile-modal .mobile-modal-ok:hover{background:rgba(255,255,255,0.06)}
 
 /* Hide modal entirely on larger screens (desktop) — this selector affects only the modal */
-@media (min-width: 901px){
+@media (min-width: 1201px){
     #mobile-modal-overlay{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important}
 }
 
