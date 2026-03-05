@@ -212,16 +212,13 @@
       function showModal(){
         overlay.classList.add('open');
         overlay.setAttribute('aria-hidden','false');
-        // lock scroll
-        document.body.style.overflow = 'hidden';
         // focus first actionable button for a11y
-        const ok = overlay.querySelector('.mobile-modal-ok') || overlay.querySelector('.mobile-modal-close');
+        const ok = overlay.querySelector('.ok') || overlay.querySelector('.close');
         if(ok) ok.focus();
       }
       function hideModal(save=true){
         overlay.classList.remove('open');
         overlay.setAttribute('aria-hidden','true');
-        document.body.style.overflow = '';
         if(save){
           try{ localStorage.setItem(storageKey,'1'); }catch(e){}
         }
@@ -237,7 +234,7 @@
 
       // Close interactions
       document.addEventListener('click', function(e){
-        if(e.target.closest('.mobile-modal-close') || e.target.closest('.mobile-modal-ok')){
+        if(e.target.closest('#mobile-warning-modal .close') || e.target.closest('#mobile-warning-modal .ok')){
           hideModal(true);
         }
         // click on overlay backdrop
