@@ -203,7 +203,7 @@
     // Mobile modal: show once on small devices (max-width:900px) and remember dismissal in localStorage
     (function(){
       const storageKey = 'mobile_modal_seen_v1';
-  const mq = window.matchMedia('(max-width:1200px)');
+  const mq = window.matchMedia('(min-width:10px) and (max-width:1000px)');
       const overlay = document.getElementById('mobile-modal-overlay');
       if(!overlay) return;
 

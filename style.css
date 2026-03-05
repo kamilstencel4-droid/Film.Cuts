@@ -399,56 +399,42 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
 
 /* Constrain images opened from Project 5 so they adapt to viewport and aren't too large */
 
-/* Isolated mobile modal styles (only targets #mobile-modal-overlay and its descendants)
-   - This block must not affect any other selectors or global layout. */
-#mobile-modal-overlay{
-    position:fixed;
-    top:0;left:0;
-    width:100%;height:100%;
-    display:flex;align-items:center;justify-content:center;
-    background:rgba(0,0,0,0.7);
-    z-index:9999;
-    visibility:hidden;opacity:0;pointer-events:none;
-    transition:opacity .24s ease, visibility .24s ease;
-}
-#mobile-modal-overlay.open{
-    visibility:visible;opacity:1;pointer-events:auto;
-}
-#mobile-modal-overlay .mobile-modal{
-    box-sizing:border-box;
-    background:var(--surface);color:var(--text);
-    max-width:520px;width:92%;padding:18px;border-radius:12px;
-    box-shadow:0 20px 60px rgba(0,0,0,0.6);
-    position:relative;overflow:auto;/* internal scrolling only inside modal */
-}
-#mobile-modal-overlay .mobile-modal h3{margin:0 0 8px 0;font-size:1.05rem}
-#mobile-modal-overlay .mobile-modal p{color:var(--muted);font-size:0.98rem;line-height:1.45;margin:0 0 12px 0}
-#mobile-modal-overlay .mobile-modal .mobile-modal-close{position:absolute;right:12px;top:8px;background:transparent;border:0;color:var(--muted);font-size:22px;cursor:pointer}
-#mobile-modal-overlay .mobile-modal .mobile-modal-actions{display:flex;justify-content:flex-end}
-#mobile-modal-overlay .mobile-modal .mobile-modal-ok{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);color:var(--text);padding:8px 12px;border-radius:8px;cursor:pointer}
-#mobile-modal-overlay .mobile-modal .mobile-modal-ok:hover{background:rgba(255,255,255,0.06)}
-
-/* Hide modal entirely on larger screens (desktop) — this selector affects only the modal */
-@media (min-width: 1201px){
-    #mobile-modal-overlay{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important}
+/* Mobile modal styles — applied only in the requested mobile range
+   The entire block below is scoped to the media query so no global styles
+   outside the modal are affected. */
+@media (min-width: 10px) and (max-width: 1000px) {
+    #mobile-modal-overlay{
+        position:fixed;
+        top:0;left:0;
+        width:100%;height:100%;
+        display:flex;align-items:center;justify-content:center;
+        background:rgba(0,0,0,0.7);
+        z-index:9999;
+        visibility:hidden;opacity:0;pointer-events:none;
+        transition:opacity .24s ease, visibility .24s ease;
+    }
+    #mobile-modal-overlay.open{
+        visibility:visible;opacity:1;pointer-events:auto;
+    }
+    #mobile-modal-overlay .mobile-modal{
+        box-sizing:border-box;
+        background:var(--surface);color:var(--text);
+        max-width:520px;width:92%;padding:18px;border-radius:12px;
+        box-shadow:0 20px 60px rgba(0,0,0,0.6);
+        position:relative;overflow:auto;/* internal scrolling only inside modal */
+    }
+    #mobile-modal-overlay .mobile-modal h3{margin:0 0 8px 0;font-size:1.05rem}
+    #mobile-modal-overlay .mobile-modal p{color:var(--muted);font-size:0.98rem;line-height:1.45;margin:0 0 12px 0}
+    #mobile-modal-overlay .mobile-modal .mobile-modal-close{position:absolute;right:12px;top:8px;background:transparent;border:0;color:var(--muted);font-size:22px;cursor:pointer}
+    #mobile-modal-overlay .mobile-modal .mobile-modal-actions{display:flex;justify-content:flex-end}
+    #mobile-modal-overlay .mobile-modal .mobile-modal-ok{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);color:var(--text);padding:8px 12px;border-radius:8px;cursor:pointer}
+    #mobile-modal-overlay .mobile-modal .mobile-modal-ok:hover{background:rgba(255,255,255,0.06)}
 }
 
+/* Modal display is scoped inside @media (min-width:10px) and (max-width:1000px) above; 
+   no duplicate or global modal styles follow here to avoid affecting other elements. */
 
-/* Mobile modal styles (only used on small screens) */
-.mobile-modal-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:220;visibility:hidden;opacity:0;transition:opacity .22s ease, visibility .22s ease}
-.mobile-modal-overlay.open{visibility:visible;opacity:1}
-.mobile-modal{background:var(--surface);color:var(--text);max-width:520px;width:92%;padding:18px;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.6);text-align:left}
-.mobile-modal h3{margin-top:0;margin-bottom:8px;font-size:1.05rem}
-.mobile-modal p{color:var(--muted);font-size:0.98rem;line-height:1.45;margin-bottom:12px}
-.mobile-modal-close{position:absolute;right:14px;top:12px;background:transparent;border:0;color:var(--muted);font-size:22px;cursor:pointer}
-.mobile-modal-actions{display:flex;justify-content:flex-end}
-.mobile-modal-ok{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);color:var(--text);padding:8px 12px;border-radius:8px;cursor:pointer}
-.mobile-modal-ok:hover{background:rgba(255,255,255,0.06)}
-
-/* Ensure modal is hidden on larger screens (we only want it on small devices) */
-@media (min-width:769px){
-    .mobile-modal-overlay{display:none !important}
-}
+/* Note: modal visibility is controlled via the media query above (10px–1000px). */
 
 /* ---------------------------------------------------------------------------
    Force desktop look on small screens
