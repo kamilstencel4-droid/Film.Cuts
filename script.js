@@ -206,18 +206,8 @@
       const overlay = document.getElementById('mobile-modal-overlay');
       if(!overlay) return;
 
-      function isMobileLike(){
-        try{
-          const ua = navigator.userAgent || '';
-          const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 0);
-          const phoneUA = /Mobi|Android|iPhone|iPad|iPod/i.test(ua);
-          // treat devices with touch AND either phone userAgent or coarse pointer as mobile-like
-          const coarse = window.matchMedia && window.matchMedia('(pointer:coarse)').matches;
-          return hasTouch && (phoneUA || coarse || (Math.min(screen.width||0, screen.height||0) <= 768));
-        }catch(e){
-          return false;
-        }
-      }
+      // Use a breakpoint-based detection per request: show on screens <= 900px
+      const mq = window.matchMedia('(max-width:900px)');
 
       function showModal(){
         overlay.classList.add('open');
@@ -237,9 +227,9 @@
         }
       }
 
-      // Show modal if device is mobile-like and not yet seen
+      // Show modal if viewport is <=900px and not yet seen
       try{
-        if(isMobileLike() && !localStorage.getItem(storageKey)){
+        if(mq.matches && !localStorage.getItem(storageKey)){
           // small delay so it doesn't interrupt initial paint
           setTimeout(showModal, 600);
         }
