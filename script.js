@@ -200,18 +200,16 @@
       // Intentionally do NOT listen to resize/orientation events — scale is fixed at load per user request
     })();
 
-    // Mobile modal: show once on small devices (max-width:768px) and remember dismissal in localStorage
+    // Mobile modal: show once on small devices (max-width:900px) and remember dismissal in localStorage
     (function(){
       const storageKey = 'mobile_modal_seen_v1';
-      const mq = window.matchMedia('(max-width:768px)');
+      const mq = window.matchMedia('(max-width:900px)');
       const overlay = document.getElementById('mobile-modal-overlay');
       if(!overlay) return;
 
       function showModal(){
         overlay.classList.add('open');
         overlay.setAttribute('aria-hidden','false');
-        // lock scroll
-        document.body.style.overflow = 'hidden';
         // focus first actionable button for a11y
         const ok = overlay.querySelector('.mobile-modal-ok') || overlay.querySelector('.mobile-modal-close');
         if(ok) ok.focus();
@@ -219,7 +217,6 @@
       function hideModal(save=true){
         overlay.classList.remove('open');
         overlay.setAttribute('aria-hidden','true');
-        document.body.style.overflow = '';
         if(save){
           try{ localStorage.setItem(storageKey,'1'); }catch(e){}
         }
@@ -233,7 +230,7 @@
         }
       }catch(err){/* ignore localStorage errors */}
 
-      // Close interactions
+      // Close interactions (scoped to modal elements only)
       document.addEventListener('click', function(e){
         if(e.target.closest('.mobile-modal-close') || e.target.closest('.mobile-modal-ok')){
           hideModal(true);
