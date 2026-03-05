@@ -200,31 +200,32 @@
       // Intentionally do NOT listen to resize/orientation events — scale is fixed at load per user request
     })();
 
-    // Mobile modal: show once on real mobile devices (touch / phone UA) and remember dismissal in localStorage
+    // Mobile modal: show once on small devices (max-width:768px) and remember dismissal in localStorage
     (function(){
       const storageKey = 'mobile_modal_seen_v1';
+      const mq = window.matchMedia('(max-width:768px)');
       const overlay = document.getElementById('mobile-modal-overlay');
       if(!overlay) return;
-
-      // Use a breakpoint-based detection per request: show on screens <= 900px
-      const mq = window.matchMedia('(max-width:900px)');
 
       function showModal(){
         overlay.classList.add('open');
         overlay.setAttribute('aria-hidden','false');
+        // lock scroll
+        document.body.style.overflow = 'hidden';
         // focus first actionable button for a11y
-        const ok = overlay.querySelector('.ok') || overlay.querySelector('.close');
+        const ok = overlay.querySelector('.mobile-modal-ok') || overlay.querySelector('.mobile-modal-close');
         if(ok) ok.focus();
       }
       function hideModal(save=true){
         overlay.classList.remove('open');
         overlay.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
         if(save){
           try{ localStorage.setItem(storageKey,'1'); }catch(e){}
         }
       }
 
-      // Show modal if viewport is <=900px and not yet seen
+      // Show modal if on small screen and not yet seen
       try{
         if(mq.matches && !localStorage.getItem(storageKey)){
           // small delay so it doesn't interrupt initial paint
@@ -234,7 +235,7 @@
 
       // Close interactions
       document.addEventListener('click', function(e){
-        if(e.target.closest('#mobile-warning-modal .close') || e.target.closest('#mobile-warning-modal .ok')){
+        if(e.target.closest('.mobile-modal-close') || e.target.closest('.mobile-modal-ok')){
           hideModal(true);
         }
         // click on overlay backdrop

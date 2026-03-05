@@ -399,22 +399,6 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
 
 /* Constrain images opened from Project 5 so they adapt to viewport and aren't too large */
 
-/* Mobile modal styles — isolated under #mobile-warning-modal only */
-#mobile-warning-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:220;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .22s ease, visibility .22s ease}
-#mobile-warning-modal.open{visibility:visible;opacity:1;pointer-events:auto}
-#mobile-warning-modal .modal{background:var(--surface);color:var(--text);max-width:520px;width:92%;padding:18px;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.6);text-align:left;position:relative}
-#mobile-warning-modal .modal h3{margin-top:0;margin-bottom:8px;font-size:1.05rem}
-#mobile-warning-modal .modal p{color:var(--muted);font-size:0.98rem;line-height:1.45;margin-bottom:12px}
-#mobile-warning-modal .modal .close{position:absolute;right:14px;top:12px;background:transparent;border:0;color:var(--muted);font-size:22px;cursor:pointer}
-#mobile-warning-modal .modal .actions{display:flex;justify-content:flex-end}
-#mobile-warning-modal .modal .ok{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);color:var(--text);padding:8px 12px;border-radius:8px;cursor:pointer}
-#mobile-warning-modal .modal .ok:hover{background:rgba(255,255,255,0.06)}
-/* Hide the mobile modal overlay on larger screens (desktop) — show only on <=900px */
-@media (min-width: 901px){
-    #mobile-warning-modal{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important}
-}
-
-
 /* Mobile modal styles (only used on small screens) */
 .mobile-modal-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:220;visibility:hidden;opacity:0;transition:opacity .22s ease, visibility .22s ease}
 .mobile-modal-overlay.open{visibility:visible;opacity:1}
