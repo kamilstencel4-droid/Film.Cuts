@@ -200,12 +200,24 @@
       // Intentionally do NOT listen to resize/orientation events — scale is fixed at load per user request
     })();
 
-    // Mobile modal: show once on small devices (max-width:768px) and remember dismissal in localStorage
+    // Mobile modal: show once on real mobile devices (touch / phone UA) and remember dismissal in localStorage
     (function(){
       const storageKey = 'mobile_modal_seen_v1';
-      const mq = window.matchMedia('(max-width:768px)');
       const overlay = document.getElementById('mobile-modal-overlay');
       if(!overlay) return;
+
+      function isMobileLike(){
+        try{
+          const ua = navigator.userAgent || '';
+          const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 0);
+          const phoneUA = /Mobi|Android|iPhone|iPad|iPod/i.test(ua);
+          // treat devices with touch AND either phone userAgent or coarse pointer as mobile-like
+          const coarse = window.matchMedia && window.matchMedia('(pointer:coarse)').matches;
+          return hasTouch && (phoneUA || coarse || (Math.min(screen.width||0, screen.height||0) <= 768));
+        }catch(e){
+          return false;
+        }
+      }
 
       function showModal(){
         overlay.classList.add('open');
@@ -225,9 +237,9 @@
         }
       }
 
-      // Show modal if on small screen and not yet seen
+      // Show modal if device is mobile-like and not yet seen
       try{
-        if(mq.matches && !localStorage.getItem(storageKey)){
+        if(isMobileLike() && !localStorage.getItem(storageKey)){
           // small delay so it doesn't interrupt initial paint
           setTimeout(showModal, 600);
         }
