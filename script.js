@@ -208,6 +208,23 @@
       if(!overlay) return;
 
       function showModal(){
+        // Ensure overlay is visible even if CSS media queries don't match exactly.
+        // Apply inline styles only to the overlay (isolated to modal) so we don't affect other layout.
+        try{
+          overlay.style.position = 'fixed';
+          overlay.style.top = '0';
+          overlay.style.left = '0';
+          overlay.style.width = '100%';
+          overlay.style.height = '100%';
+          overlay.style.zIndex = '9999';
+          overlay.style.display = 'flex';
+          overlay.style.alignItems = 'center';
+          overlay.style.justifyContent = 'center';
+          overlay.style.background = 'rgba(0,0,0,0.7)';
+          overlay.style.visibility = 'visible';
+          overlay.style.opacity = '1';
+          overlay.style.pointerEvents = 'auto';
+        }catch(e){}
         overlay.classList.add('open');
         overlay.setAttribute('aria-hidden','false');
         // focus first actionable button for a11y
@@ -217,14 +234,35 @@
       function hideModal(save=true){
         overlay.classList.remove('open');
         overlay.setAttribute('aria-hidden','true');
+        // remove inline styles we added so the DOM returns to its original state
+        try{
+          overlay.style.position = '';
+          overlay.style.top = '';
+          overlay.style.left = '';
+          overlay.style.width = '';
+          overlay.style.height = '';
+          overlay.style.zIndex = '';
+          overlay.style.display = '';
+          overlay.style.alignItems = '';
+          overlay.style.justifyContent = '';
+          overlay.style.background = '';
+          overlay.style.visibility = '';
+          overlay.style.opacity = '';
+          overlay.style.pointerEvents = '';
+        }catch(e){}
         if(save){
           try{ localStorage.setItem(storageKey,'1'); }catch(e){}
         }
       }
 
-      // Show modal if on small screen and not yet seen
+      // Show modal if on small screen and not yet seen. Add a fallback for devices
+      // where matchMedia might not reflect actual device characteristics
       try{
-        if(mq.matches && !localStorage.getItem(storageKey)){
+        const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 0);
+        const uaMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent || '');
+        const physicalSmall = Math.min(window.screen.width||0, window.screen.height||0) <= 1000;
+        const shouldShow = (mq.matches || (hasTouch && (uaMobile || physicalSmall)));
+        if(shouldShow && !localStorage.getItem(storageKey)){
           // small delay so it doesn't interrupt initial paint
           setTimeout(showModal, 600);
         }
