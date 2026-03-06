@@ -200,33 +200,18 @@
       // Intentionally do NOT listen to resize/orientation events — scale is fixed at load per user request
     })();
 
-    // Mobile modal: show once on small devices (max-width:900px) and remember dismissal in localStorage
+    // Mobile modal: show once on small devices (max-width:768px) and remember dismissal in localStorage
     (function(){
       const storageKey = 'mobile_modal_seen_v1';
-  const mq = window.matchMedia('(min-width:10px) and (max-width:1000px)');
+      const mq = window.matchMedia('(max-width:768px)');
       const overlay = document.getElementById('mobile-modal-overlay');
       if(!overlay) return;
 
       function showModal(){
-        // Ensure overlay is visible even if CSS media queries don't match exactly.
-        // Apply inline styles only to the overlay (isolated to modal) so we don't affect other layout.
-        try{
-          overlay.style.position = 'fixed';
-          overlay.style.top = '0';
-          overlay.style.left = '0';
-          overlay.style.width = '100%';
-          overlay.style.height = '100%';
-          overlay.style.zIndex = '9999';
-          overlay.style.display = 'flex';
-          overlay.style.alignItems = 'center';
-          overlay.style.justifyContent = 'center';
-          overlay.style.background = 'rgba(0,0,0,0.7)';
-          overlay.style.visibility = 'visible';
-          overlay.style.opacity = '1';
-          overlay.style.pointerEvents = 'auto';
-        }catch(e){}
         overlay.classList.add('open');
         overlay.setAttribute('aria-hidden','false');
+        // lock scroll
+        document.body.style.overflow = 'hidden';
         // focus first actionable button for a11y
         const ok = overlay.querySelector('.mobile-modal-ok') || overlay.querySelector('.mobile-modal-close');
         if(ok) ok.focus();
@@ -234,41 +219,21 @@
       function hideModal(save=true){
         overlay.classList.remove('open');
         overlay.setAttribute('aria-hidden','true');
-        // remove inline styles we added so the DOM returns to its original state
-        try{
-          overlay.style.position = '';
-          overlay.style.top = '';
-          overlay.style.left = '';
-          overlay.style.width = '';
-          overlay.style.height = '';
-          overlay.style.zIndex = '';
-          overlay.style.display = '';
-          overlay.style.alignItems = '';
-          overlay.style.justifyContent = '';
-          overlay.style.background = '';
-          overlay.style.visibility = '';
-          overlay.style.opacity = '';
-          overlay.style.pointerEvents = '';
-        }catch(e){}
+        document.body.style.overflow = '';
         if(save){
           try{ localStorage.setItem(storageKey,'1'); }catch(e){}
         }
       }
 
-      // Show modal if on small screen and not yet seen. Add a fallback for devices
-      // where matchMedia might not reflect actual device characteristics
+      // Show modal if on small screen and not yet seen
       try{
-        const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 0);
-        const uaMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent || '');
-        const physicalSmall = Math.min(window.screen.width||0, window.screen.height||0) <= 1000;
-        const shouldShow = (mq.matches || (hasTouch && (uaMobile || physicalSmall)));
-        if(shouldShow && !localStorage.getItem(storageKey)){
+        if(mq.matches && !localStorage.getItem(storageKey)){
           // small delay so it doesn't interrupt initial paint
           setTimeout(showModal, 600);
         }
       }catch(err){/* ignore localStorage errors */}
 
-      // Close interactions (scoped to modal elements only)
+      // Close interactions
       document.addEventListener('click', function(e){
         if(e.target.closest('.mobile-modal-close') || e.target.closest('.mobile-modal-ok')){
           hideModal(true);
