@@ -28,15 +28,38 @@
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="index.html">Film.Cuts</a>
+            <button id="menu-toggle" class="menu-toggle" aria-label="Otevřít menu">☰</button>
             <nav class="main-nav" aria-label="Hlavní navigace">
-                <a href="index.html#projekty">Projekty</a>
-                <a href="index.html#clenove">Členové</a>
-                <a href="technika.html">Technika</a>
-                <a href="index.html#about">O mně</a>
-                <a href="index.html#contact">Kontakt</a>
+                <div class="nav-dropdown">
+                    <button id="main-nav-toggle" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="main-nav-menu">
+                        <span class="hamburger" aria-hidden="true">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <span class="sr-only">Otevřít navigaci</span>
+                    </button>
+                    <ul id="main-nav-menu" class="nav-dropdown-menu" role="menu">
+                        <li role="menuitem"><a href="index.html#projekty">Projekty</a></li>
+                        <li role="menuitem"><a href="index.html#clenove">O mně</a></li>
+                        <li role="menuitem"><a href="technika.html">Technika</a></li>
+                        <li role="menuitem"><a href="index.html#contact">Kontakt</a></li>
+                    </ul>
+                </div>
             </nav>
         </div>
     </header>
+
+    <div class="banner-row">
+        <a href="project-new.html" class="new-project-banner" aria-label="Otevřít nový projekt">
+            <span class="new-project-banner__icon" aria-hidden="true">✨</span>
+            <span class="new-project-banner__text">
+                <span class="new-project-banner__title">Nowy projekt</span>
+                <span class="new-project-banner__subtitle">Podívej se na nejnovější tvorbu</span>
+            </span>
+            <span class="new-project-banner__cta">Otevřít</span>
+        </a>
+    </div>
 
     <main id="main">
 

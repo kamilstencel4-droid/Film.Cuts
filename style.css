@@ -311,6 +311,21 @@ section{padding:var(--gap) 5%}
 .member-role{color:var(--accent);font-size:0.95rem;font-weight:600;margin-bottom:8px}
 .member-bio{color:var(--muted);font-size:0.9rem;line-height:1.4}
 
+/* About card should not inherit compact team-member grid columns. */
+.team-member.about-card{
+    display:block;
+    grid-template-columns:none;
+    align-items:stretch;
+    padding:28px;
+}
+.team-member.about-card .about-content{
+    width:100%;
+    max-width:none;
+}
+.team-member.about-card p{
+    max-width:100%;
+}
+
 /* About card in team section */
 .about-card{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;padding:32px;background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.15);margin-top:20px}
 .about-card .about-content{display:flex;flex-direction:column;gap:12px}
@@ -699,16 +714,19 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
     .about-card{display:grid !important;grid-template-columns:1fr 1fr !important;gap:32px !important;padding:32px !important}
     .portfolio-grid{display:grid !important;grid-template-columns:repeat(auto-fit,minmax(0,1fr)) !important;gap:28px !important}
 
-    /* Team: use desktop patterns */
+    /* Team: match desktop cards (photo above text) */
     .team-grid{display:grid !important;grid-template-columns:1fr !important;gap:28px !important;margin-top:32px !important}
-    .team-member{display:flex !important;flex-direction:column !important;gap:14px !important;padding:18px !important;border-radius:12px !important}
-    .team-member:first-child{display:grid !important;grid-template-columns:1fr 1fr !important;gap:32px !important;align-items:center !important;padding:32px !important}
-    .team-member:not(:first-child){display:grid !important;grid-template-columns:auto 1fr !important;gap:20px !important;align-items:flex-start !important;padding:16px !important}
+    .team-member{display:flex !important;flex-direction:column !important;gap:14px !important;align-items:center !important;text-align:center !important;padding:18px !important;border-radius:12px !important}
+    .team-member:first-child{display:flex !important;flex-direction:column !important;gap:14px !important;align-items:center !important;text-align:center !important;padding:18px !important}
+    .team-member:not(:first-child){display:flex !important;flex-direction:column !important;gap:14px !important;align-items:center !important;text-align:center !important;padding:16px !important}
 
-    /* Member photo and info: restore desktop sizing/alignment */
-    .member-photo{width:100% !important;aspect-ratio:1/1 !important;border-radius:10px !important}
-    .member-photo img{width:100% !important;height:100% !important;object-fit:cover !important}
-    .team-member .member-info{text-align:left !important;padding:0 !important;margin:0 !important}
+    /* Member photo and info: keep inline sizes and circle styles */
+    .member-photo{width:auto !important;height:auto !important;aspect-ratio:auto !important;overflow:hidden !important;background:#0b0b0b !important;display:flex !important;align-items:center !important;justify-content:center !important;margin:0 !important}
+    .member-photo[style*="border-radius:100%"]{width:140px !important;height:140px !important;border-radius:50% !important;aspect-ratio:1/1 !important}
+    .member-photo[style*="border-radius:100%"] img{width:100% !important;height:100% !important;object-fit:cover !important;object-position:center !important}
+    .member-photo[style*="border-radius:100%"] svg{width:56px !important;height:56px !important}
+    .member-photo img{width:100% !important;height:100% !important;object-fit:cover !important;object-position:center !important}
+    .team-member .member-info{text-align:center !important;padding:0 !important;margin:0 !important;width:100% !important}
 
     /* Header/nav: inline nav like desktop */
     .site-header{position:sticky !important;top:0 !important;z-index:80 !important}
@@ -757,6 +775,110 @@ h1,h2,h3,.hero-title,.section-title,.project .project-meta h3,.team-member .memb
 
     /* Disable smooth scrolling behavior that can cause visual shifts */
     html, body { scroll-behavior: auto !important; }
+}
+
+/* Mobile rescue overrides: final layer to stabilize phone layout. */
+@media (max-width:900px){
+    html{zoom:1 !important;-webkit-text-size-adjust:100% !important}
+    body{width:100% !important;margin:0 !important;transform:none !important;-webkit-transform:none !important;overflow-x:hidden !important}
+    html.nav-open, html.nav-open body{overflow:hidden !important;height:100% !important}
+    body.nav-open{overflow:hidden !important;height:100vh !important;touch-action:none !important}
+
+    .site-header{
+        position:sticky !important;
+        top:0 !important;
+        z-index:120 !important;
+        padding:0 !important;
+        min-height:76px !important;
+        background:linear-gradient(180deg,rgba(0,0,0,0.05),rgba(0,0,0,0.78)) !important;
+        backdrop-filter:blur(6px) !important;
+        -webkit-backdrop-filter:blur(6px) !important;
+    }
+    .header-inner{padding:14px 16px !important;gap:12px !important}
+    .brand{font-size:1.08rem !important}
+    /* Mobile should match desktop nav behavior (single dropdown, no off-canvas panel). */
+    .menu-toggle{display:none !important}
+    .main-nav{
+        position:static !important;
+        top:auto !important;
+        right:auto !important;
+        bottom:auto !important;
+        left:auto !important;
+        width:auto !important;
+        max-width:none !important;
+        transform:none !important;
+        transition:none !important;
+        display:block !important;
+        background:transparent !important;
+        padding:0 !important;
+        overflow:visible !important;
+        box-shadow:none !important;
+        z-index:auto !important;
+    }
+    .main-nav.open{transform:none !important}
+    .main-nav a{display:block !important;margin:0 !important;padding:10px 14px !important;border-radius:6px !important}
+
+    .main-nav .nav-dropdown{display:inline-block !important;position:relative !important;width:auto !important}
+    .main-nav .nav-dropdown-toggle{display:inline-flex !important}
+    .main-nav .nav-dropdown-menu{
+        position:absolute !important;
+        right:0 !important;
+        top:calc(100% + 10px) !important;
+        min-width:220px !important;
+        opacity:0 !important;
+        visibility:hidden !important;
+        transform:translateY(-8px) scale(.995) !important;
+        background:rgba(12,12,12,0.95) !important;
+        border:1px solid rgba(255,255,255,0.04) !important;
+        border-radius:10px !important;
+        box-shadow:0 18px 48px rgba(0,0,0,0.6) !important;
+        padding:8px !important;
+        backdrop-filter:blur(6px) !important;
+        -webkit-backdrop-filter:blur(6px) !important;
+        display:block !important;
+        width:auto !important;
+    }
+    .main-nav .nav-dropdown.open .nav-dropdown-menu{
+        opacity:1 !important;
+        visibility:visible !important;
+        transform:translateY(0) scale(1) !important;
+    }
+    /* Restore desktop-like hamburger animation on mobile. */
+    .main-nav .nav-dropdown-toggle .hamburger span{
+        transition:background .12s ease, transform .12s ease, opacity .12s ease !important;
+    }
+    .main-nav .nav-dropdown.open .nav-dropdown-toggle .hamburger span:nth-child(1){
+        transform:translateY(6px) rotate(45deg) !important;
+    }
+    .main-nav .nav-dropdown.open .nav-dropdown-toggle .hamburger span:nth-child(2){
+        opacity:0 !important;
+    }
+    .main-nav .nav-dropdown.open .nav-dropdown-toggle .hamburger span:nth-child(3){
+        transform:translateY(-6px) rotate(-45deg) !important;
+    }
+    .main-nav .nav-dropdown-menu li{list-style:none !important}
+    .main-nav .nav-dropdown-menu a{margin:0 !important;padding:10px 14px !important;border-radius:6px !important}
+
+    .banner-row{top:88px !important}
+    .new-project-banner{max-width:calc(100vw - 6px) !important}
+
+    main{padding-top:0 !important}
+    section{padding:64px 5% !important}
+    .hero{height:70vh !important}
+    .hero-title{font-size:clamp(30px,10vw,58px) !important}
+    .hero-tagline{font-size:15px !important}
+
+    .container{max-width:100% !important;padding:0 14px !important}
+    .portfolio-grid{grid-template-columns:1fr !important;gap:18px !important}
+    .about-grid{grid-template-columns:1fr !important;gap:20px !important}
+    .about-card{grid-template-columns:1fr !important;gap:14px !important;padding:16px !important}
+    .team-member.about-card{display:block !important;grid-template-columns:none !important;padding:16px !important;text-align:left !important}
+    .team-member.about-card .about-content{width:100% !important;max-width:none !important;margin:0 !important;text-align:left !important;padding-left:8px !important}
+    .team-member:first-child{grid-template-columns:1fr !important;padding:20px !important}
+    .team-member:not(:first-child){display:flex !important;flex-direction:column !important;align-items:center !important;text-align:center !important;gap:14px !important}
+    .team-member:not(:first-child) .member-photo{width:140px !important;height:140px !important}
+
+    img,video,iframe{max-width:100% !important;height:auto !important}
 }
 
 

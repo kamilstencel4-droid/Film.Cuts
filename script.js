@@ -105,21 +105,45 @@
       const btn = document.getElementById('menu-toggle');
       const nav = document.querySelector('.main-nav');
       if(!btn || !nav) return;
+      let lockedScrollY = 0;
       // ensure initial ARIA state
       btn.setAttribute('aria-expanded', btn.getAttribute('aria-expanded') || 'false');
       nav.setAttribute('aria-hidden', nav.classList.contains('open') ? 'false' : 'true');
+
+      function lockPageScroll(){
+        if(document.body.classList.contains('nav-open')) return;
+        lockedScrollY = window.scrollY || window.pageYOffset || 0;
+        document.documentElement.classList.add('nav-open');
+        document.body.classList.add('nav-open');
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${lockedScrollY}px`;
+        document.body.style.left = '0';
+        document.body.style.right = '0';
+        document.body.style.width = '100%';
+      }
+
+      function unlockPageScroll(){
+        document.documentElement.classList.remove('nav-open');
+        document.body.classList.remove('nav-open');
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.width = '';
+        window.scrollTo(0, lockedScrollY);
+      }
 
       function openNav(){
         nav.classList.add('open');
         btn.setAttribute('aria-expanded','true');
         nav.setAttribute('aria-hidden','false');
-        document.body.classList.add('nav-open');
+        lockPageScroll();
       }
       function closeNav(){
         nav.classList.remove('open');
         btn.setAttribute('aria-expanded','false');
         nav.setAttribute('aria-hidden','true');
-        document.body.classList.remove('nav-open');
+        unlockPageScroll();
       }
 
       // Toggle on click (also support Enter/Space for keyboard)
@@ -204,27 +228,6 @@
         if(replaced !== txt) el.textContent = replaced;
       }
       selectors.forEach(sel => document.querySelectorAll(sel).forEach(el=>keepLastTwo(el)));
-    })();
-
-    // Dynamic mobile scaling: compute and set --mobile-scale once on load so scale stays fixed during interaction
-    (function(){
-      try{
-        const root = document.documentElement;
-        const containerRaw = getComputedStyle(root).getPropertyValue('--container') || '1100px';
-        const container = parseFloat(containerRaw) || 1100;
-        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-        // If viewport is wider than container or beyond mobile breakpoint, use 1 (no scaling)
-        if(vw >= container || vw > 900){
-          root.style.setProperty('--mobile-scale', '1');
-        } else {
-          let scale = vw / container;
-          scale = Math.max(0.5, Math.min(1, scale));
-          root.style.setProperty('--mobile-scale', String(scale));
-        }
-      }catch(err){
-        console.warn('mobile scale init error', err);
-      }
-      // Intentionally do NOT listen to resize/orientation events — scale is fixed at load per user request
     })();
 
     // Mobile modal: show once on small devices (max-width:768px) and remember dismissal in localStorage
