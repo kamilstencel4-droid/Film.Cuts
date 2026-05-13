@@ -73,6 +73,33 @@
       window.addEventListener('scroll', onScroll, {passive:true});
     })();
 
+    // Hide the banner on scroll so it disappears with the top area, but stays separate from the header.
+    (function(){
+      const banner = document.querySelector('.new-project-banner');
+      if(!banner) return;
+      let lastY = window.scrollY || 0;
+      let ticking = false;
+
+      function onScroll(){
+        const currentY = window.scrollY || 0;
+        if(!ticking){
+          window.requestAnimationFrame(()=>{
+            const delta = currentY - lastY;
+            if(delta > 6 && currentY > 80){
+              banner.classList.add('is-hidden');
+            } else if(delta < -6 || currentY <= 80){
+              banner.classList.remove('is-hidden');
+            }
+            lastY = currentY;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, {passive:true});
+    })();
+
     // Mobile menu toggle — robust open/close and accessibility helpers
     (function(){
       const btn = document.getElementById('menu-toggle');

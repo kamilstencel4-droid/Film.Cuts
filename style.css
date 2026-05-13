@@ -58,6 +58,7 @@ section{padding:var(--gap) 5%}
 /* Header */
 .site-header{position:sticky;top:0;z-index:80;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,0.45))}
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.banner-row{position:fixed;left:0;top:72px;width:100%;height:auto;margin:0;padding:0;z-index:79;pointer-events:none}
 /* hide header on scroll down: slide up smoothly */
 .site-header{
     /* slower, smoother hide/show */
@@ -69,6 +70,49 @@ section{padding:var(--gap) 5%}
     opacity:0;
     pointer-events:none;
 }
+.new-project-banner{
+    display:inline-flex;
+    align-items:center;
+    gap:16px;
+    width:auto;
+    max-width:min(560px, calc(100vw - 8px));
+    padding:14px 16px 14px 18px;
+    margin:0;
+    position:relative;
+    left:0;
+    top:0;
+    border-radius:0 16px 16px 0;
+    border:1px solid rgba(255,92,92,0.9);
+    border-left:0;
+    background:linear-gradient(135deg, rgba(220,38,38,0.98), rgba(153,27,27,0.96));
+    box-shadow:0 12px 30px rgba(185,28,28,0.26);
+    color:var(--text);
+    text-decoration:none;
+    overflow:hidden;
+    transition:transform .2s ease, opacity .2s ease, box-shadow .2s ease;
+    pointer-events:auto;
+}
+.new-project-banner:hover{
+    transform:translateY(-2px);
+    opacity:0.98;
+    box-shadow:0 14px 34px rgba(185,28,28,0.32);
+}
+.new-project-banner.is-hidden{opacity:0;transform:translateY(-10px);pointer-events:none}
+.new-project-banner__icon{
+    flex:0 0 auto;
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,0.14);
+    font-size:1.15rem;
+}
+.new-project-banner__text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.new-project-banner__title{font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:900;letter-spacing:1px;text-transform:uppercase}
+.new-project-banner__subtitle{color:rgba(255,255,255,0.9);font-size:0.95rem;line-height:1.2}
+.new-project-banner__cta{margin-left:auto;padding:9px 13px;border-radius:999px;background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.18);font-size:0.85rem;font-weight:800;white-space:nowrap}
 .brand{font-family:'Montserrat',sans-serif;font-weight:900;letter-spacing:2px;color:var(--text);text-decoration:none;text-transform:uppercase;font-size:1rem}
 .main-nav a{color:var(--muted);margin-left:20px;text-decoration:none;font-weight:500}
 .main-nav a:hover{color:var(--text)}
@@ -105,6 +149,11 @@ section{padding:var(--gap) 5%}
     .nav-dropdown-toggle{color:var(--text)}
     /* show the in-menu hamburger slightly bigger inside the panel */
     .nav-dropdown-menu .nav-panel .in-menu span{width:20px;height:3px;margin:4px 0}
+    .banner-row{top:66px}
+    .new-project-banner{max-width:calc(100vw - 4px);padding:12px 14px 12px 16px}
+    .new-project-banner__icon{width:36px;height:36px;font-size:1rem}
+    .new-project-banner__title{font-size:0.98rem}
+    .new-project-banner__subtitle{font-size:0.84rem}
 }
 
 /* Mobile menu toggle button (hidden on desktop) */
