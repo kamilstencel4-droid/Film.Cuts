@@ -100,83 +100,6 @@
       window.addEventListener('scroll', onScroll, {passive:true});
     })();
 
-    // Mobile menu toggle — robust open/close and accessibility helpers
-    (function(){
-      const btn = document.getElementById('menu-toggle');
-      const nav = document.querySelector('.main-nav');
-      if(!btn || !nav) return;
-      let lockedScrollY = 0;
-      // ensure initial ARIA state
-      btn.setAttribute('aria-expanded', btn.getAttribute('aria-expanded') || 'false');
-      nav.setAttribute('aria-hidden', nav.classList.contains('open') ? 'false' : 'true');
-
-      function lockPageScroll(){
-        if(document.body.classList.contains('nav-open')) return;
-        lockedScrollY = window.scrollY || window.pageYOffset || 0;
-        document.documentElement.classList.add('nav-open');
-        document.body.classList.add('nav-open');
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${lockedScrollY}px`;
-        document.body.style.left = '0';
-        document.body.style.right = '0';
-        document.body.style.width = '100%';
-      }
-
-      function unlockPageScroll(){
-        document.documentElement.classList.remove('nav-open');
-        document.body.classList.remove('nav-open');
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.left = '';
-        document.body.style.right = '';
-        document.body.style.width = '';
-        window.scrollTo(0, lockedScrollY);
-      }
-
-      function openNav(){
-        nav.classList.add('open');
-        btn.setAttribute('aria-expanded','true');
-        nav.setAttribute('aria-hidden','false');
-        lockPageScroll();
-      }
-      function closeNav(){
-        nav.classList.remove('open');
-        btn.setAttribute('aria-expanded','false');
-        nav.setAttribute('aria-hidden','true');
-        unlockPageScroll();
-      }
-
-      // Toggle on click (also support Enter/Space for keyboard)
-      btn.addEventListener('click', (e)=>{
-        // debug: ensure clicks are received on various devices
-        try{ console.log('menu-toggle click (before): open=', nav.classList.contains('open')); }catch(err){}
-        e.preventDefault();
-        e.stopPropagation();
-        if(nav.classList.contains('open')) closeNav(); else openNav();
-        try{ console.log('menu-toggle click (after): open=', nav.classList.contains('open')); }catch(err){}
-      });
-      btn.addEventListener('keydown', (e)=>{
-        if(e.key === 'Enter' || e.key === ' '){
-          e.preventDefault();
-          e.stopPropagation();
-          if(nav.classList.contains('open')) closeNav(); else openNav();
-        }
-      });
-
-      // close nav when a link inside it is clicked
-      nav.addEventListener('click', (e)=>{ if(e.target.closest('a')) closeNav(); });
-
-      // close on outside click
-      document.addEventListener('click', (e)=>{
-        if(!nav.classList.contains('open')) return;
-        if(e.target.closest('.main-nav') || e.target.closest('#menu-toggle')) return;
-        closeNav();
-      });
-
-      // close on Escape
-      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && nav.classList.contains('open')) closeNav(); });
-    })();
-
     // Header dropdown (desktop + mobile friendly)
     (function(){
       const btn = document.getElementById('main-nav-toggle');
@@ -207,7 +130,7 @@
       // close on outside click
       document.addEventListener('click', (e)=>{
         if(!dropdown.classList.contains('open')) return;
-        if(e.target.closest('.nav-dropdown') || e.target.closest('#menu-toggle')) return;
+        if(e.target.closest('.nav-dropdown')) return;
         setOpen(false);
       });
 
