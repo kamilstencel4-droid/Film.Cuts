@@ -3,6 +3,7 @@
   const KEY = 'filmcuts-projects';
 
   const defaultProjects = [
+    { id:'d0', title: 'MEZI', year:'2026', link:'project-new.html', description: 'Psychologické drama o muži, který se ocitá v prázdném městě bez lidí. Snímek zkoumá hranici mezi životem a smrtí skrze ticho, izolaci a atmosféru.', image: 'assets/hero-uploaded.png', isNew: true },
     { id:'d1', title: 'Documentary Short Film - Adam Liška', year:'2025', link:'project1.html', description: 'Dokument sleduje šestnáctiletého MTB ridera Adama během tréninků a závodů.', image: 'assets/portfolio1.png' },
     { id:'d2', title: 'DVA DNY | Short Film', year:'2026', link:'project2.html', description: 'Psychologický thriller z prostředí digitálního světa, kde jedno nenápadné rozhodnutí spustí řetězec nevratných následků.', image: 'assets/portfolio2.png' },
     { id:'d3', title: 'BikePark Kopřivná Edit!', year:'2025', link:'project3.html', description: 'Experimentální montáž zkoumající světlo, rytmus a kontinuitu obrazu.', image: 'assets/portfolio3.png' },
@@ -17,13 +18,30 @@
     if(!container) return;
     container.innerHTML = '';
     projects.forEach(p => {
-      const a = document.createElement('a'); a.className='project card'; a.href = p.link || '#'; a.style.textDecoration='none'; a.style.color='inherit';
+      const a = document.createElement('a'); a.className='project card'; a.href = p.link || '#'; a.style.textDecoration='none'; a.style.color='inherit'; a.style.position='relative';
       const fig = document.createElement('figure'); fig.className='thumb';
   const img = document.createElement('img'); img.loading='lazy';
   // prefer images array (new format) then legacy image field
   img.src = (p.images && p.images[0]) || p.image || 'assets/portfolio1.png';
   img.alt = p.title || '';
       fig.appendChild(img);
+      // Add NEW badge if isNew is true
+      if(p.isNew){
+        const badge = document.createElement('div'); 
+        badge.textContent = 'NEW'; 
+        badge.style.position = 'absolute';
+        badge.style.left = '12px';
+        badge.style.top = '12px';
+  badge.style.background = '#ef4444';
+        badge.style.color = 'white';
+        badge.style.padding = '6px 12px';
+        badge.style.borderRadius = '4px';
+        badge.style.fontSize = '0.75rem';
+        badge.style.fontWeight = '700';
+        badge.style.letterSpacing = '0.5px';
+        badge.style.zIndex = '10';
+        a.appendChild(badge);
+      }
       const meta = document.createElement('div'); meta.className='project-meta';
       const h3 = document.createElement('h3'); h3.textContent = p.title || '';
       const time = document.createElement('time'); time.textContent = p.year || '';

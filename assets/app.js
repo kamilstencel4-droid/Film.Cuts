@@ -12,8 +12,6 @@
   const btnSave = document.getElementById('btn-save');
   const btnExport = document.getElementById('btn-export');
 
-  const fileInputGlobal = document.getElementById('file-input');
-
   // Helper: load/save media map
   function loadMediaMap(){
     try{ return JSON.parse(localStorage.getItem(MEDIA_KEY) || '{}'); }
@@ -310,7 +308,6 @@
       el.setAttribute('data-key', key);
     });
     localStorage.setItem('filmcuts-edit', JSON.stringify(payload));
-    console.log('Saved editable content to localStorage (filmcuts-edit)');
   }
 
   // Media storage helpers
@@ -370,8 +367,7 @@
         const key = el.getAttribute('data-key');
         if (key && payload[key]) el.innerHTML = payload[key];
       });
-      console.log('Loaded editable content from localStorage');
-    }catch(e){console.warn('Could not load saved edits', e)}
+    }catch(e){}
   }
 
   // Load media on start and render

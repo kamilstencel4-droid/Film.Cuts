@@ -71,7 +71,7 @@
     });
   };
 
-  Lightbox.prototype.open = function(items, index){
+  Lightbox.prototype.open = function(items, index, opts){
     if(!Array.isArray(items) || items.length===0) return;
     this.items = items;
     this.currentIndex = Math.max(0, Math.min(index||0, items.length-1));
@@ -84,6 +84,12 @@
         this.root.classList.remove('from-project5');
       }
     }catch(e){/* ignore */}
+    // mark lightbox source when opened from the about gallery
+    if(opts && opts.fromAbout){
+      this.root.classList.add('from-about');
+    } else {
+      this.root.classList.remove('from-about');
+    }
     this.showCurrent();
     this.root.classList.add('open');
   };
@@ -92,6 +98,7 @@
     this.root.classList.remove('open');
     // remove any page-specific marker when closed
     this.root.classList.remove('from-project5');
+    this.root.classList.remove('from-about');
     this.imgEl.src = '';
     this.imgEl.classList.remove('zoomed');
   };
@@ -146,6 +153,7 @@
 
       // prefer explicit project galleries
       let galleryContainer = clickedImg.closest('.project-gallery');
+      const fromAbout = clickedImg.getAttribute('data-gallery') === 'about';
 
       // fallback: grouped by data-gallery attribute (e.g. data-gallery="project-1")
       if(!galleryContainer){
@@ -171,7 +179,7 @@
       const items = imgs.map(i => ({ src: i.dataset.full || i.src, alt: i.alt || '', caption: i.getAttribute('data-caption') || '' }));
       const idx = imgs.indexOf(clickedImg);
       if(idx === -1) return;
-      lb.open(items, idx);
+      lb.open(items, idx, { fromAbout });
     });
 
   });
