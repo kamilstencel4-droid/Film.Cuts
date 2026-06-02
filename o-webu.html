@@ -38,25 +38,69 @@
     <main id="main">
         <section class="portfolio">
             <div class="container">
-                <a href="index.html#projekty" style="color:var(--accent);text-decoration:underline;">← Zpět na projekty</a>
+                <a href="index.html#projekty" style="color:var(--accent);text-decoration:underline;">← Zpět</a>
                 <h2 class="section-title" style="margin-top:12px">O webu</h2>
-                <p class="section-sub">Účel, autor a technické informace</p>
-                <div style="height:12px"></div>
+                <p class="section-sub">Tvůrci a technické řešení</p>
+                <div style="height:24px"></div>
 
-                <div class="project card">
-                    <div class="project-meta">
-                        <h3 style="font-size:1.1rem;margin-bottom:12px;">Proč tento web</h3>
-                        <p style="color:var(--muted);line-height:1.6;">Tento web slouží jako prezentační portfolio pro Film.Cuts — projekty, ukázky práce, kontakty a informace o týmu. Je navržen tak, aby byl rychlý, jednoduchý na údržbu a přehledný pro návštěvníky i pracovní partnery.</p>
+                <!-- Autoři -->
+                <h3 style="font-size:1.4rem;margin-bottom:24px;text-align:center;">Tvůrci webu</h3>
+                
+                <div class="authors-section">
+                    <div class="author-card">
+                        <div class="author-header">
+                            <div class="author-role-badge">Hlavní autor</div>
+                        </div>
+                        <h4 style="margin-top:16px;margin-bottom:8px;font-size:1.1rem;">Kamil Štencel</h4>
+                        <p style="color:var(--muted);font-size:0.95rem;line-height:1.6;">Režisér, kameraman a editor. Návrh struktury webu, architektura obsahu, správa projektů a grafická identita. Zajišťuje celkovou vizuální a funkční continuitu.</p>
                         <div style="height:12px"></div>
-                        <h4 style="margin-bottom:8px;font-size:1rem;">Autor</h4>
-                        <p style="color:var(--muted);">Kamil Štencel — režisér, kameraman a editor. Kontakt a sociální sítě jsou uvedeny v sekci Kontakt.</p>
-                        <div style="height:12px"></div>
-                        <h4 style="margin-bottom:8px;font-size:1rem;">Technologie</h4>
-                        <p style="color:var(--muted);">Statický web postavený pomocí HTML, CSS a drobného JavaScriptu. Zdrojové soubory jsou jednoduché a snadno upravitelné — žádný backend, rychlé načítání a nízké nároky na hosting.</p>
-                        <div style="height:12px"></div>
-                        <h4 style="margin-bottom:8px;font-size:1rem;">Licence a repozitář</h4>
-                        <p style="color:var(--muted);">Pokud chceš, můžeme přidat odkaz na GitHub nebo krátké licenční informace. Řekni mi, zda máš repozitář, který chceš propojit.</p>
+                        <p style="color:var(--muted);font-size:0.9rem;font-style:italic;">Kontakt a sociální sítě v sekci <a href="index.html#contact" style="color:var(--accent);">Kontakt</a></p>
                     </div>
+
+                    <div class="author-card">
+                        <div class="author-header">
+                            <div class="author-role-badge secondary">Spolupracovník</div>
+                        </div>
+                        <h4 style="margin-top:16px;margin-bottom:8px;font-size:1.1rem;">Viktor Hajduk</h4>
+                        <p style="color:var(--muted);font-size:0.95rem;line-height:1.6;">Vývoj mobilní verze webu a celková optimalizace. Zajišťoval responzivní design na všech zařízeních, rychlost načítání a uživatelský komfort. Podílel se na technické optimalizaci a testování.</p>
+                        <div style="height:12px"></div>
+                        <p style="color:var(--muted);font-size:0.9rem;font-style:italic;">www.viktor-hajduk.cz</p>
+                    </div>
+                </div>
+
+                <div style="height:36px"></div>
+
+                <!-- Detaily -->
+                <div class="details-section">
+                    <h3 style="margin-bottom:20px;">Detaily projektu</h3>
+                    
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <h4>HTML struktura</h4>
+                            <p>Sémantické HTML5 značky, přístupná navigace (ARIA), responsivní layout s CSS Grid a Flexbox.</p>
+                        </div>
+                        <div class="detail-item">
+                            <h4>Styly</h4>
+                            <p>Jednotný design systém s CSS custom properties (proměnné), tmavý a světlý režim, optimalizované animace a přechody.</p>
+                        </div>
+                        <div class="detail-item">
+                            <h4>Interaktivita</h4>
+                            <p>Vanilkový JavaScript bez externích knihoven. Lightbox galerie, navigační menu, smooth scrolling a lazy loading obrázků.</p>
+                        </div>
+                        <div class="detail-item">
+                            <h4>Výkonnost</h4>
+                            <p>Optimalizované obrázky, minimalizované CSS a JS, cache strategie. Cíl: rychlé načítání i na pomalejších připojeních.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="height:24px"></div>
+
+                <!-- Verze -->
+                <div class="version-info">
+                    <p><strong>Verze:</strong> 1.0 — Mobilní & Finální</p>
+                    <p><strong>Datum:</strong> 2026</p>
+                    <p><strong>Platforma:</strong> Responzivní web pro všechna zařízení</p>
                 </div>
             </div>
         </section>
