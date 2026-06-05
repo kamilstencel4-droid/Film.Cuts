@@ -36,28 +36,98 @@
     </header>
 
     <main id="main">
-        <section class="portfolio">
-            <div class="container">
-                <a href="index.html#projekty" style="color:var(--accent);text-decoration:underline;">← Zpět na projekty</a>
-                <h2 class="section-title" style="margin-top:12px">O webu</h2>
-                <p class="section-sub">Účel, autor a technické informace</p>
-                <div style="height:12px"></div>
+        <!-- Hero section -->
+        <section class="about-hero">
+            <div class="about-hero-content">
+                <h1 class="about-hero-title">O webu</h1>
+                <p class="about-hero-subtitle">Seznamte se s účelem, technologií a lidmi za Film.Cuts</p>
+            </div>
+        </section>
 
-                <div class="project card">
-                    <div class="project-meta">
-                        <h3 style="font-size:1.1rem;margin-bottom:12px;">Proč tento web</h3>
-                        <p style="color:var(--muted);line-height:1.6;">Tento web slouží jako prezentační portfolio pro Film.Cuts — projekty, ukázky práce, kontakty a informace o týmu. Je navržen tak, aby byl rychlý, jednoduchý na údržbu a přehledný pro návštěvníky i pracovní partnery.</p>
-                        <div style="height:12px"></div>
-                        <h4 style="margin-bottom:8px;font-size:1rem;">Autor</h4>
-                        <p style="color:var(--muted);">Kamil Štencel — režisér, kameraman a editor. Kontakt a sociální sítě jsou uvedeny v sekci Kontakt.</p>
-                        <div style="height:12px"></div>
-                        <h4 style="margin-bottom:8px;font-size:1rem;">Technologie</h4>
-                        <p style="color:var(--muted);">Statický web postavený pomocí HTML, CSS a drobného JavaScriptu. Zdrojové soubory jsou jednoduché a snadno upravitelné — žádný backend, rychlé načítání a nízké nároky na hosting.</p>
-                        <div style="height:12px"></div>
-                        <h4 style="margin-bottom:8px;font-size:1rem;">Licence a repozitář</h4>
-                        <p style="color:var(--muted);">Pokud chceš, můžeme přidat odkaz na GitHub nebo krátké licenční informace. Řekni mi, zda máš repozitář, který chceš propojit.</p>
+        <!-- Main content -->
+        <section class="about-section">
+            <div class="container">
+                <div class="about-grid-alt">
+                    <!-- Proč web -->
+                    <div class="about-card about-card-primary">
+                        <div class="about-card-icon">🎬</div>
+                        <h2>Proč tento web?</h2>
+                        <p>Tento web slouží jako moderní prezentační portfolio pro Film.Cuts. Obsahuje naše projekty, ukázky práce, informace o týmu a jednoduchou cestu ke komunikaci. Je navržen tak, aby byl intuitivní pro návštěvníky a zároveň efektivní pro pracovní partnery.</p>
+                    </div>
+
+                    <!-- Technologie -->
+                    <div class="about-card">
+                        <div class="about-card-icon">⚙️</div>
+                        <h2>Technologie</h2>
+                        <p>Statický web postavený čistě pomocí <strong>HTML5</strong>, <strong>CSS3</strong> a minimalistického <strong>JavaScriptu</strong>. Bez zbytečných závislostí — jednoduchý, rychlý a snadný na údržbu. Nízké nároky na hosting a bleskurychlé načítání.</p>
+                    </div>
+
+                    <!-- Design filozofie -->
+                    <div class="about-card">
+                        <div class="about-card-icon">✨</div>
+                        <h2>Design filosofie</h2>
+                        <p>Tmavý, minimalistický design se zaměřením na obsah. Responzivní na všech zařízeních, přístupný a orientovaný na uživatelský komfort. Moderní, přitom nadčasový.</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Autoři a tým -->
+        <section class="about-section about-section-dark">
+            <div class="container">
+                <h2 class="section-title">Za projektem stojí</h2>
+                <p class="section-sub" style="margin-bottom: 48px;">Tvůrci a jejich příspěvek</p>
+
+                <!-- Tvůrci bez fotek -->
+                <div class="creators-grid">
+                    <!-- Autor -->
+                    <div class="creator-item creator-item-primary">
+                        <h3>Kamil Štencel</h3>
+                        <p class="creator-role">Web & Design</p>
+                        <p class="creator-bio">Tvůrce obsahu a vedoucí projektu Film.Cuts. Na webu se podílí vývojem, designem a celkovou koncepcí webového řešení.</p>
+                        <div class="creator-links">
+                            <a href="index.html#contact" class="creator-link">Kontakt</a>
+                        </div>
+                    </div>
+
+                    <!-- Spolupracovník -->
+                    <div class="creator-item">
+                        <h3>Viktor Hajduk</h3>
+                        <p class="creator-role">Optimalizace & Opravy</p>
+                        <p class="creator-bio">Webový vývojář specialista. Na projektu se podílí optimalizací výkonu, opravami chyb a vývojem mobilní verze webu.</p>
+                        <div class="creator-links">
+                            <a href="https://viktor-hajduk.cz" target="_blank" rel="noopener" class="creator-link">Web</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detaily -->
+        <section class="about-section">
+            <div class="container">
+                <div class="details-grid">
+                    <div class="detail-block">
+                        <h3>Open Source?</h3>
+                        <p>Zdrojové kódy tohoto webu jsou jednoduché a snadno upravitelné. Aktuálně nejsou veřejně dostupné, ale s žádostí nás kontaktuj.</p>
+                    </div>
+                    <div class="detail-block">
+                        <h3>Hosting</h3>
+                        <p>Web je hostován na moderní cloudové infrastruktuře s optimalizací pro bezpečnost a výkon. CDN zajišťuje rychlé načítání z jakéhokoli místa.</p>
+                    </div>
+                    <div class="detail-block">
+                        <h3>Optimalizace</h3>
+                        <p>Všechny obrázky jsou optimalizovány, CSS a JavaScript jsou minifikovány. Stránka dosahuje vysokých skóre v PageSpeed Insights a dalších testech.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA zpět -->
+        <section class="about-cta">
+            <div class="container">
+                <a href="index.html#projekty" class="cta-button">← Zpět na projekty</a>
+                <a href="index.html#contact" class="cta-button cta-button-alt">Kontaktuj nás</a>
             </div>
         </section>
     </main>
