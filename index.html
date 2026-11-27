@@ -1,328 +1,210 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Jmenuji se Kamil Štencel a pod značkou Film Cuts tvořím krátké filmy a vizuální projekty. Tento web představuje výběr mé práce, dokončené realizace i projekty ve vývoji.">
-    <meta name="author" content="Kamil Štencel">
-    <!-- Favicon - circular profile image in browser tab -->
-    <link rel="icon" href="/assets/profil-circle.png" type="image/png">
-    <link rel="shortcut icon" href="/assets/profil-circle.png" type="image/png">
-    <!-- Social preview / Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Film.Cuts">
-    <meta property="og:description" content="Jmenuji se Kamil Štencel a pod značkou Film Cuts tvořím krátké filmy a vizuální projekty. Tento web představuje výběr mé práce, dokončené realizace i projekty ve vývoji.">
-    <meta property="og:image" content="/assets/profil.jpeg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="/assets/profil.jpeg">
-    <meta name="twitter:description" content="Jmenuji se Kamil Štencel a pod značkou Film Cuts tvořím krátké filmy a vizuální projekty. Tento web představuje výběr mé práce, dokončené realizace i projekty ve vývoji.">
-    <link rel="image_src" href="/assets/profil.jpeg">
-        <title>Film.Cuts </title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    
-        <!-- JSON-LD: Person schema for site owner to help search engines associate the name -->
-        <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Kamil Štencel",
-            "url": "./",
-            "sameAs": []
-        }
-        </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Film.Cuts</title>
+  <meta name="description" content="Jmenuji se Kamil Štencel a pod značkou Film Cuts tvořím krátké filmy a vizuální projekty. Tento web představuje výběr mé práce, dokončené realizace i projekty ve vývoji.">
+  <meta name="author" content="Kamil Štencel">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Film.Cuts">
+  <meta property="og:description" content="Jmenuji se Kamil Štencel a pod značkou Film Cuts tvořím krátké filmy a vizuální projekty. Tento web představuje výběr mé práce, dokončené realizace i projekty ve vývoji.">
+  <meta property="og:image" content="https://filmcuts.cz/assets/profil.jpg">
+  <link rel="canonical" href="https://filmcuts.cz/">
+  <meta property="og:url" content="https://filmcuts.cz/">
+  <meta property="og:site_name" content="Film.Cuts">
+  <meta property="og:locale" content="cs_CZ">
+  <meta name="theme-color" content="#f4f0e8">
+  <link rel="apple-touch-icon" href="assets/profil-circle.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/profil-circle.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="casopis.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Kamil Štencel","url":"https://filmcuts.cz/","image":"https://filmcuts.cz/assets/profil.jpg","sameAs":["https://instagram.com/film.cuts._","https://www.youtube.com/@Film_Cuts.Kamil.Štencel"]}
+  </script>
 </head>
-<body class="home-page">
+<body>
 
-        <!-- skip link removed per request -->
+  <div class="topline">
+    <nav class="nav" aria-label="Hlavní navigace">
+      <a href="#projekty">Projekty</a>
+      <a href="#clenove">O mně</a>
+      <a href="#team">Členové</a>
+      <a href="#contact">Kontakt</a>
+      <a href="o-webu.html">O webu</a>
+    </nav>
+    <button class="menu-btn" aria-expanded="false" aria-controls="mnav"><span class="burger" aria-hidden="true"></span><span class="sr-only">Otevřít navigaci</span></button>
+  </div>
+  <nav id="mnav" class="mnav" aria-label="Mobilní navigace">
+    <a href="#projekty">Projekty</a><a href="#clenove">O mně</a><a href="#team">Členové</a><a href="#contact">Kontakt</a><a href="o-webu.html">O webu</a>
+  </nav>
 
-    <header class="site-header">
-        <div class="container header-inner">
-            <a class="brand" href="#">Film.Cuts</a>
-            <nav class="main-nav" aria-label="Hlavní navigace">
-                <div class="nav-dropdown">
-                    <button id="main-nav-toggle" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="main-nav-menu">
-                        <span class="hamburger" aria-hidden="true">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="sr-only">Otevřít navigaci</span>
-                    </button>
-                    <ul id="main-nav-menu" class="nav-dropdown-menu" role="menu">
-                        <li role="menuitem"><a href="#projekty">Projekty</a></li>
-                        <li role="menuitem"><a href="#clenove">O mně</a></li>
-                        <li role="menuitem"><a href="#team">Členové</a></li>
-                        <li role="menuitem"><a href="#contact">Kontakt</a></li>
-                        <li role="menuitem"><a href="o-webu.html">O webu</a></li>
-                    </ul>
-                </div>
-            </nav>
+  <header class="masthead">
+    <h1 class="mast-title">Film<span>.</span>Cuts</h1>
+    <div class="mast-rule"></div>
+    <p class="mast-lead">Jmenuji se Kamil Štencel a pod značkou Film Cuts tvořím krátké filmy a vizuální projekty. Tento web představuje výběr mé práce, dokončené realizace i projekty ve vývoji.</p>
+    <a class="mast-btn" href="#projekty">Projekty</a>
+  </header>
+
+  <main>
+    <a class="new-strip" href="project-new.html">
+      <span class="new-strip-title">Nový projekt</span>
+      <span class="new-strip-sub">Podívej se na nejnovější tvorbu</span>
+      <span class="new-strip-cta">Otevřít</span>
+    </a>
+
+    <!-- PROJEKTY -->
+    <section id="projekty" class="films">
+      <h2 class="sec-label">Projekty</h2>
+      <p class="sec-intro">Přehled vybraných projektů napříč dokumentární, krátkometrážní i sportovní tvorbou. Každý z nich ukazuje jiný způsob práce s obrazem, rytmem a atmosférou, ale všechny spojuje důraz na vizuální vyprávění, autenticitu a pečlivé filmové řemeslo. Tato sekce představuje ukázku přístupu k tvorbě i spolupráci s lidmi, jejichž příběhy stojí za zachycení.</p>
+
+      <a class="article lead-article" href="project-new.html">
+        <figure><img fetchpriority="high" decoding="async" width="1280" height="720" src="assets/mezi-film.jpg" alt="MEZI"><span class="new-badge">NEW</span></figure>
+        <div class="article-text">
+          <h3>MEZI</h3>
+          <time class="kicker">2026</time>
+          <p class="standfirst">Psychologické drama o muži, který se ocitá v prázdném městě bez lidí. Snímek zkoumá hranici mezi životem a smrtí skrze ticho, izolaci a atmosféru.</p>
         </div>
-    </header>
+      </a>
 
-    <div class="banner-row">
-        <a href="project-new.html" class="new-project-banner" aria-label="Otevřít nový projekt">
-            <span class="new-project-banner__icon" aria-hidden="true">✨</span>
-            <span class="new-project-banner__text">
-                <span class="new-project-banner__title">Nový projekt</span>
-                <span class="new-project-banner__subtitle">Podívej se na nejnovější tvorbu</span>
-            </span>
-            <span class="new-project-banner__cta">Otevřít</span>
+      <div class="article-grid">
+        <a class="article" href="project1.html">
+          <figure><img decoding="async" width="1600" height="900" src="assets/portfolio1.jpg" alt="Documentary Short Film - Adam Liška" loading="lazy"></figure>
+          <h3>Documentary Short Film - Adam Liška</h3>
+          <time class="kicker">2025</time>
+          <p>Dokument sleduje šestnáctiletého MTB ridera Adama během tréninků a závodů.</p>
         </a>
-    </div>
+        <a class="article" href="project2.html">
+          <figure><img decoding="async" width="1600" height="904" src="assets/portfolio2.jpg" alt="DVA DNY | Short Film" loading="lazy"></figure>
+          <h3>DVA DNY | Short Film</h3>
+          <time class="kicker">2026</time>
+          <p>Psychologický thriller z prostředí digitálního světa, kde jedno nenápadné rozhodnutí spustí řetězec nevratných následků.</p>
+        </a>
+        <a class="article" href="project3.html">
+          <figure><img decoding="async" width="1600" height="900" src="assets/portfolio3.jpg" alt="BikePark Kopřivná Edit!" loading="lazy"></figure>
+          <h3>BikePark Kopřivná Edit!</h3>
+          <time class="kicker">2025</time>
+          <p>Experimentální montáž zkoumající světlo, rytmus a kontinuitu obrazu.</p>
+        </a>
+        <a class="article" href="project4.html">
+          <figure><img decoding="async" width="1600" height="900" src="assets/portfolio4.jpg" alt="Adam Liška Bike Edit [4K]" loading="lazy"></figure>
+          <h3>Adam Liška Bike Edit [4K]</h3>
+          <time class="kicker">2025</time>
+          <p>Krátký film pro značku, který pracuje s kontrastem ticha a napětí.</p>
+        </a>
+        <a class="article" href="project5.html">
+          <figure><img decoding="async" width="640" height="360" src="assets/portfolio5.jpg" alt="The Last House (Short Film)" loading="lazy"></figure>
+          <h3>The Last House (Short Film)</h3>
+          <time class="kicker">2025</time>
+          <p>Krátký mysteriózní film o návratu do opuštěného domu — důraz na vizuál a atmosféru.</p>
+        </a>
+      </div>
+    </section>
 
-    <main id="main">
+    <!-- PLÁNOVANÉ PROJEKTY -->
+    <section id="planovane" class="planned">
+      <h2 class="sec-label">Plánované projekty</h2>
+      <p class="sec-intro">Projekty v přípravě a v plánu. Sledujte nás pro nejnovější obsah.</p>
+      <div class="planned-grid">
+        <article class="plan plan-wide">
+          <div>
+            <h3>Celovečerní film</h3>
+            <p class="kicker">Politický cyber-thriller</p>
+            <p>Příběh o sledování, umělé inteligenci a lidech, kteří se rozhodnou postavit systému.</p>
+          </div>
+          <div>
+            <dl class="facts">
+              <div><dt>Délka</dt><dd>cca 100–110 min</dd></div>
+              <div><dt>Rozpočet</dt><dd>? Kč</dd></div>
+            </dl>
+            <div class="progress-line"><i style="width:5%"></i></div>
+            <div class="plan-row"><span>Fáze: Ve vývoji</span><b>5%</b></div>
+            <p class="note">Hledáme finanční prostředky na realizaci.</p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-        <!-- HERO -->
-                        <section id="hero" class="hero">
-                                <!-- subtle photo background under the title -->
-                                <div class="hero-bg" aria-hidden="true"></div>
-                                <div class="hero-overlay"></div>
-                                <div class="hero-content container">
-                                    <div class="hero-panel">
-                                        <h1 class="hero-title">Film.Cuts</h1>
-                                        <p class="hero-tagline">Jmenuji se Kamil Štencel a pod značkou Film Cuts tvořím krátké filmy a vizuální projekty. Tento web představuje výběr mé práce, dokončené realizace i projekty ve vývoji.</p>
-                                        <a class="hero-tab" href="#projekty" aria-label="Přejít na projekty">Projekty</a>
-                                    </div>
-                                </div>
-            <button class="scroll-indicator" aria-label="Scroll to next section" data-scroll-to="#projekty">
-                <span></span>
-            </button>
-        </section>
-
-            <!-- showreel removed: hero uses YouTube background; selected works are displayed in Portfolio below -->
-
-        <!-- PROJEKTY -->
-        <section id="projekty" class="portfolio">
-            <div class="container">
-            <h2 class="section-title">Projekty</h2>
-            <div style="height: 12px;"></div>
-            <p class="section-sub">Přehled vybraných projektů napříč dokumentární, krátkometrážní i sportovní tvorbou. Každý z nich ukazuje jiný způsob práce s obrazem, rytmem a atmosférou, ale všechny spojuje důraz na vizuální vyprávění, autenticitu a pečlivé filmové řemeslo. Tato sekce představuje ukázku přístupu k tvorbě i spolupráci s lidmi, jejichž příběhy stojí za zachycení.</p>
-            <div style="height: 24px;"></div>
-                <div class="grid portfolio-grid" id="projects-grid">
-                    <!-- Projects will be rendered here from localStorage (admin) or default data -->
-                </div>
-            </div>
-        </section>
-
-        <!-- PLÁNOVANÉ PROJEKTY -->
-        <section id="planovane" class="portfolio" style="background: rgba(255,255,255,0.01);">
-            <div class="container">
-                <h2 class="section-title">Plánované projekty</h2>
-                <p class="section-sub">Projekty v přípravě a v plánu. Sledujte nás pro nejnovější obsah.</p>
-                <div style="height: 24px;"></div>
-                <div class="grid portfolio-grid">
-                    <!-- Planned Project 1 -->
-                    <div class="project card planned-project">
-                        <div class="project-meta">
-                            <h3>Nový Film</h3>
-                            <p style="color: var(--muted); font-size: 0.9rem; margin-top: 4px;">Horror / thriler</p>
-                            <p style="color: var(--muted); font-size: 0.9rem; margin-top: 8px;">Intenzivní psychologický thriller ve vývojové fázi.</p>
-                            <div class="progress-container">
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 10%;"></div>
-                                </div>
-                                <div class="progress-info">
-                                    <p class="progress-status">Fáze: Vývoj scénáře</p>
-                                    <div class="progress-percentage">10%</div>
-                                </div>
-                            </div>
-                            <p style="color: var(--muted); font-size: 0.75rem; margin-top: 6px;">Očekávaná předprodukce: červenec 2026</p>
-                        </div>
-                    </div>
-
-                    <!-- Planned Project 2 -->
-                    <div class="project card planned-project">
-                        <div class="project-meta">
-                            <h3>Dokument o novém filmu</h3>
-                            <p style="color: var(--muted); font-size: 0.9rem; margin-top: 4px;">Documentary</p>
-                            <p style="color: var(--muted); font-size: 0.9rem; margin-top: 8px;">Dokumentární projekt ve fázi výzkumu tématu a vývoje konceptu.</p>
-                            <div class="progress-container">
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 5%;"></div>
-                                </div>
-                                <div class="progress-info">
-                                    <p class="progress-status">Fáze: Vývoj konceptu</p>
-                                    <div class="progress-percentage">5%</div>
-                                </div>
-                            </div>
-                            <p style="color: var(--muted); font-size: 0.75rem; margin-top: 6px;">Plánované zahájení produkce: srpen 2026</p>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </section>
-
-        <!-- ČLENOVÉ -->
-        <section id="clenove" class="team">
-            <div class="container">
-                <h2 class="section-title">O mně</h2>
-                <p class="section-sub">Tvůrce a vedoucí projektu</p>
-                <div class="grid team-grid">
-                    <!-- Member 1 — Kamil jako hlavní člen -->
-                    <article class="team-member">
-                        <div class="member-photo">
-                            <img src="assets/member1.png" alt="Člen týmu 1" loading="lazy">
-                        </div>
-                        <div class="member-info">
-                            <h3>Kamil Štencel</h3>
-                            <p class="member-role">Režisér / Kameraman / Editor</p>
-                            <p class="member-bio">Tvůrce a vedoucí projektu. Střih, scénář a vizuální pojetí.</p>
-                        </div>
-                    </article>
-
-                    <!-- About section merged into team -->
-                    <article class="team-member about-card" id="about">
-                        <div class="about-content">
-                            <h2 style="font-size: 1.4rem; margin-bottom: 12px; font-weight: 700;">O tvorbě</h2>
-                            <p>Jsem videomaker, kameraman a začínající režisér, který se zaměřuje na vizuální příběhy s jasnou atmosférou a rytmem. Baví mě práce s kamerou, světlem a střihem tak, aby každý záběr měl smysl a podporoval emoci, kterou chci předat. Učím se s každým projektem a postupně si buduju vlastní styl založený na jednoduchosti, čisté kompozici a přirozeném vyznění.</p>
-                            <div style="height: 12px;"></div>
-                            <p>Kromě vlastní tvorby pomáhám také ve <a href="https://framecrew.cz" target="_blank" rel="noopener" class="about-ext">FrameCrew</a> jako runner a asistent. Díky tomu mám možnost být součástí větších produkcí, sledovat zkušené profesionály přímo na place a učit se z jejich postupů. Tahle práce mě naučila rychle reagovat, řešit technické i organizační situace a být spolehlivou součástí filmového týmu. Získané zkušenosti pak přenáším i do vlastních projektů, kde mi pomáhají lépe plánovat, komunikovat a držet natáčení v hladkém chodu.</p>
-                            <p>Spolupracuji na menších filmových i komerčních projektech a vždy se snažím, aby výsledek působil profesionálně a autenticky.</p>
-                            <div style="height: 20px;"></div>
-                            <!-- Small gallery - replace with your personal photos (place files in assets/) -->
-                            <div class="about-gallery">
-                                <div class="gallery-item">
-                                    <img src="assets/about-1.jpeg" alt="Galerie 1" loading="lazy" data-gallery="about">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="assets/about-2.jpeg" alt="Galerie 2" loading="lazy" data-gallery="about">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="assets/about-3.jpeg" alt="Galerie 3" loading="lazy" data-gallery="about">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="assets/about-4.jpeg" alt="Galerie 4" loading="lazy" data-gallery="about">
-                                </div>
-                            </div>
-                            <p class="muted small" style="margin-top:8px;">Více fotografií z natáčení najdete u jednotlivých projektů — podívejte se do <a href="#projekty" style="color:var(--accent);text-decoration:underline;">sekce Projekty</a>.</p>
-                        </div>
-                        <!-- profile image removed as requested -->
-                    </article>
-
-                    <!-- TEAM SECTION STARTS HERE -->
-                    <div style="grid-column: 1 / -1; margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);" id="team">
-                        <h2 class="section-title">Tým</h2>
-                        <p class="section-sub">Kreativci a technici, kteří stojí za každým projektem.</p>
-                    </div>
-
-                    <!-- Member 2 — změňte jméno, roli a popis; nahraďte fotku: assets/member2.png -->
-                    <article class="team-member">
-                        <div class="member-photo">
-                            <img src="assets/member2.jpeg" alt="Člen týmu 2" loading="lazy">
-                        </div>
-                        <div class="member-info">
-                            <h3>Teodor Švéda</h3>
-                            <p class="member-role">Herec / Asistent  </p>
-                            <p class="member-bio">Věnuje se hereckým rolím a zároveň pomáhá na place se světlem a technickými úkoly.</p>
-                        </div>
-                    </article>
-
-                    <!-- Member 3 — změňte jméno, roli a popis; nahraďte fotku: assets/member3.png -->
-                    <article class="team-member">
-                        <div class="member-photo">
-                            <img src="assets/member3.jpeg" alt="Člen týmu 3" loading="lazy">
-                        </div>
-                        <div class="member-info">
-                            <h3>Daniel Binar</h3>
-                            <p class="member-role">Asistent / Produkční</p>
-                            <p class="member-bio">Stará se o organizační zajištění natáčení a pomáhá s technickými úkoly na place.</p>
-                        </div>
-                    </article>
-
-                    <!-- Member 4 — změňte jméno, roli a popis; nahraďte fotku: assets/member4.png -->
-                    <article class="team-member">
-                        <div class="member-photo">
-                            <img src="assets/member4.jpeg" alt="Člen týmu 4" loading="lazy">
-                        </div>
-                        <div class="member-info">
-                            <h3>Petr Findrik</h3>
-                            <p class="member-role">Kameraman doplňkových záběrů</p>
-                            <p class="member-bio">Natáčí doplňkové záběry, druhou kameru a BTS materiál.</p>
-                        </div>
-                    </article>
-
-        
-                </div>
-            </div>
-        </section>
-        
-
-        <!-- CONTACT -->
-        <section id="contact" class="contact">
-            <div class="container contact-inner">
-                <div>
-                                <h2 class="section-title">Kontakt</h2>
-                                <div style="height: 24px;"></div>
-                                <div class="contact-list">
-                                    <a class="contact-item" href="https://instagram.com/film.cuts._" target="_blank" rel="noopener" aria-label="Instagram">
-                                        <div class="icon-link" aria-hidden="true">
-                                            <!-- Instagram icon -->
-                                            <svg viewBox="0 0 24 24" focusable="false">
-                                                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM18.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                            </svg>
-                                        </div>
-                                        <div class="contact-meta">
-                                            <div class="contact-name">Instagram</div>
-                                            <div class="contact-desc">film.cuts._ — behind the scenes & clips</div>
-                                        </div>
-                                    </a>
-
-                                    <a class="contact-item" href="https://www.youtube.com/@Film_Cuts.Kamil.Štencel" target="_blank" rel="noopener" aria-label="YouTube">
-                                        <div class="icon-link" aria-hidden="true">
-                                            <!-- YouTube icon -->
-                                            <svg viewBox="0 0 24 24" focusable="false">
-                                                <path d="M23 7s-.2-1.6-.8-2.3c-.8-1-1.7-1-2.1-1.1C16.7 3 12 3 12 3s-4.7 0-7.1.6c-.4.1-1.3.1-2.1 1.1C2.2 5.4 2 7 2 7S1.7 9.1 1.7 11.3v1.4C1.7 14.9 2 17 2 17s.2 1.6.8 2.3c.8 1 1.9 1 2.4 1.1 1.7.2 7.1.6 7.1.6s4.7 0 7.1-.6c.4-.1 1.3-.1 2.1-1.1.6-.7.8-2.3.8-2.3s.3-2.1.3-4.3v-1.4C23.3 9.1 23 7 23 7zM9.8 15.5V8.5l6.2 3.5-6.2 3.5z"/>
-                                            </svg>
-                                        </div>
-                                        <div class="contact-meta">
-                                            <div class="contact-name">YouTube</div>
-                                            <div class="contact-desc">Showreel & full projects</div>
-                                        </div>
-                                    </a>
-
-                                    <a class="contact-item" href="mailto:info@film.cuts" aria-label="Email">
-                                        <div class="icon-link" aria-hidden="true">
-                                            <!-- Mail icon -->
-                                            <svg viewBox="0 0 24 24" focusable="false">
-                                                <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
-                                            </svg>
-                                        </div>
-                                        <div class="contact-meta">
-                                            <div class="contact-name">Email</div>
-                                            <div class="contact-desc">info@filmcuts.cz — pro nabídky a dotazy</div>
-                                        </div>
-                                    </a>
-                                </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <p class="muted small">© 2026 Film Cuts – Kamil Štencel</p>
+    <!-- O MNĚ -->
+    <section id="clenove" class="portrait">
+      <h2 class="sec-label">O mně</h2>
+      <p class="sec-intro">Tvůrce a vedoucí projektu</p>
+      <div class="portrait-grid">
+        <figure class="portrait-img">
+          <img decoding="async" width="1600" height="1066" src="assets/member1-portret.jpg" alt="Člen týmu 1" loading="lazy">
+          <figcaption><strong class="fig-name">Kamil Štencel</strong><span class="fig-role">Režisér / Kameraman / Editor</span>Tvůrce a vedoucí projektu. Střih, scénář a vizuální pojetí.</figcaption>
+        </figure>
+        <div class="portrait-text" id="about">
+          <h3 class="col-title">O tvorbě</h3>
+          <div class="columns">
+            <p class="dropcap">Jsem videomaker, kameraman a začínající režisér, který se zaměřuje na vizuální příběhy s jasnou atmosférou a rytmem. Baví mě práce s kamerou, světlem a střihem tak, aby každý záběr měl smysl a podporoval emoci, kterou chci předat. Učím se s každým projektem a postupně si buduju vlastní styl založený na jednoduchosti, čisté kompozici a přirozeném vyznění.</p>
+            <p>Kromě vlastní tvorby pomáhám také ve <a href="https://framecrew.cz" target="_blank" rel="noopener">FrameCrew</a> jako runner a asistent. Díky tomu mám možnost být součástí větších produkcí, sledovat zkušené profesionály přímo na place a učit se z jejich postupů. Tahle práce mě naučila rychle reagovat, řešit technické i organizační situace a být spolehlivou součástí filmového týmu. Získané zkušenosti pak přenáším i do vlastních projektů, kde mi pomáhají lépe plánovat, komunikovat a držet natáčení v hladkém chodu.</p>
+            <p>Spolupracuji na menších filmových i komerčních projektech a vždy se snažím, aby výsledek působil profesionálně a autenticky.</p>
+          </div>
         </div>
-    </footer>
+      </div>
+      <div class="gallery four">
+        <a href="assets/about-1.jpg"><img decoding="async" width="1400" height="786" src="assets/about-1.jpg" alt="Galerie 1" loading="lazy"></a>
+        <a href="assets/about-2.jpg"><img decoding="async" width="480" height="640" src="assets/about-2.jpg" alt="Galerie 2" loading="lazy"></a>
+        <a href="assets/about-3.jpg"><img decoding="async" width="480" height="640" src="assets/about-3.jpg" alt="Galerie 3" loading="lazy"></a>
+        <a href="assets/about-4.jpg"><img decoding="async" width="1400" height="786" src="assets/about-4.jpg" alt="Galerie 4" loading="lazy"></a>
+      </div>
+      <p class="note">Více fotografií z natáčení najdete u jednotlivých projektů — podívejte se do <a href="#projekty">sekce Projekty</a>.</p>
+    </section>
 
-    <!-- Mobile-only modal: warns user that site is not fully optimized for mobile -->
-    <div id="mobile-modal-overlay" class="mobile-modal-overlay" aria-hidden="true">
-        <div class="mobile-modal" role="dialog" aria-modal="true" aria-labelledby="mobile-modal-title">
-            <button class="mobile-modal-close" aria-label="Zavřít upozornění">×</button>
-            <h3 id="mobile-modal-title">Upozornění</h3>
-            <p>Tento web není plně optimalizovaný pro mobilní zařízení. Pro nejlepší kvalitu doporučujeme otevřít stránku na počítači.</p>
-            <div class="mobile-modal-actions">
-                <button class="mobile-modal-ok">Rozumím</button>
-            </div>
-        </div>
-    </div>
+    <!-- TÝM -->
+    <section id="team" class="team">
+      <h2 class="sec-label">Tým</h2>
+      <p class="sec-intro">Kreativci a technici, kteří stojí za každým projektem.</p>
+      <div class="team-grid">
+        <article class="member">
+          <img decoding="async" width="1186" height="1178" src="assets/member2.jpg" alt="Člen týmu 2" loading="lazy">
+          <h3>Teodor Švéda</h3>
+          <p class="kicker">Herec / Asistent</p>
+          <p>Věnuje se hereckým rolím a zároveň pomáhá na place se světlem a technickými úkoly.</p>
+        </article>
+        <article class="member">
+          <img decoding="async" width="848" height="820" src="assets/member3.jpg" alt="Člen týmu 3" loading="lazy">
+          <h3>Daniel Binar</h3>
+          <p class="kicker">Asistent / Produkční</p>
+          <p>Stará se o organizační zajištění natáčení a pomáhá s technickými úkoly na place.</p>
+        </article>
+        <article class="member">
+          <img decoding="async" width="1280" height="1079" src="assets/member4.jpg" alt="Člen týmu 4" loading="lazy">
+          <h3>Petr Findrik</h3>
+          <p class="kicker">Kameraman doplňkových záběrů</p>
+          <p>Natáčí doplňkové záběry, druhou kameru a BTS materiál.</p>
+        </article>
+      </div>
+    </section>
 
-    <script src="assets/projects.js" defer></script>
-    <script src="assets/lightbox.js" defer></script>
-    <script src="script.js" defer></script>
+    <!-- KONTAKT -->
+    <section id="contact" class="contact-sec">
+      <h2 class="sec-label">Kontakt</h2>
+      <div class="contact-list">
+        <a class="contact-item" href="https://instagram.com/film.cuts._" target="_blank" rel="noopener">
+          <span class="contact-name">Instagram</span>
+          <span class="contact-desc">film.cuts._ — behind the scenes &amp; clips</span>
+        </a>
+        <a class="contact-item" href="https://www.youtube.com/@Film_Cuts.Kamil.Štencel" target="_blank" rel="noopener">
+          <span class="contact-name">YouTube</span>
+          <span class="contact-desc">Showreel &amp; full projects</span>
+        </a>
+        <a class="contact-item" href="mailto:info@filmcuts.cz">
+          <span class="contact-name">Email</span>
+          <span class="contact-desc">info@filmcuts.cz — pro nabídky a dotazy</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>© 2026 Film Cuts – Kamil Štencel</span>
+  </footer>
+
+  <script src="casopis.js" defer></script>
 </body>
 </html>

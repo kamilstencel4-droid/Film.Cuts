@@ -1,144 +1,103 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>O webu — Film.Cuts</title>
-    <meta name="description" content="Informace o účelu a technickém řešení webu Film.Cuts.">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="/assets/profil-circle.png" type="image/png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>O webu — Film.Cuts</title>
+  <meta name="description" content="Informace o účelu a technickém řešení webu Film.Cuts.">
+  <meta name="author" content="Kamil Štencel">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="O webu — Film.Cuts">
+  <meta property="og:description" content="Informace o účelu a technickém řešení webu Film.Cuts.">
+  <meta property="og:image" content="https://filmcuts.cz/assets/profil.jpg">
+  <link rel="canonical" href="https://filmcuts.cz/o-webu.html">
+  <meta property="og:url" content="https://filmcuts.cz/o-webu.html">
+  <meta property="og:site_name" content="Film.Cuts">
+  <meta property="og:locale" content="cs_CZ">
+  <meta name="theme-color" content="#f4f0e8">
+  <link rel="apple-touch-icon" href="assets/profil-circle.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/profil-circle.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="casopis.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="container header-inner">
-            <a class="brand" href="index.html">Film.Cuts</a>
-            <nav class="main-nav" aria-label="Hlavní navigace">
-                <div class="nav-dropdown">
-                    <button id="main-nav-toggle" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="main-nav-menu">
-                        <span class="hamburger" aria-hidden="true">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="sr-only">Otevřít navigaci</span>
-                    </button>
-                    <ul id="main-nav-menu" class="nav-dropdown-menu" role="menu">
-                        <li role="menuitem"><a href="index.html#projekty">Projekty</a></li>
-                        <li role="menuitem"><a href="index.html#clenove">O mně</a></li>
-                        <li role="menuitem"><a href="index.html#team">Členové</a></li>
-                        <li role="menuitem"><a href="o-webu.html">O webu</a></li>
-                        <li role="menuitem"><a href="index.html#contact">Kontakt</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+
+  <div class="topline">
+    <nav class="nav" aria-label="Hlavní navigace"><a href="index.html#projekty">Projekty</a><a href="index.html#clenove">O mně</a><a href="index.html#team">Členové</a><a href="index.html#contact">Kontakt</a><a href="o-webu.html">O webu</a></nav>
+    <button class="menu-btn" aria-expanded="false" aria-controls="mnav"><span class="burger" aria-hidden="true"></span><span class="sr-only">Otevřít navigaci</span></button>
+  </div>
+  <nav id="mnav" class="mnav" aria-label="Mobilní navigace"><a href="index.html#projekty">Projekty</a><a href="index.html#clenove">O mně</a><a href="index.html#team">Členové</a><a href="index.html#contact">Kontakt</a><a href="o-webu.html">O webu</a></nav>
+  <header class="mini-mast">
+    <a class="mast-title" href="index.html">Film<span>.</span>Cuts</a>
+  </header>
+  <main>
+    <header class="story-head">
+      <h1 class="story-title">O webu</h1>
+      <p class="standfirst">Seznamte se s účelem, technologií a lidmi za Film.Cuts</p>
     </header>
 
-    <main id="main">
-        <!-- Hero section -->
-        <section class="about-hero">
-            <div class="about-hero-content">
-                <h1 class="about-hero-title">O webu</h1>
-                <p class="about-hero-subtitle">Seznamte se s účelem, technologií a lidmi za Film.Cuts</p>
-            </div>
-        </section>
+    <div class="essay-cols">
+      <section>
+        <p class="icon">🎬</p>
+        <h2>Proč tento web?</h2>
+        <p>Tento web slouží jako moderní prezentační portfolio pro Film.Cuts. Obsahuje naše projekty, ukázky práce, informace o týmu a jednoduchou cestu ke komunikaci. Je navržen tak, aby byl intuitivní pro návštěvníky a zároveň efektivní pro pracovní partnery.</p>
+      </section>
+      <section>
+        <p class="icon">⚙️</p>
+        <h2>Technologie</h2>
+        <p>Statický web postavený čistě pomocí <strong>HTML5</strong>, <strong>CSS3</strong> a minimalistického <strong>JavaScriptu</strong>. Bez zbytečných závislostí — jednoduchý, rychlý a snadný na údržbu. Nízké nároky na hosting a bleskurychlé načítání.</p>
+      </section>
+      <section>
+        <p class="icon">✨</p>
+        <h2>Design filosofie</h2>
+        <p>Tmavý, minimalistický design se zaměřením na obsah. Responzivní na všech zařízeních, přístupný a orientovaný na uživatelský komfort. Moderní, přitom nadčasový.</p>
+      </section>
+    </div>
 
-        <!-- Main content -->
-        <section class="about-section">
-            <div class="container">
-                <div class="about-grid-alt">
-                    <!-- Proč web -->
-                    <div class="about-card about-card-primary">
-                        <div class="about-card-icon">🎬</div>
-                        <h2>Proč tento web?</h2>
-                        <p>Tento web slouží jako moderní prezentační portfolio pro Film.Cuts. Obsahuje naše projekty, ukázky práce, informace o týmu a jednoduchou cestu ke komunikaci. Je navržen tak, aby byl intuitivní pro návštěvníky a zároveň efektivní pro pracovní partnery.</p>
-                    </div>
+    <h2 class="sec-label">Za projektem stojí</h2>
+    <p class="sec-intro">Tvůrci a jejich příspěvek</p>
+    <div class="creators">
+      <div>
+        <h3>Kamil Štencel</h3>
+        <p class="kicker">Web &amp; Design</p>
+        <p>Tvůrce obsahu a vedoucí projektu Film.Cuts. Na webu se podílí vývojem, designem a celkovou koncepcí webového řešení.</p>
+        <a href="index.html#contact">Kontakt</a>
+      </div>
+      <div>
+        <h3>Viktor Hajduk</h3>
+        <p class="kicker">Optimalizace &amp; Opravy</p>
+        <p>Webový vývojář specialista. Na projektu se podílí optimalizací výkonu, opravami chyb a vývojem mobilní verze webu.</p>
+        <a href="https://viktor-hajduk.cz" target="_blank" rel="noopener">Web</a>
+      </div>
+    </div>
 
-                    <!-- Technologie -->
-                    <div class="about-card">
-                        <div class="about-card-icon">⚙️</div>
-                        <h2>Technologie</h2>
-                        <p>Statický web postavený čistě pomocí <strong>HTML5</strong>, <strong>CSS3</strong> a minimalistického <strong>JavaScriptu</strong>. Bez zbytečných závislostí — jednoduchý, rychlý a snadný na údržbu. Nízké nároky na hosting a bleskurychlé načítání.</p>
-                    </div>
+    <div class="essay-cols">
+      <section>
+        <h2>Open Source?</h2>
+        <p>Zdrojové kódy tohoto webu jsou jednoduché a snadno upravitelné. Aktuálně nejsou veřejně dostupné, ale s žádostí nás kontaktuj.</p>
+      </section>
+      <section>
+        <h2>Hosting</h2>
+        <p>Web je hostován na moderní cloudové infrastruktuře s optimalizací pro bezpečnost a výkon. CDN zajišťuje rychlé načítání z jakéhokoli místa.</p>
+      </section>
+      <section>
+        <h2>Optimalizace</h2>
+        <p>Všechny obrázky jsou optimalizovány, CSS a JavaScript jsou minifikovány. Stránka dosahuje vysokých skóre v PageSpeed Insights a dalších testech.</p>
+      </section>
+    </div>
 
-                    <!-- Design filozofie -->
-                    <div class="about-card">
-                        <div class="about-card-icon">✨</div>
-                        <h2>Design filosofie</h2>
-                        <p>Tmavý, minimalistický design se zaměřením na obsah. Responzivní na všech zařízeních, přístupný a orientovaný na uživatelský komfort. Moderní, přitom nadčasový.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="cta-row">
+      <a href="index.html#projekty" class="mast-btn">← Zpět na projekty</a>
+      <a href="index.html#contact" class="mast-btn alt">Kontaktuj nás</a>
+    </div>
+  </main>
 
-        <!-- Autoři a tým -->
-        <section class="about-section about-section-dark">
-            <div class="container">
-                <h2 class="section-title">Za projektem stojí</h2>
-                <p class="section-sub" style="margin-bottom: 48px;">Tvůrci a jejich příspěvek</p>
-
-                <!-- Tvůrci bez fotek -->
-                <div class="creators-grid">
-                    <!-- Autor -->
-                    <div class="creator-item creator-item-primary">
-                        <h3>Kamil Štencel</h3>
-                        <p class="creator-role">Web & Design</p>
-                        <p class="creator-bio">Tvůrce obsahu a vedoucí projektu Film.Cuts. Na webu se podílí vývojem, designem a celkovou koncepcí webového řešení.</p>
-                        <div class="creator-links">
-                            <a href="index.html#contact" class="creator-link">Kontakt</a>
-                        </div>
-                    </div>
-
-                    <!-- Spolupracovník -->
-                    <div class="creator-item">
-                        <h3>Viktor Hajduk</h3>
-                        <p class="creator-role">Optimalizace & Opravy</p>
-                        <p class="creator-bio">Webový vývojář specialista. Na projektu se podílí optimalizací výkonu, opravami chyb a vývojem mobilní verze webu.</p>
-                        <div class="creator-links">
-                            <a href="https://viktor-hajduk.cz" target="_blank" rel="noopener" class="creator-link">Web</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Detaily -->
-        <section class="about-section">
-            <div class="container">
-                <div class="details-grid">
-                    <div class="detail-block">
-                        <h3>Open Source?</h3>
-                        <p>Zdrojové kódy tohoto webu jsou jednoduché a snadno upravitelné. Aktuálně nejsou veřejně dostupné, ale s žádostí nás kontaktuj.</p>
-                    </div>
-                    <div class="detail-block">
-                        <h3>Hosting</h3>
-                        <p>Web je hostován na moderní cloudové infrastruktuře s optimalizací pro bezpečnost a výkon. CDN zajišťuje rychlé načítání z jakéhokoli místa.</p>
-                    </div>
-                    <div class="detail-block">
-                        <h3>Optimalizace</h3>
-                        <p>Všechny obrázky jsou optimalizovány, CSS a JavaScript jsou minifikovány. Stránka dosahuje vysokých skóre v PageSpeed Insights a dalších testech.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA zpět -->
-        <section class="about-cta">
-            <div class="container">
-                <a href="index.html#projekty" class="cta-button">← Zpět na projekty</a>
-                <a href="index.html#contact" class="cta-button cta-button-alt">Kontaktuj nás</a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <p class="muted small">© 2026 Film Cuts – Kamil Štencel</p>
-        </div>
-    </footer>
-
-    <script src="assets/projects.js" defer></script>
-    <script src="script.js" defer></script>
+  <footer class="foot">
+    <span>© 2026 Film Cuts – Kamil Štencel</span>
+  </footer>
+  <script src="casopis.js" defer></script>
 </body>
 </html>
